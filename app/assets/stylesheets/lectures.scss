@@ -1,10 +1,14 @@
-// Place all the styles related to the categories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+$bgDefault      : rgb(255, 227, 0);
+$bgHighlight    : rgba(0, 0, 0, 0.38);
+$colDefault     : #464220;
+$colHighlight   : #ffffff;
+$contrast       : #9e8d00;
+$dropDown       : false;
+
 div.lecture-panel {
     // padding-top: 1.5em;
     height: 5em;
-    border-left: 1em solid #9E8D00;
+    border-left: 1em solid $bgDefault;
     margin-bottom: 9px;
 
     h2 {
@@ -23,14 +27,14 @@ div.topic-panel {
 
   a {
     color: black;
-    background: rgb(67, 60, 8);
+    background: $contrast;
     display: block;
     padding: 0.5em 0 0.5em 1em;
   }
 
   a:hover {
     color: gray;
-    background: #9E8D00;
+    background: $bgDefault;
     text-decoration: none;
   }
 }
@@ -39,7 +43,7 @@ a.topic-link {
   display: block;
   padding-left: 1em;
   height: 100%;
-  background: rgb(67, 60, 8);
+  background: $contrast;
   font-size: 1.5em;
   padding-top: 0.9em;
   color: black;
@@ -52,15 +56,13 @@ a.topic-link {
 }
 
 a.topic-link:hover {
-  background: #9E8D00;
+  background: $bgDefault;
   text-decoration: none;
 }
 
 //--------------------------
 
 body {
-//  background-color: rgb(230, 217, 7);
-  //background-color: rgb(254, 225, 11);
   background-color: black;
 }
 .up-div {
@@ -95,12 +97,6 @@ body {
   margin-left: 5px;
   margin-right: 25px;
 }
-$bgDefault      : rgb(255, 227, 0);
-$bgHighlight    : rgba(0, 0, 0, 0.38);
-$colDefault     : rgb(123, 117, 62);
-$colHighlight   : #ffffff;
-$contrast       : #9e8d00;
-$dropDown       : false;
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;

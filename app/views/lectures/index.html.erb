@@ -3,7 +3,7 @@
 
   <% @lectures.each do |lecture| %>
       <% url_cat = (lecture.id)%>
-      <% @topics = lecture.topics %>
+      <% @topics = lecture.topics.order('number ASC') %>
       <div class="lecture-panel">
         <%=  link_to "<span class='badge'> #{@topics.count} </span> #{lecture.chapter}. #{lecture.subject}".html_safe,
         "#topics-for-#{url_cat}", class: "topic-link", data: { toggle: "collapse" } %>

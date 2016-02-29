@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :streams, only: [] do
     resources :takes, only: [:create]
   end
+  get 'takes/live_stream_start', as: 'live_stream_start'
 
   get '/auth/:provider/callback', to: 'yt_sessions#create'
   delete '/logout', to: 'yt_sessions#destroy', as: :logout

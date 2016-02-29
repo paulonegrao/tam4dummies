@@ -5,7 +5,7 @@
 
             <div class="github-stargazers"></div>
                 <table style="width: 100%;" class="hidden" id="rooms-list"></table>
-                <div class="container-fluid">
+                <div class="container">
                           <div class="row">
                             <%= form_for "" do |f| %>
                                 <div class="col-md-10" style="padding-right: 0;">
@@ -30,30 +30,29 @@
                                       <%= f.text_field :timestamp, readonly: true, value: "#{@stream.timestamp}", class: "tfield" %>
                                     </span>
                                 </div>
+                                <div class="offset">.</div>
                             <% end %>
                           </div>
                           <div class="row">
                                <div class="col-md-10">
-                                  <span class="col-md-12" style="background: gray; margin-left: 14px; padding: 0 0 0 0;">
+                                  <span class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
                                       <div id="videos-container"></div>
                                       <video id="teste" width="100%" height="240" autoplay></video>
                                   </span>
                               </div>
                               <div class="col-md-2">
                                 <% if current_user.role == 'instructor' %>
-                                  <div></div>
                                   <button id="share-screen" class="tam-button tam-capturing"></button>
-                                  <div></div>
+                                  <div class="offset">.</div>
                                   <!-- onika <button id="cut-screen" class="tam-button" onclick="window.location.reload();"><img src="<%#= asset_path 'bt_tam_cut.png' %>"></button> -->
                                   <button id="tam-roomToken" class="tam-button join"><img src="<%= asset_path 'bt_tam_cut.png' %>"></button>
                                 <% else %>
-                                  <div></div>
                                 <!--  <button id="share-screen" class="tam-button" disabled><img src="<%#= asset_path 'bt_tam_liveoff.png' %>"></button> -->
                                   <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
-                                  <div></div>
+                                  <div class="offset">.</div>
                                   <!-- onika <button id="cut-screen" class="tam-button" onclick="window.location.reload();"><img src="<%#= asset_path 'bt_tam_cut.png' %>"></button> -->
                                   <button id="ze" class="tam-button join"><img src="<%= asset_path 'bt_tam_cut.png' %>"></button>
-                              <% end %>
+                                <% end %>
                               </div>
 
                           </div>
@@ -126,7 +125,14 @@
                         video.play();
 // tam-liveon ....
                         <% if current_user.role == 'robot' %>
-                              
+// robot video playing... fires cmd on server to stream video to youtube live
+<!-- AJAX to Start Youtube Live Streaming  -->
+$.ajax({
+  type: "GET",
+  url:"<%= live_stream_start %>",
+  processData: false,
+  contentType: 'application/json'
+});
                         <% end %>
 
                         // rotateVideo(video);

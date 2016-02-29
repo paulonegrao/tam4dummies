@@ -1,39 +1,45 @@
-<div class="container-fluid">
+<div class="container">
 
           <div class="row">
-                      <%= form_for [@topic, @stream] do |f| %>
-                      <div class="col-md-10 text-justify">
-                          <span  class="form_stream">
+                <%= form_for [@topic, @stream] do |f| %>
+                      <div class="col-md-10" style="padding-right: 0;">
+                          <span  class="col-md-2 form_stream">
                               <label class="label"><%= f.label "Lecture", class: "label" %></label>
                               <%= f.text_field :lecture_id, readonly: true, value: "#{@lecture.chapter}. #{@lecture.subject}", class: "tfield" %>
                           </span>
-                          <span  class="form_stream">
+                          <span  class="col-md-2 form_stream">
                               <label class="label"><%= f.label "Topic", class: "label"  %></label>
                               <%= f.text_field :topic_id, readonly: true, value: "#{@topic.number}. #{@topic.title}", class: "tfield" %>
                           </span>
 
-                          <span  class="form_stream">
+                          <span  class="col-md-8 form_stream" style="padding-right: 0;">
                               <label class="label"><%= f.label "Description", class: "label"  %></label>
-                              <%= f.text_field :description, placeholder: 'describe this Stream here (optional).', size: '100%', class: "tfield" %>
+                              <%= f.text_field :description, placeholder: 'describe this Stream here (optional).', class: "tfield col-md-8", style: 'margin-right: 0; width: 100%' %>
                           </span>
 
-            </div>
-            <div class="col-md-2">
-                <div></div>
-                <%= f.submit "", id: 'stream_submit', class: "tam-button", type: :image, src: "#{ asset_path 'bt_stream.png' }" %>
-            </div>
-            <% end %>
+                      </div>
+                      <div class="col-md-2">
+                          <div></div>
+                          <span  class="form_stream">
+                            <label class="label"><%= f.label "Stream ID", class: "label"  %></label>
+                            <%= f.text_field :timestamp, readonly: true, value: "#{@stream.timestamp}", class: "tfield" %>
+                          </span>
+                      </div>
+                      <div class="offset">.</div>
 
           </div>
           <div class="row">
               <div class="col-md-10">
+                  <span class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
                   <div style="background: gray;">
                       <div id="videos-container"></div>
-                      <video id="teste" width="320" height="240" autoplay></video>
+                      <video id="teste" width="100%" height="240" autoplay></video>
                   </div>
               </div>
               <div class="col-md-2">
                   <div></div>
+                  <%= f.submit "", id: 'stream_submit', class: "tam-button", type: :image, src: "#{ asset_path 'bt_stream.png' }" %>
+                  <% end %>
               </div>
           </div>
 </div>

@@ -9,6 +9,8 @@
     display: block;
     text-align: left;
     padding: 0 0 0 0;
+    font-size: 90%;
+    color: rgba(255, 255, 255, 0.71);
 }
 .tfield {
   background-color: #222222;
@@ -23,6 +25,10 @@
 //-------------------------
 .hidden {
   visibility: hidden;
+}
+.tam-btonair {
+  width: 145px;
+  height: 38px;
 }
 .tam-button {
   width: 145px;
@@ -57,4 +63,7 @@
   background-image: url(asset_path('On_Air.gif'));
   background-size: contain;
   background-repeat: no-repeat;
+}
+.offset {
+  margin-top: 2px;
 }
