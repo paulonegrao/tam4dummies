@@ -1,0 +1,26 @@
+
+<%= simple_form_for :trip, url: {action: "show"}, html: {method: "get"}, input_html: {class: 'span3'}, wrapper_html: {class: 'controls controls-row'}  do |f| %>
+
+  <%= f.input :lecture_id do %>
+    <%= f.select :lecture_id, options_for_select(@lectures.collect { |lecture| [lecture.subject.titleize, lecture.id] }, 1), {}, { id: 'lectures_select' } %>
+  <% end %>
+  <%= f.input :topic_id do %>
+    <%= f.select :topic_id, options_for_select(@topics.collect { |topic| [topic.title.titleize, topic.id] }, 0), {}, { id: 'topics_select' } %>
+  <% end %>
+
+  <%= f.submit "Create Stream Event" %>
+<% end %>
+
+          <div class="row">
+            <div class="col-md-10">
+              <div style="background: red;">
+                <div id="videos-container"></div>
+                <video id="teste" width="320" height="240" autoplay></video>
+              </div>
+            </div>
+            <div class="col-md-2">
+                <button id="share-screen" class="tam-button" disabled><img src="<%= asset_path 'capturing_tam.png' %>"></button>
+                <button id="cut-screen" class="tam-button" disabled><img src="<%= asset_path 'cut_tam.png' %>"></button>
+            </div>
+          </div>
+         </div>

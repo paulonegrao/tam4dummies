@@ -1,0 +1,60 @@
+// Place all the styles related to the streams controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.form_stream {
+  display: inline-block;
+  color: #9E9E9E;
+}
+.label {
+    display: block;
+    text-align: left;
+    padding: 0 0 0 0;
+}
+.tfield {
+  background-color: #222222;
+  border-color: rgba(235, 235, 235, 0.05);
+  margin-right: 20px;
+}
+.tfieldesc {
+  background-color: #222222;
+  border-color: rgba(235, 235, 235, 0.05);
+  margin-right: 0;
+}
+//-------------------------
+.hidden {
+  visibility: hidden;
+}
+.tam-button {
+  width: 145px;
+  height: 60px;
+}
+.tam-liveoff {
+  background-image: url(asset_path('bt_tam_liveoff'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.tam-liveon {
+  background-image: url(asset_path('bt_tam_liveon'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.tam-capturing {
+  background-image: url(asset_path('bt_tam_capturing'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.tam-cut {
+  background-image: url(asset_path('bt_tam_cut'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.off-air {
+  background-image: url(asset_path('Off_Air.gif'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.on-air {
+  background-image: url(asset_path('On_Air.gif'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}

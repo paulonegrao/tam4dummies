@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <script>
+      function auth() {
+        var config = {
+          'client_id': '104070488721-a0ueeo39k2bmvcb222tn5a0uqptea755.apps.googleusercontent.com',
+          'scope': 'https://www.googleapis.com/auth/youtube'
+        };
+        gapi.auth.authorize(config, function() {
+          console.log('login complete');
+          console.log(gapi.auth.getToken());
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <button onclick="auth();">Authorize</button>
+  </body>
+</html>

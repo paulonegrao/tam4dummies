@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+  </head>
+  <body>
+    <!--Add a button for the user to click to initiate auth sequence -->
+    <button id="authorize-button" style="visibility: hidden">Authorize</button>
+    <script type="text/javascript">
+      // Enter a client ID for a web application from the Google Developer Console.
+      // The provided clientId will only work if the sample is run directly from
+      // https://google-api-javascript-client.googlecode.com/hg/samples/authSample.html
+      // In your Developer Console project, add a JavaScript origin that corresponds to the domain
+      // where you will be running the script.
+
+      // ------> tam4dummies@gmail.com
+      var clientId = '104070488721-a0ueeo39k2bmvcb222tn5a0uqptea755.apps.googleusercontent.com';
+      var apiKey = 'AIzaSyDiY7WUDsMYbZkb4yECMbCynC48PSVPX2M';
+
+      // ------> brancaleonestuff@gmail.com
+      // var clientId = '117189511469-kojobboq2jfd6kcvfopvcs6el6pc9trt.apps.googleusercontent.com';
+      // var apiKey = 'AIzaSyB0yPGyh_hVuapM8ui5gxaLBb7Ar3w06kQ';
+
+      // To enter one or more authentication scopes, refer to the documentation for the API.
+      // var scopes = 'https://www.googleapis.com/auth/plus.me';
+      var scopes = 'https://www.googleapis.com/auth/youtube';
+      // var scopes = 'https://www.googleapis.com/auth/youtube.readonly';
+      // Use a button to handle authentication the first time.
+      function handleClientLoad() {
+        gapi.client.setApiKey(apiKey);
+        window.setTimeout(checkAuth,1);
+      }
+
+      function checkAuth() {
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: true}, handleAuthResult);
+      }
+
+
+      function handleAuthResult(authResult) {
+        var authorizeButton = document.getElementById('authorize-button');
+        if (authResult && !authResult.error) {
+          authorizeButton.style.visibility = 'hidden';
+          makeApiCall();
+        } else {
+          authorizeButton.style.visibility = '';
+          authorizeButton.onclick = handleAuthClick;
+        }
+      }
+
+      function handleAuthClick(event) {
+        gapi.auth.authorize({client_id: clientId, scope: scopes, immediate: false}, handleAuthResult);
+        return false;
+      }
+
+      // Load the API and make an API call.  Display the results on the screen.
+
+      function makeApiCall() {
+        gapi.client.load('plus', 'v3', function() {
+            var jdata =
+            {
+                "snippet":
+                {
+                  "scheduledEndTime": "2016-03-01T21:00:00.0Z",
+                  "scheduledStartTime": "2016-03-01T20:00:00.0Z",
+                  "title": "maluco"
+                },
+                "status":
+                {
+                  "privacyStatus": "public"
+                }
+            }
+            $.ajax({
+                type: "GET",
+                url: "https://www.googleapis.com/youtube/v3/liveBroadcasts?part=snippet&id=testetam&fields=snippet&key=AIzaSyDiY7WUDsMYbZkb4yECMbCynC48PSVPX2M&callback=teste",
+                processData: false,
+                contentType: 'application/json',
+                data: JSON.stringify(jdata)
+                // success: function( data, textStatus, jQxhr ){
+                //     alert( "eitcha ... " + JSON.stringify( data ) );
+                // },
+                // error: function( jqXhr, textStatus, errorThrown ){
+                //     alert( "dancou ... " + errorThrown );
+                // }
+            });
+          });
+
+        };
+
+        function teste(data) {
+          console.log(',,,1');
+          console.log(data.length);
+          if (typeof(data.items[0]) != "undefined") {
+              console.log(data.items[0]);
+          } else {
+              console.log('video not exists');
+          }
+            console.log(',,,2');
+        };
+
+
+
+
+
+    </script>
+    <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    <div id="content"></div>
+    <p>Retrieves your profile name using the Google Plus API.</p>
+
+  </body>
+</html>

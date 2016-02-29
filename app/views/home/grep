@@ -1,0 +1,855 @@
+Binary file /usr/lib/omxplayer/libavformat.so.56.25.101 matches
+Binary file /usr/lib/omxplayer/libavcodec.so.56.26.100 matches
+Binary file /usr/lib/chromium-browser/libs/libffmpeg.so matches
+Binary file /usr/lib/chromium-browser/libs/libblink_platform.so matches
+Binary file /usr/lib/python2.7/dist-packages/youtube_dl/extractor/pbs.pyc matches
+/usr/lib/python2.7/dist-packages/youtube_dl/extractor/pbs.py:           video\.pbs\.org/(?:widget/)?partnerplayer/(?P<player_id>[^/]+)/
+Binary file /usr/lib/libvlccore.so.8.0.0 matches
+Binary file /usr/lib/arm-linux-gnueabihf/libgstpbutils-0.10.so.0.25.0 matches
+Binary file /usr/lib/arm-linux-gnueabihf/gstreamer-1.0/libgstlibav.so matches
+Binary file /usr/lib/arm-linux-gnueabihf/gstreamer-1.0/libgsttypefindfunctions.so matches
+Binary file /usr/lib/arm-linux-gnueabihf/libgstpbutils-1.0.so.0.404.0 matches
+Binary file /usr/lib/arm-linux-gnueabihf/libavformat.so.56.1.0 matches
+Binary file /usr/lib/arm-linux-gnueabihf/libavcodec.so.56.1.0 matches
+Binary file /usr/lib/arm-linux-gnueabihf/gstreamer-0.10/libgsttypefindfunctions.so matches
+Binary file /usr/lib/arm-linux-gnueabihf/libwebkitgtk-3.0.so.0.22.7 matches
+/usr/src/ffmpeg/Changelog:- Interplay ACM demuxer and audio decoder
+/usr/src/ffmpeg/Changelog:- Interplay C93 demuxer and video decoder
+/usr/src/ffmpeg/Changelog:- Interplay MVE playback subsystem (Mike Melanson)
+/usr/src/ffmpeg/tests/fate/dpcm.mak:FATE_DPCM-$(call DEMDEC, IPMOVIE, INTERPLAY_DPCM) += fate-dpcm-interplay
+/usr/src/ffmpeg/tests/fate/dpcm.mak:fate-dpcm-interplay: CMD = framecrc -i $(TARGET_SAMPLES)/interplay-mve/interplay-logo-2MB.mve -vn
+/usr/src/ffmpeg/tests/fate/video.mak:FATE_VIDEO-$(call DEMDEC, IPMOVIE, INTERPLAY_VIDEO) += fate-interplay-mve-8bit
+/usr/src/ffmpeg/tests/fate/video.mak:fate-interplay-mve-8bit: CMD = framecrc -i $(TARGET_SAMPLES)/interplay-mve/interplay-logo-2MB.mve -pix_fmt rgb24 -an
+/usr/src/ffmpeg/tests/fate/video.mak:FATE_VIDEO-$(call DEMDEC, IPMOVIE, INTERPLAY_VIDEO) += fate-interplay-mve-16bit
+/usr/src/ffmpeg/tests/fate/video.mak:fate-interplay-mve-16bit: CMD = framecrc -i $(TARGET_SAMPLES)/interplay-mve/descent3-level5-16bit-partial.mve -pix_fmt rgb24 -an
+/usr/src/ffmpeg/tests/ref/fate/source:libavcodec/interplayacm.c
+/usr/src/ffmpeg/MAINTAINERS:  interplayvideo.c                      Mike Melanson
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .name      = "interplayvideo",
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .long_name = NULL_IF_CONFIG_SMALL("Interplay MVE video"),
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .long_name = NULL_IF_CONFIG_SMALL("Interplay C93"),
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .name      = "interplay_dpcm",
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .long_name = NULL_IF_CONFIG_SMALL("DPCM Interplay"),
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .name      = "interplayacm",
+/usr/src/ffmpeg/libavcodec/codec_desc.c:        .long_name = NULL_IF_CONFIG_SMALL("Interplay ACM"),
+/usr/src/ffmpeg/libavcodec/allcodecs.c:    REGISTER_DECODER(INTERPLAY_VIDEO,   interplay_video);
+/usr/src/ffmpeg/libavcodec/allcodecs.c:    REGISTER_DECODER(INTERPLAY_ACM,     interplay_acm);
+/usr/src/ffmpeg/libavcodec/allcodecs.c:    REGISTER_DECODER(INTERPLAY_DPCM,    interplay_dpcm);
+/usr/src/ffmpeg/libavcodec/dpcm.c:static const int16_t interplay_delta_table[] = {
+/usr/src/ffmpeg/libavcodec/dpcm.c:            predictor[ch] += interplay_delta_table[bytestream2_get_byteu(&gb)];
+/usr/src/ffmpeg/libavcodec/dpcm.c:DPCM_DECODER(AV_CODEC_ID_INTERPLAY_DPCM, interplay_dpcm, "DPCM Interplay");
+/usr/src/ffmpeg/libavcodec/interplayvideo.c: * Interplay MVE Video Decoder
+/usr/src/ffmpeg/libavcodec/interplayvideo.c: * Interplay MVE Video Decoder by Mike Melanson (melanson@pcisys.net)
+/usr/src/ffmpeg/libavcodec/interplayvideo.c: * For more information about the Interplay MVE format, visit:
+/usr/src/ffmpeg/libavcodec/interplayvideo.c: *   http://www.pcisys.net/~melanson/codecs/interplay-mve.txt
+/usr/src/ffmpeg/libavcodec/interplayvideo.c: * An Interplay video frame consists of 2 parts: The decoding map and
+/usr/src/ffmpeg/libavcodec/interplayvideo.c:AVCodec ff_interplay_video_decoder = {
+/usr/src/ffmpeg/libavcodec/interplayvideo.c:    .name           = "interplayvideo",
+/usr/src/ffmpeg/libavcodec/interplayvideo.c:    .long_name      = NULL_IF_CONFIG_SMALL("Interplay MVE video"),
+/usr/src/ffmpeg/libavcodec/interplayacm.c: * Interplay ACM decoder
+/usr/src/ffmpeg/libavcodec/interplayacm.c:typedef struct InterplayACMContext {
+/usr/src/ffmpeg/libavcodec/interplayacm.c:} InterplayACMContext;
+/usr/src/ffmpeg/libavcodec/interplayacm.c:    InterplayACMContext *s = avctx->priv_data;
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int zero(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int bad(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int linear(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k13(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k12(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k24(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k23(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k35(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k34(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k45(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int k44(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int t15(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int t27(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int t37(InterplayACMContext *s, unsigned ind, unsigned col)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:typedef int (*filler)(InterplayACMContext *s, unsigned ind, unsigned col);
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int fill_block(InterplayACMContext *s)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static void juggle_block(InterplayACMContext *s)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:static int decode_block(InterplayACMContext *s)
+/usr/src/ffmpeg/libavcodec/interplayacm.c:    InterplayACMContext *s = avctx->priv_data;
+/usr/src/ffmpeg/libavcodec/interplayacm.c:    InterplayACMContext *s = avctx->priv_data;
+/usr/src/ffmpeg/libavcodec/interplayacm.c:AVCodec ff_interplay_acm_decoder = {
+/usr/src/ffmpeg/libavcodec/interplayacm.c:    .name           = "interplayacm",
+/usr/src/ffmpeg/libavcodec/interplayacm.c:    .long_name      = NULL_IF_CONFIG_SMALL("Interplay ACM"),
+/usr/src/ffmpeg/libavcodec/interplayacm.c:    .priv_data_size = sizeof(InterplayACMContext),
+/usr/src/ffmpeg/libavcodec/c93.c: * Interplay C93 video decoder
+/usr/src/ffmpeg/libavcodec/c93.c:    .long_name      = NULL_IF_CONFIG_SMALL("Interplay C93"),
+/usr/src/ffmpeg/libavcodec/Makefile:OBJS-$(CONFIG_INTERPLAY_ACM_DECODER)   += interplayacm.o
+/usr/src/ffmpeg/libavcodec/Makefile:OBJS-$(CONFIG_INTERPLAY_VIDEO_DECODER) += interplayvideo.o
+/usr/src/ffmpeg/doc/general.texi:@item Interplay ACM             @tab   @tab X
+/usr/src/ffmpeg/doc/general.texi:    @tab Audio only format used in some Interplay games.
+/usr/src/ffmpeg/doc/general.texi:@item Interplay C93             @tab   @tab X
+/usr/src/ffmpeg/doc/general.texi:    @tab Used in the game Cyberia from Interplay.
+/usr/src/ffmpeg/doc/general.texi:@item Interplay MVE             @tab   @tab X
+/usr/src/ffmpeg/doc/general.texi:    @tab Format used in various Interplay computer games.
+/usr/src/ffmpeg/doc/general.texi:@item Interplay C93          @tab     @tab  X
+/usr/src/ffmpeg/doc/general.texi:    @tab Used in the game Cyberia from Interplay.
+/usr/src/ffmpeg/doc/general.texi:@item Interplay MVE video    @tab     @tab  X
+/usr/src/ffmpeg/doc/general.texi:    @tab Used in Interplay .MVE files.
+/usr/src/ffmpeg/doc/general.texi:@item DPCM Interplay         @tab     @tab  X
+/usr/src/ffmpeg/doc/general.texi:    @tab Used in various Interplay computer games.
+/usr/src/ffmpeg/doc/general.texi:@item Interplay ACM            @tab     @tab  X
+Binary file /usr/src/ffmpeg/.git/index matches
+Binary file /usr/src/ffmpeg/.git/objects/pack/pack-19587453a4a18464c0d197d5b504a247310b25cf.pack matches
+/usr/src/ffmpeg/libavformat/acm.c:    .long_name      = NULL_IF_CONFIG_SMALL("Interplay ACM"),
+/usr/src/ffmpeg/libavformat/ipmovie.c: * Interplay MVE File Demuxer
+/usr/src/ffmpeg/libavformat/ipmovie.c: * Interplay MVE file demuxer
+/usr/src/ffmpeg/libavformat/ipmovie.c: * For more information regarding the Interplay MVE file format, visit:
+/usr/src/ffmpeg/libavformat/ipmovie.c:                    "Interplay audio" : "PCM");
+/usr/src/ffmpeg/libavformat/ipmovie.c:static const char signature[] = "Interplay MVE File\x1A\0\x1A";
+/usr/src/ffmpeg/libavformat/ipmovie.c:    .long_name      = NULL_IF_CONFIG_SMALL("Interplay MVE"),
+/usr/src/ffmpeg/libavformat/c93.c: * Interplay C93 demuxer
+/usr/src/ffmpeg/libavformat/c93.c:    .long_name      = NULL_IF_CONFIG_SMALL("Interplay C93"),
+/usr/src/ffmpeg/configure:interplay_video_decoder_select="hpeldsp"
+Binary file /usr/local/bin/mencoder matches
+Binary file /usr/local/bin/mplayer matches
+Binary file /usr/share/file/magic.mgc matches
+/usr/share/doc/chromium-browser-l10n/copyright:Files: src/third_party/ffmpeg/source/patched-ffmpeg-mt/libavcodec/{cinepak.c,cyuv.c,idcinvideo.c,interplayvideo.c,libamr.c,msrle.c,msvideo1.c,ra144.h,ra288.c,ra288.h,roqvideodec.c,rpza.c,smc.c,sp5x.h,svq1_vlc.h,vp3data.h,vqavideo.c,xan.c}
+/usr/share/doc/libav/general.html:<tr><td width="40%">Interplay C93</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in the game Cyberia from Interplay.</td></tr>
+/usr/share/doc/libav/general.html:<tr><td width="40%">Interplay MVE</td><td width="10%"></td><td width="10%">X</td><td width="40%">Format used in various Interplay computer games.</td></tr>
+/usr/share/doc/libav/general.html:<tr><td width="40%">Interplay C93</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in the game Cyberia from Interplay.</td></tr>
+/usr/share/doc/libav/general.html:<tr><td width="40%">Interplay MVE video</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in Interplay .MVE files.</td></tr>
+/usr/share/doc/libav/general.html:<tr><td width="40%">DPCM Interplay</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in various Interplay computer games.</td></tr>
+/usr/share/doc/chromium-browser/copyright:Files: src/third_party/ffmpeg/source/patched-ffmpeg-mt/libavcodec/{cinepak.c,cyuv.c,idcinvideo.c,interplayvideo.c,libamr.c,msrle.c,msvideo1.c,ra144.h,ra288.c,ra288.h,roqvideodec.c,rpza.c,smc.c,sp5x.h,svq1_vlc.h,vp3data.h,vqavideo.c,xan.c}
+/usr/share/doc/libav-tools/general.html:<tr><td width="40%">Interplay C93</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in the game Cyberia from Interplay.</td></tr>
+/usr/share/doc/libav-tools/general.html:<tr><td width="40%">Interplay MVE</td><td width="10%"></td><td width="10%">X</td><td width="40%">Format used in various Interplay computer games.</td></tr>
+/usr/share/doc/libav-tools/general.html:<tr><td width="40%">Interplay C93</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in the game Cyberia from Interplay.</td></tr>
+/usr/share/doc/libav-tools/general.html:<tr><td width="40%">Interplay MVE video</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in Interplay .MVE files.</td></tr>
+/usr/share/doc/libav-tools/general.html:<tr><td width="40%">DPCM Interplay</td><td width="10%"></td><td width="10%">X</td><td width="40%">Used in various Interplay computer games.</td></tr>
+/usr/share/doc/chromium-codecs-ffmpeg-extra/copyright:Files: src/third_party/ffmpeg/source/patched-ffmpeg-mt/libavcodec/{cinepak.c,cyuv.c,idcinvideo.c,interplayvideo.c,libamr.c,msrle.c,msvideo1.c,ra144.h,ra288.c,ra288.h,roqvideodec.c,rpza.c,smc.c,sp5x.h,svq1_vlc.h,vp3data.h,vqavideo.c,xan.c}
+/usr/share/aptitude/function_pkgs:Package: librplay3
+/usr/share/aptitude/function_pkgs:Package: librplay3-dev
+/usr/share/aptitude/function_pkgs:Package: rplay
+/usr/share/aptitude/function_pkgs:Package: rplay-client
+/usr/share/aptitude/function_pkgs:Package: rplay-contrib
+/usr/share/aptitude/function_pkgs:Package: rplay-perl
+/usr/share/aptitude/function_pkgs:Package: rplay-server
+/usr/share/aptitude/function_pkgs:Package: xpilot-client-rplay
+/usr/share/libquvi-scripts/lua/website/dailymotion.lua:        if page:match("_partnerplayer") then
+Binary file /usr/bin/rplay matches
+Binary file /usr/bin/mplayer matches
+Binary file /var/lib/aspell/en-common.rws matches
+/var/lib/dpkg/status-old:Package: rplay
+/var/lib/dpkg/status-old:Source: rplay
+/var/lib/dpkg/status-old: /etc/rplay.conf a277de79b9da42ab804ab49b25002459
+/var/lib/dpkg/status-old: /etc/init.d/rplay ef6bcbd778b161c8c1dea711e78145ce
+/var/lib/dpkg/status-old:Description: Provides the rplay binary that enables iOS devices to send audio, video and screens to the rasberry pi device. It implements Apple AirPlay Protocol and supports AirPlay Mirroring.
+/var/lib/dpkg/status-old:Gstreamer-Decoders: application/gxf; application/mxf; application/x-ape; application/x-gst-av-avs; application/x-gst-av-daud; application/x-gst-av-ea; application/x-gst-av-film_cpk; application/x-gst-av-idcin; application/x-gst-av-ipmovie; application/x-gst-av-mm; application/x-gst-av-mmf; application/x-gst-av-nut; application/x-gst-av-nuv; application/x-gst-av-psxstr; application/x-gst-av-smk; application/x-gst-av-sol; application/x-gst-av-vmd; application/x-gst-av-wc3movie; application/x-gst-av-wsaud; application/x-gst-av-wsvqa; application/x-yuv4mpeg, y4mversion=(int)2; audio/AMR; audio/AMR-WB; audio/G722; audio/mpeg, mpegversion=(int)1, layer=(int)[ 1, 3 ]; audio/mpeg, mpegversion=(int)4, stream-format=(string)loas; audio/mpeg, mpegversion=(int){ 2, 4 }, stream-format=(string){ raw, adts, adif }; audio/ms-gsm; audio/qcelp; audio/x-ac3; audio/x-adpcm, layout=(string){ yamaha, xa, thp, swf, sbpro4, sbpro3, sbpro2, microsoft, westwood, dvi, smjpeg, quicktime, iss, ea-sead, ea-eacs, dk4, dk3, amv, g726, g721, ea-xas, ea-r1, ea-maxis-xa, ea, ct, adx, 4xm, ea-r3 }; audio/x-aiff; audio/x-alac; audio/x-dpcm, layout=(string){ xan, sol, roq, interplay }; audio/x-dts; audio/x-eac3; audio/x-ffmpeg-parsed-ape; audio/x-ffmpeg-parsed-musepack, streamversion=(int){ 8, 7 }; audio/x-flac; audio/x-gsm; audio/x-gst-av-mp3adu; audio/x-gst-av-mp3on4; audio/x-gst-av-vmdaudio; audio/x-gst-av-ws_snd1; audio/x-imc; audio/x-mace, maceversion=(int){ 6, 3 }; audio/x-mlp; audio/x-musepack, streamversion=(int)7; audio/x-nellymoser; audio/x-pn-realaudio, raversion=(int){ 2, 1, 8 }; audio/x-qdm2; audio/x-shorten; audio/x-sipro; audio/x-smpte-302m; audio/x-true-hd; audio/x-truespeech; audio/x-tta; audio/x-ttafile; audio/x-twin-vq; audio/x-vnd.sony.atrac1; audio/x-vnd.sony.atrac3; audio/x-voc; audio/x-wma, wmaversion=(int){ 2, 1, 3, 4 }; audio/x-wms; image/bmp; image/jpeg, parsed=(boolean)true; image/pbm; image/png; image/ppm; image/tiff; image/x-pcx; image/x-portable-anymap; image/x-portable-graymap; image/x-sgi; image/x-sun-raster; image/x-tga; unknown/unknown; video/mpeg, mpegversion=(int)4, systemstream=(boolean)false; video/mpeg, mpegversion=(int)[ 1, 2 ], systemstream=(boolean)false; video/sp5x; video/x-4xm; video/x-aasc; video/x-amv; video/x-apple-intermediate-codec; video/x-apple-video; video/x-asus, asusversion=(int){ 2, 1 }; video/x-ati-vcr, vcrversion=(int)1; video/x-camstudio; video/x-camtasia; video/x-cinepak; video/x-cirrus-logic-accupak; video/x-compressed-yuv; video/x-divx, divxversion=(int)[ 3, 5 ]; video/x-dnxhd; video/x-dv, systemstream=(boolean)false; video/x-ffv, ffvversion=(int)1; video/x-flash-screen; video/x-flash-video, flvversion=(int)1; video/x-fraps; video/x-gst-av-8bps; video/x-gst-av-avs; video/x-gst-av-cavs; video/x-gst-av-ffvhuff; video/x-gst-av-flic; video/x-gst-av-idcinvideo; video/x-gst-av-interplayvideo; video/x-gst-av-mdec; video/x-gst-av-mmvideo; video/x-gst-av-pgmyuv; video/x-gst-av-qpeg; video/x-gst-av-roqvideo; video/x-gst-av-vmdvideo; video/x-gst-av-vqavideo; video/x-gst-av-wnv1; video/x-gst-av-xl; video/x-h261; video/x-h263, variant=(string)itu; video/x-h264, alignment=(string)au, stream-format=(string){ avc, byte-stream }; video/x-h265, alignment=(string)au, stream-format=(string){ hvc1, hev1, byte-stream }; video/x-huffyuv; video/x-indeo, indeoversion=(int){ 5, 4, 3, 2 }; video/x-intel-h263, variant=(string)intel; video/x-kmvc; video/x-lagarith; video/x-loco; video/x-mimic; video/x-mjpeg-b; video/x-msmpeg, msmpegversion=(int){ 43, 42, 41 }; video/x-msvideocodec, msvideoversion=(int)1; video/x-mszh; video/x-nsv; video/x-nuv; video/x-pn-realvideo, rmversion=(int){ 4, 3, 2, 1 }; video/x-prores; video/x-pva; video/x-qdrw; video/x-rle, layout=(string){ quicktime, microsoft }; video/x-smc; video/x-svq, svqversion=(int){ 3, 1 }; video/x-truemotion, trueversion=(int){ 2, 1 }; video/x-tscc, tsccversion=(int)2; video/x-ultimotion; video/x-vmnc; video/x-vp3; video/x-vp5; video/x-vp6; video/x-vp6-alpha; video/x-vp6-flash; video/x-vp8; video/x-wmv, wmvversion=(int)3, format=(string){ WMV3, WVC1, WMVA, MSS2 }; video/x-wmv, wmvversion=(int){ 2, 1 }; video/x-xan, wcversion=(int){ 4, 3 }; video/x-zlib; video/x-zmbv
+/var/lib/dpkg/status-old:Gstreamer-Elements: avdec_4xm, avdec_8bps, avdec_8svx_exp, avdec_8svx_fib, avdec_aac, avdec_aac_latm, avdec_aasc, avdec_ac3, avdec_adpcm_4xm, avdec_adpcm_adx, avdec_adpcm_ct, avdec_adpcm_ea, avdec_adpcm_ea_maxis_xa, avdec_adpcm_ea_r1, avdec_adpcm_ea_r2, avdec_adpcm_ea_r3, avdec_adpcm_ea_xas, avdec_adpcm_ima_amv, avdec_adpcm_ima_apc, avdec_adpcm_ima_dk3, avdec_adpcm_ima_dk4, avdec_adpcm_ima_ea_eacs, avdec_adpcm_ima_ea_sead, avdec_adpcm_ima_iss, avdec_adpcm_ima_qt, avdec_adpcm_ima_smjpeg, avdec_adpcm_ima_wav, avdec_adpcm_ima_ws, avdec_adpcm_ms, avdec_adpcm_sbpro_2, avdec_adpcm_sbpro_3, avdec_adpcm_sbpro_4, avdec_adpcm_swf, avdec_adpcm_thp, avdec_adpcm_vima, avdec_adpcm_xa, avdec_adpcm_yamaha, avdec_aic, avdec_alac, avdec_alias_pix, avdec_als, avdec_amrnb, avdec_amrwb, avdec_amv, avdec_anm, avdec_ansi, avdec_ape, avdec_asv1, avdec_asv2, avdec_atrac1, avdec_atrac3, avdec_atrac3plus, avdec_aura, avdec_aura2, avdec_avs, avdec_bethsoftvid, avdec_bfi, avdec_binkaudio_dct, avdec_binkaudio_rdft, avdec_binkvideo, avdec_bmp, avdec_bmv_audio, avdec_bmv_video, avdec_brender_pix, avdec_c93, avdec_camstudio, avdec_camtasia, avdec_cavs, avdec_cdgraphics, avdec_cdxl, avdec_cinepak, avdec_cljr, avdec_cllc, avdec_comfortnoise, avdec_cook, avdec_cyuv, avdec_dca, avdec_dfa, avdec_dnxhd, avdec_dpx, avdec_dsicinaudio, avdec_dsicinvideo, avdec_dvvideo, avdec_dxa, avdec_dxtory, avdec_eac3, avdec_eacmv, avdec_eamad, avdec_eatgq, avdec_eatgv, avdec_eatqi, avdec_escape124, avdec_escape130, avdec_exr, avdec_ffv1, avdec_ffvhuff, avdec_fic, avdec_flac, avdec_flashsv, avdec_flashsv2, avdec_flic, avdec_flv, avdec_fraps, avdec_frwu, avdec_g2m, avdec_g722, avdec_g723_1, avdec_g726, avdec_gsm, avdec_gsm_ms, avdec_h261, avdec_h263, avdec_h263i, avdec_h264, avdec_h265, avdec_hnm4video, avdec_huffyuv, avdec_iac, avdec_idcinvideo, avdec_iff_byterun1, avdec_iff_ilbm, avdec_imc, avdec_indeo2, avdec_indeo3, avdec_indeo4, avdec_indeo5, avdec_interplay_dpcm, avdec_interplayvideo, avdec_jpeg2000, avdec_jpegls, avdec_jv, avdec_kgv1, avdec_kmvc, avdec_lagarith, avdec_loco, avdec_mace3, avdec_mace6, avdec_mdec, avdec_metasound, avdec_mimic, avdec_mjpeg, avdec_mjpegb, avdec_mlp, avdec_mmvideo, avdec_motionpixels, avdec_mp1float, avdec_mp2float, avdec_mp3, avdec_mp3adu, avdec_mp3adufloat, avdec_mp3float, avdec_mp3on4, avdec_mp3on4float, avdec_mpc7, avdec_mpc8, avdec_mpeg2video, avdec_mpeg4, avdec_msa1, avdec_msmpeg4, avdec_msmpeg4v1, avdec_msmpeg4v2, avdec_msrle, avdec_mss1, avdec_mss2, avdec_msvideo1, avdec_mszh, avdec_mts2, avdec_mvc1, avdec_mvc2, avdec_mxpeg, avdec_nellymoser, avdec_nuv, avdec_on2avc, avdec_opus, avdec_paf_audio, avdec_paf_video, avdec_pam, avdec_pbm, avdec_pcm_lxf, avdec_pcm_s24le_planar, avdec_pcm_s32le_planar, avdec_pcm_s8_planar, avdec_pcx, avdec_pgm, avdec_pgmyuv, avdec_pictor, avdec_png, avdec_ppm, avdec_prores, avdec_ptx, avdec_qcelp, avdec_qdm2, avdec_qdraw, avdec_qpeg, avdec_qtrle, avdec_r10k, avdec_ralf, avdec_real_144, avdec_real_288, avdec_rl2, avdec_roq_dpcm, avdec_roqvideo, avdec_rpza, avdec_rv10, avdec_rv20, avdec_rv30, avdec_rv40, avdec_s302m, avdec_sanm, avdec_sgi, avdec_sgirle, avdec_shorten, avdec_sipr, avdec_smackaud, avdec_smackvid, avdec_smc, avdec_sol_dpcm, avdec_sp5x, avdec_sunrast, avdec_svq1, avdec_svq3, avdec_tak, avdec_targa, avdec_thp, avdec_tiertexseqvideo, avdec_tiff, avdec_tmv, avdec_truehd, avdec_truemotion1, avdec_truemotion2, avdec_truespeech, avdec_tscc2, avdec_tta, avdec_twinvq, avdec_txd, avdec_ultimotion, avdec_utvideo, avdec_v410, avdec_vb, avdec_vble, avdec_vc1, avdec_vc1image, avdec_vcr1, avdec_vmdaudio, avdec_vmdvideo, avdec_vmnc, avdec_vp3, avdec_vp5, avdec_vp6, avdec_vp6a, avdec_vp6f, avdec_vp7, avdec_vp8, avdec_vp9, avdec_vqavideo, avdec_webp, avdec_wmalossless, avdec_wmapro, avdec_wmav1, avdec_wmav2, avdec_wmavoice, avdec_wmv1, avdec_wmv2, avdec_wmv3, avdec_wmv3image, avdec_wnv1, avdec_ws_snd1, avdec_xan_dpcm, avdec_xan_wc3, avdec_xan_wc4, avdec_xbm, avdec_xl, avdec_xwd, avdec_yop, avdec_zerocodec, avdec_zlib, avdec_zmbv, avdeinterlace, avdemux_4xm, avdemux_aiff, avdemux_ape, avdemux_avs, avdemux_daud, avdemux_ea, avdemux_film_cpk, avdemux_gxf, avdemux_idcin, avdemux_ipmovie, avdemux_mm, avdemux_mmf, avdemux_mpc, avdemux_mxf, avdemux_nsv, avdemux_nut, avdemux_nuv, avdemux_psxstr, avdemux_pva, avdemux_smk, avdemux_sol, avdemux_tta, avdemux_vmd, avdemux_voc, avdemux_wc3movie, avdemux_wsaud, avdemux_wsvqa, avdemux_yuv4mpegpipe, avenc_a64multi, avenc_a64multi5, avenc_aac, avenc_ac3, avenc_ac3_fixed, avenc_adpcm_adx, avenc_adpcm_ima_qt, avenc_adpcm_ima_wav, avenc_adpcm_ms, avenc_adpcm_swf, avenc_adpcm_yamaha, avenc_alac, avenc_alias_pix, avenc_asv1, avenc_asv2, avenc_bmp, avenc_cljr, avenc_comfortnoise, avenc_dnxhd, avenc_dpx, avenc_dvvideo, avenc_eac3, avenc_ffv1, avenc_ffvhuff, avenc_flashsv, avenc_flv, avenc_g722, avenc_g726, avenc_h261, avenc_h263, avenc_h263p, avenc_huffyuv, avenc_jpegls, avenc_ljpeg, avenc_mjpeg, avenc_mp2, avenc_mpeg1video, avenc_mpeg2video, avenc_mpeg4, avenc_msmpeg4, avenc_msmpeg4v2, avenc_nellymoser, avenc_pam, avenc_pbm, avenc_pcx, avenc_pgm, avenc_pgmyuv, avenc_png, avenc_ppm, avenc_prores, avenc_qtrle, avenc_real_144, avenc_roq_dpcm, avenc_roqvideo, avenc_rv10, avenc_rv20, avenc_sgi, avenc_sunrast, avenc_svq1, avenc_targa, avenc_tiff, avenc_utvideo, avenc_v410, avenc_wmav1, avenc_wmav2, avenc_wmv1, avenc_wmv2, avenc_xbm, avenc_xwd, avenc_zmbv, avmux_3g2, avmux_3gp, avmux_a64, avmux_adts, avmux_adx, avmux_aiff, avmux_amr, avmux_asf, avmux_asf_stream, avmux_au, avmux_avi, avmux_avm2, avmux_daud, avmux_dv, avmux_dvd, avmux_f4v, avmux_filmstrip, avmux_flv, avmux_gxf, avmux_hds, avmux_hls, avmux_ilbc, avmux_ipod, avmux_ismv, avmux_ivf, avmux_latm, avmux_matroska, avmux_md5, avmux_mmf, avmux_mov, avmux_mp2, avmux_mp3, avmux_mp4, avmux_mpeg, avmux_mpegts, avmux_mpjpeg, avmux_mxf, avmux_mxf_d10, avmux_nut, avmux_ogg, avmux_oma, avmux_psp, avmux_rcv, avmux_rm, avmux_rso, avmux_rtsp, avmux_sap, avmux_smjpeg, avmux_smoothstreaming, avmux_sox, avmux_spdif, avmux_svcd, avmux_swf, avmux_vcd, avmux_vob, avmux_voc, avmux_wav, avmux_webm, avmux_yuv4mpegpipe
+/var/lib/dpkg/info/rplay.postinst:update-rc.d -f rplay defaults
+/var/lib/dpkg/info/rplay.postinst:/etc/init.d/rplay start
+/var/lib/dpkg/info/rplay.conffiles:/etc/rplay.conf
+/var/lib/dpkg/info/rplay.conffiles:/etc/init.d/rplay
+/var/lib/dpkg/info/rplay.postrm:/etc/init.d/rplay stop
+/var/lib/dpkg/info/rplay.postrm:update-rc.d -f rplay remove
+/var/lib/dpkg/info/rplay.md5sums:ef6bcbd778b161c8c1dea711e78145ce  etc/init.d/rplay
+/var/lib/dpkg/info/rplay.md5sums:a277de79b9da42ab804ab49b25002459  etc/rplay.conf
+/var/lib/dpkg/info/rplay.md5sums:1b465ca63051ccc514454dfa4179d851  usr/bin/rplay
+/var/lib/dpkg/info/rplay.md5sums:e3a21ea7264cb17043c0e3e3685788ab  usr/share/doc/rplay/license.txt
+/var/lib/dpkg/info/rplay.md5sums:cc2aef7fc4021a1e17bb9f1a59ed744a  usr/share/doc/rplay/open-source-license.txt
+/var/lib/dpkg/info/rplay.list:/etc/init.d/rplay
+/var/lib/dpkg/info/rplay.list:/etc/rplay.conf
+/var/lib/dpkg/info/rplay.list:/usr/bin/rplay
+/var/lib/dpkg/info/rplay.list:/usr/share/doc/rplay
+/var/lib/dpkg/info/rplay.list:/usr/share/doc/rplay/license.txt
+/var/lib/dpkg/info/rplay.list:/usr/share/doc/rplay/open-source-license.txt
+/var/lib/dpkg/status:Package: rplay
+/var/lib/dpkg/status:Source: rplay
+/var/lib/dpkg/status: /etc/rplay.conf a277de79b9da42ab804ab49b25002459
+/var/lib/dpkg/status: /etc/init.d/rplay ef6bcbd778b161c8c1dea711e78145ce
+/var/lib/dpkg/status:Description: Provides the rplay binary that enables iOS devices to send audio, video and screens to the rasberry pi device. It implements Apple AirPlay Protocol and supports AirPlay Mirroring.
+/var/lib/dpkg/status:Gstreamer-Decoders: application/gxf; application/mxf; application/x-ape; application/x-gst-av-avs; application/x-gst-av-daud; application/x-gst-av-ea; application/x-gst-av-film_cpk; application/x-gst-av-idcin; application/x-gst-av-ipmovie; application/x-gst-av-mm; application/x-gst-av-mmf; application/x-gst-av-nut; application/x-gst-av-nuv; application/x-gst-av-psxstr; application/x-gst-av-smk; application/x-gst-av-sol; application/x-gst-av-vmd; application/x-gst-av-wc3movie; application/x-gst-av-wsaud; application/x-gst-av-wsvqa; application/x-yuv4mpeg, y4mversion=(int)2; audio/AMR; audio/AMR-WB; audio/G722; audio/mpeg, mpegversion=(int)1, layer=(int)[ 1, 3 ]; audio/mpeg, mpegversion=(int)4, stream-format=(string)loas; audio/mpeg, mpegversion=(int){ 2, 4 }, stream-format=(string){ raw, adts, adif }; audio/ms-gsm; audio/qcelp; audio/x-ac3; audio/x-adpcm, layout=(string){ yamaha, xa, thp, swf, sbpro4, sbpro3, sbpro2, microsoft, westwood, dvi, smjpeg, quicktime, iss, ea-sead, ea-eacs, dk4, dk3, amv, g726, g721, ea-xas, ea-r1, ea-maxis-xa, ea, ct, adx, 4xm, ea-r3 }; audio/x-aiff; audio/x-alac; audio/x-dpcm, layout=(string){ xan, sol, roq, interplay }; audio/x-dts; audio/x-eac3; audio/x-ffmpeg-parsed-ape; audio/x-ffmpeg-parsed-musepack, streamversion=(int){ 8, 7 }; audio/x-flac; audio/x-gsm; audio/x-gst-av-mp3adu; audio/x-gst-av-mp3on4; audio/x-gst-av-vmdaudio; audio/x-gst-av-ws_snd1; audio/x-imc; audio/x-mace, maceversion=(int){ 6, 3 }; audio/x-mlp; audio/x-musepack, streamversion=(int)7; audio/x-nellymoser; audio/x-pn-realaudio, raversion=(int){ 2, 1, 8 }; audio/x-qdm2; audio/x-shorten; audio/x-sipro; audio/x-smpte-302m; audio/x-true-hd; audio/x-truespeech; audio/x-tta; audio/x-ttafile; audio/x-twin-vq; audio/x-vnd.sony.atrac1; audio/x-vnd.sony.atrac3; audio/x-voc; audio/x-wma, wmaversion=(int){ 2, 1, 3, 4 }; audio/x-wms; image/bmp; image/jpeg, parsed=(boolean)true; image/pbm; image/png; image/ppm; image/tiff; image/x-pcx; image/x-portable-anymap; image/x-portable-graymap; image/x-sgi; image/x-sun-raster; image/x-tga; unknown/unknown; video/mpeg, mpegversion=(int)4, systemstream=(boolean)false; video/mpeg, mpegversion=(int)[ 1, 2 ], systemstream=(boolean)false; video/sp5x; video/x-4xm; video/x-aasc; video/x-amv; video/x-apple-intermediate-codec; video/x-apple-video; video/x-asus, asusversion=(int){ 2, 1 }; video/x-ati-vcr, vcrversion=(int)1; video/x-camstudio; video/x-camtasia; video/x-cinepak; video/x-cirrus-logic-accupak; video/x-compressed-yuv; video/x-divx, divxversion=(int)[ 3, 5 ]; video/x-dnxhd; video/x-dv, systemstream=(boolean)false; video/x-ffv, ffvversion=(int)1; video/x-flash-screen; video/x-flash-video, flvversion=(int)1; video/x-fraps; video/x-gst-av-8bps; video/x-gst-av-avs; video/x-gst-av-cavs; video/x-gst-av-ffvhuff; video/x-gst-av-flic; video/x-gst-av-idcinvideo; video/x-gst-av-interplayvideo; video/x-gst-av-mdec; video/x-gst-av-mmvideo; video/x-gst-av-pgmyuv; video/x-gst-av-qpeg; video/x-gst-av-roqvideo; video/x-gst-av-vmdvideo; video/x-gst-av-vqavideo; video/x-gst-av-wnv1; video/x-gst-av-xl; video/x-h261; video/x-h263, variant=(string)itu; video/x-h264, alignment=(string)au, stream-format=(string){ avc, byte-stream }; video/x-h265, alignment=(string)au, stream-format=(string){ hvc1, hev1, byte-stream }; video/x-huffyuv; video/x-indeo, indeoversion=(int){ 5, 4, 3, 2 }; video/x-intel-h263, variant=(string)intel; video/x-kmvc; video/x-lagarith; video/x-loco; video/x-mimic; video/x-mjpeg-b; video/x-msmpeg, msmpegversion=(int){ 43, 42, 41 }; video/x-msvideocodec, msvideoversion=(int)1; video/x-mszh; video/x-nsv; video/x-nuv; video/x-pn-realvideo, rmversion=(int){ 4, 3, 2, 1 }; video/x-prores; video/x-pva; video/x-qdrw; video/x-rle, layout=(string){ quicktime, microsoft }; video/x-smc; video/x-svq, svqversion=(int){ 3, 1 }; video/x-truemotion, trueversion=(int){ 2, 1 }; video/x-tscc, tsccversion=(int)2; video/x-ultimotion; video/x-vmnc; video/x-vp3; video/x-vp5; video/x-vp6; video/x-vp6-alpha; video/x-vp6-flash; video/x-vp8; video/x-wmv, wmvversion=(int)3, format=(string){ WMV3, WVC1, WMVA, MSS2 }; video/x-wmv, wmvversion=(int){ 2, 1 }; video/x-xan, wcversion=(int){ 4, 3 }; video/x-zlib; video/x-zmbv
+/var/lib/dpkg/status:Gstreamer-Elements: avdec_4xm, avdec_8bps, avdec_8svx_exp, avdec_8svx_fib, avdec_aac, avdec_aac_latm, avdec_aasc, avdec_ac3, avdec_adpcm_4xm, avdec_adpcm_adx, avdec_adpcm_ct, avdec_adpcm_ea, avdec_adpcm_ea_maxis_xa, avdec_adpcm_ea_r1, avdec_adpcm_ea_r2, avdec_adpcm_ea_r3, avdec_adpcm_ea_xas, avdec_adpcm_ima_amv, avdec_adpcm_ima_apc, avdec_adpcm_ima_dk3, avdec_adpcm_ima_dk4, avdec_adpcm_ima_ea_eacs, avdec_adpcm_ima_ea_sead, avdec_adpcm_ima_iss, avdec_adpcm_ima_qt, avdec_adpcm_ima_smjpeg, avdec_adpcm_ima_wav, avdec_adpcm_ima_ws, avdec_adpcm_ms, avdec_adpcm_sbpro_2, avdec_adpcm_sbpro_3, avdec_adpcm_sbpro_4, avdec_adpcm_swf, avdec_adpcm_thp, avdec_adpcm_vima, avdec_adpcm_xa, avdec_adpcm_yamaha, avdec_aic, avdec_alac, avdec_alias_pix, avdec_als, avdec_amrnb, avdec_amrwb, avdec_amv, avdec_anm, avdec_ansi, avdec_ape, avdec_asv1, avdec_asv2, avdec_atrac1, avdec_atrac3, avdec_atrac3plus, avdec_aura, avdec_aura2, avdec_avs, avdec_bethsoftvid, avdec_bfi, avdec_binkaudio_dct, avdec_binkaudio_rdft, avdec_binkvideo, avdec_bmp, avdec_bmv_audio, avdec_bmv_video, avdec_brender_pix, avdec_c93, avdec_camstudio, avdec_camtasia, avdec_cavs, avdec_cdgraphics, avdec_cdxl, avdec_cinepak, avdec_cljr, avdec_cllc, avdec_comfortnoise, avdec_cook, avdec_cyuv, avdec_dca, avdec_dfa, avdec_dnxhd, avdec_dpx, avdec_dsicinaudio, avdec_dsicinvideo, avdec_dvvideo, avdec_dxa, avdec_dxtory, avdec_eac3, avdec_eacmv, avdec_eamad, avdec_eatgq, avdec_eatgv, avdec_eatqi, avdec_escape124, avdec_escape130, avdec_exr, avdec_ffv1, avdec_ffvhuff, avdec_fic, avdec_flac, avdec_flashsv, avdec_flashsv2, avdec_flic, avdec_flv, avdec_fraps, avdec_frwu, avdec_g2m, avdec_g722, avdec_g723_1, avdec_g726, avdec_gsm, avdec_gsm_ms, avdec_h261, avdec_h263, avdec_h263i, avdec_h264, avdec_h265, avdec_hnm4video, avdec_huffyuv, avdec_iac, avdec_idcinvideo, avdec_iff_byterun1, avdec_iff_ilbm, avdec_imc, avdec_indeo2, avdec_indeo3, avdec_indeo4, avdec_indeo5, avdec_interplay_dpcm, avdec_interplayvideo, avdec_jpeg2000, avdec_jpegls, avdec_jv, avdec_kgv1, avdec_kmvc, avdec_lagarith, avdec_loco, avdec_mace3, avdec_mace6, avdec_mdec, avdec_metasound, avdec_mimic, avdec_mjpeg, avdec_mjpegb, avdec_mlp, avdec_mmvideo, avdec_motionpixels, avdec_mp1float, avdec_mp2float, avdec_mp3, avdec_mp3adu, avdec_mp3adufloat, avdec_mp3float, avdec_mp3on4, avdec_mp3on4float, avdec_mpc7, avdec_mpc8, avdec_mpeg2video, avdec_mpeg4, avdec_msa1, avdec_msmpeg4, avdec_msmpeg4v1, avdec_msmpeg4v2, avdec_msrle, avdec_mss1, avdec_mss2, avdec_msvideo1, avdec_mszh, avdec_mts2, avdec_mvc1, avdec_mvc2, avdec_mxpeg, avdec_nellymoser, avdec_nuv, avdec_on2avc, avdec_opus, avdec_paf_audio, avdec_paf_video, avdec_pam, avdec_pbm, avdec_pcm_lxf, avdec_pcm_s24le_planar, avdec_pcm_s32le_planar, avdec_pcm_s8_planar, avdec_pcx, avdec_pgm, avdec_pgmyuv, avdec_pictor, avdec_png, avdec_ppm, avdec_prores, avdec_ptx, avdec_qcelp, avdec_qdm2, avdec_qdraw, avdec_qpeg, avdec_qtrle, avdec_r10k, avdec_ralf, avdec_real_144, avdec_real_288, avdec_rl2, avdec_roq_dpcm, avdec_roqvideo, avdec_rpza, avdec_rv10, avdec_rv20, avdec_rv30, avdec_rv40, avdec_s302m, avdec_sanm, avdec_sgi, avdec_sgirle, avdec_shorten, avdec_sipr, avdec_smackaud, avdec_smackvid, avdec_smc, avdec_sol_dpcm, avdec_sp5x, avdec_sunrast, avdec_svq1, avdec_svq3, avdec_tak, avdec_targa, avdec_thp, avdec_tiertexseqvideo, avdec_tiff, avdec_tmv, avdec_truehd, avdec_truemotion1, avdec_truemotion2, avdec_truespeech, avdec_tscc2, avdec_tta, avdec_twinvq, avdec_txd, avdec_ultimotion, avdec_utvideo, avdec_v410, avdec_vb, avdec_vble, avdec_vc1, avdec_vc1image, avdec_vcr1, avdec_vmdaudio, avdec_vmdvideo, avdec_vmnc, avdec_vp3, avdec_vp5, avdec_vp6, avdec_vp6a, avdec_vp6f, avdec_vp7, avdec_vp8, avdec_vp9, avdec_vqavideo, avdec_webp, avdec_wmalossless, avdec_wmapro, avdec_wmav1, avdec_wmav2, avdec_wmavoice, avdec_wmv1, avdec_wmv2, avdec_wmv3, avdec_wmv3image, avdec_wnv1, avdec_ws_snd1, avdec_xan_dpcm, avdec_xan_wc3, avdec_xan_wc4, avdec_xbm, avdec_xl, avdec_xwd, avdec_yop, avdec_zerocodec, avdec_zlib, avdec_zmbv, avdeinterlace, avdemux_4xm, avdemux_aiff, avdemux_ape, avdemux_avs, avdemux_daud, avdemux_ea, avdemux_film_cpk, avdemux_gxf, avdemux_idcin, avdemux_ipmovie, avdemux_mm, avdemux_mmf, avdemux_mpc, avdemux_mxf, avdemux_nsv, avdemux_nut, avdemux_nuv, avdemux_psxstr, avdemux_pva, avdemux_smk, avdemux_sol, avdemux_tta, avdemux_vmd, avdemux_voc, avdemux_wc3movie, avdemux_wsaud, avdemux_wsvqa, avdemux_yuv4mpegpipe, avenc_a64multi, avenc_a64multi5, avenc_aac, avenc_ac3, avenc_ac3_fixed, avenc_adpcm_adx, avenc_adpcm_ima_qt, avenc_adpcm_ima_wav, avenc_adpcm_ms, avenc_adpcm_swf, avenc_adpcm_yamaha, avenc_alac, avenc_alias_pix, avenc_asv1, avenc_asv2, avenc_bmp, avenc_cljr, avenc_comfortnoise, avenc_dnxhd, avenc_dpx, avenc_dvvideo, avenc_eac3, avenc_ffv1, avenc_ffvhuff, avenc_flashsv, avenc_flv, avenc_g722, avenc_g726, avenc_h261, avenc_h263, avenc_h263p, avenc_huffyuv, avenc_jpegls, avenc_ljpeg, avenc_mjpeg, avenc_mp2, avenc_mpeg1video, avenc_mpeg2video, avenc_mpeg4, avenc_msmpeg4, avenc_msmpeg4v2, avenc_nellymoser, avenc_pam, avenc_pbm, avenc_pcx, avenc_pgm, avenc_pgmyuv, avenc_png, avenc_ppm, avenc_prores, avenc_qtrle, avenc_real_144, avenc_roq_dpcm, avenc_roqvideo, avenc_rv10, avenc_rv20, avenc_sgi, avenc_sunrast, avenc_svq1, avenc_targa, avenc_tiff, avenc_utvideo, avenc_v410, avenc_wmav1, avenc_wmav2, avenc_wmv1, avenc_wmv2, avenc_xbm, avenc_xwd, avenc_zmbv, avmux_3g2, avmux_3gp, avmux_a64, avmux_adts, avmux_adx, avmux_aiff, avmux_amr, avmux_asf, avmux_asf_stream, avmux_au, avmux_avi, avmux_avm2, avmux_daud, avmux_dv, avmux_dvd, avmux_f4v, avmux_filmstrip, avmux_flv, avmux_gxf, avmux_hds, avmux_hls, avmux_ilbc, avmux_ipod, avmux_ismv, avmux_ivf, avmux_latm, avmux_matroska, avmux_md5, avmux_mmf, avmux_mov, avmux_mp2, avmux_mp3, avmux_mp4, avmux_mpeg, avmux_mpegts, avmux_mpjpeg, avmux_mxf, avmux_mxf_d10, avmux_nut, avmux_ogg, avmux_oma, avmux_psp, avmux_rcv, avmux_rm, avmux_rso, avmux_rtsp, avmux_sap, avmux_smjpeg, avmux_smoothstreaming, avmux_sox, avmux_spdif, avmux_svcd, avmux_swf, avmux_vcd, avmux_vob, avmux_voc, avmux_wav, avmux_webm, avmux_yuv4mpegpipe
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Recommends: libass5 (>= 0.10.2), libbluray1 (>= 1:0.2.2), libcec3, libflac8 (>= 1.3.0), libmad0 (>= 0.15.1b-3), libmodplug1, libmp3lame0, libmpeg2-4 (>= 0.5.1), libnfs4 (>= 1.9.3), libplist2 (>= 1.11), librtmp1 (>= 2.3), libshairplay0, libvdpau1 (>= 0.2), libvorbisfile3 (>= 1.1.2)
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Package: libshairplay-dev
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Source: shairplay
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Depends: libao-dev, libshairplay0 (= 0.9.0+git20140422.64d59e3-1)
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Homepage: https://github.com/juhovh/shairplay
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/s/shairplay/libshairplay-dev_0.9.0+git20140422.64d59e3-1_armhf.deb
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Package: libshairplay0
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Source: shairplay
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Homepage: https://github.com/juhovh/shairplay
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/s/shairplay/libshairplay0_0.9.0+git20140422.64d59e3-1_armhf.deb
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Package: shairplay
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Depends: libshairplay0, libavahi-compat-libdnssd-dev, libao4 (>= 1.1.0), libc6 (>= 2.13-28)
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Homepage: https://github.com/juhovh/shairplay
+/var/lib/apt/lists/archive.raspberrypi.org_debian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/s/shairplay/shairplay_0.9.0+git20140422.64d59e3-1_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: "Battle Chess" released by Interplay circa 1988.
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: m4, libc6 (>= 2.13-28), libice6 (>= 1:1.0.0), libjpeg8 (>= 8c), librplay3 (>= 3.3.2-2), libsm6, libx11-6, libxext6, libxmu6, libxpm4, libxt6
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: devrplay3
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6 (>= 2.13-28), librplay3 (>= 3.3.2-2), dpkg (>= 1.15.4) | install-info
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/devrplay3_3.3.2-14_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - basic library
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: This package contains the basic rplay library (devrplay).
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6 (>= 2.4), libcairo2 (>= 1.2.4), libfontconfig1 (>= 2.11), libfreetype6 (>= 2.2.1), libfribidi0 (>= 0.19.2), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.16.0), libice6 (>= 1:1.0.0), libpng12-0 (>= 1.2.13-4), libreadline6 (>= 6.0), librplay3 (>= 3.3.2-2), librsvg2-2 (>= 2.14.4), libsm6, libstroke0 (>= 0.5.1), libtinfo5, libx11-6, libxcursor1 (>> 1.1.2), libxext6, libxft2 (>> 2.1.1), libxinerama1, libxpm4, libxrender1, zlib1g (>= 1:1.1.4), libperl4-corelibs-perl | perl (<< 5.12.3-7)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Suggests: menu (>> 2.0), xfonts-100dpi, xfonts-75dpi, fvwm-icons | fvwm-common, librplay3 (>= 3.3.2-2)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Gstreamer-Decoders: application/gxf; application/mxf; application/x-ape; application/x-gst-av-avs; application/x-gst-av-daud; application/x-gst-av-ea; application/x-gst-av-film_cpk; application/x-gst-av-idcin; application/x-gst-av-ipmovie; application/x-gst-av-mm; application/x-gst-av-mmf; application/x-gst-av-nut; application/x-gst-av-nuv; application/x-gst-av-psxstr; application/x-gst-av-smk; application/x-gst-av-sol; application/x-gst-av-vmd; application/x-gst-av-wc3movie; application/x-gst-av-wsaud; application/x-gst-av-wsvqa; application/x-yuv4mpeg, y4mversion=(int)2; audio/AMR; audio/AMR-WB; audio/G722; audio/mpeg, mpegversion=(int)1, layer=(int)[ 1, 3 ]; audio/mpeg, mpegversion=(int)4, stream-format=(string)loas; audio/mpeg, mpegversion=(int){ 2, 4 }, stream-format=(string){ raw, adts, adif }; audio/ms-gsm; audio/qcelp; audio/x-ac3; audio/x-adpcm, layout=(string){ yamaha, xa, thp, swf, sbpro4, sbpro3, sbpro2, microsoft, westwood, dvi, smjpeg, quicktime, iss, ea-sead, ea-eacs, dk4, dk3, amv, g726, g721, ea-xas, ea-r1, ea-maxis-xa, ea, ct, adx, 4xm, ea-r3 }; audio/x-aiff; audio/x-alac; audio/x-dpcm, layout=(string){ xan, sol, roq, interplay }; audio/x-dts; audio/x-eac3; audio/x-ffmpeg-parsed-ape; audio/x-ffmpeg-parsed-musepack, streamversion=(int){ 8, 7 }; audio/x-flac; audio/x-gsm; audio/x-gst-av-mp3adu; audio/x-gst-av-mp3on4; audio/x-gst-av-vmdaudio; audio/x-gst-av-ws_snd1; audio/x-imc; audio/x-mace, maceversion=(int){ 6, 3 }; audio/x-mlp; audio/x-musepack, streamversion=(int)7; audio/x-nellymoser; audio/x-pn-realaudio, raversion=(int){ 2, 1, 8 }; audio/x-qdm2; audio/x-shorten; audio/x-sipro; audio/x-smpte-302m; audio/x-true-hd; audio/x-truespeech; audio/x-tta; audio/x-ttafile; audio/x-twin-vq; audio/x-vnd.sony.atrac1; audio/x-vnd.sony.atrac3; audio/x-voc; audio/x-wma, wmaversion=(int){ 2, 1, 3, 4 }; audio/x-wms; image/bmp; image/jpeg, parsed=(boolean)true; image/pbm; image/png; image/ppm; image/tiff; image/x-pcx; image/x-portable-anymap; image/x-portable-graymap; image/x-sgi; image/x-sun-raster; image/x-tga; unknown/unknown; video/mpeg, mpegversion=(int)4, systemstream=(boolean)false; video/mpeg, mpegversion=(int)[ 1, 2 ], systemstream=(boolean)false; video/sp5x; video/x-4xm; video/x-aasc; video/x-amv; video/x-apple-intermediate-codec; video/x-apple-video; video/x-asus, asusversion=(int){ 2, 1 }; video/x-ati-vcr, vcrversion=(int)1; video/x-camstudio; video/x-camtasia; video/x-cinepak; video/x-cirrus-logic-accupak; video/x-compressed-yuv; video/x-divx, divxversion=(int)[ 3, 5 ]; video/x-dnxhd; video/x-dv, systemstream=(boolean)false; video/x-ffv, ffvversion=(int)1; video/x-flash-screen; video/x-flash-video, flvversion=(int)1; video/x-fraps; video/x-gst-av-8bps; video/x-gst-av-avs; video/x-gst-av-cavs; video/x-gst-av-ffvhuff; video/x-gst-av-flic; video/x-gst-av-idcinvideo; video/x-gst-av-interplayvideo; video/x-gst-av-mdec; video/x-gst-av-mmvideo; video/x-gst-av-pgmyuv; video/x-gst-av-qpeg; video/x-gst-av-roqvideo; video/x-gst-av-vmdvideo; video/x-gst-av-vqavideo; video/x-gst-av-wnv1; video/x-gst-av-xl; video/x-h261; video/x-h263, variant=(string)itu; video/x-h264, alignment=(string)au, stream-format=(string){ avc, byte-stream }; video/x-h265, alignment=(string)au, stream-format=(string){ hvc1, hev1, byte-stream }; video/x-huffyuv; video/x-indeo, indeoversion=(int){ 5, 4, 3, 2 }; video/x-intel-h263, variant=(string)intel; video/x-kmvc; video/x-lagarith; video/x-loco; video/x-mimic; video/x-mjpeg-b; video/x-msmpeg, msmpegversion=(int){ 43, 42, 41 }; video/x-msvideocodec, msvideoversion=(int)1; video/x-mszh; video/x-nsv; video/x-nuv; video/x-pn-realvideo, rmversion=(int){ 4, 3, 2, 1 }; video/x-prores; video/x-pva; video/x-qdrw; video/x-rle, layout=(string){ quicktime, microsoft }; video/x-smc; video/x-svq, svqversion=(int){ 3, 1 }; video/x-truemotion, trueversion=(int){ 2, 1 }; video/x-tscc, tsccversion=(int)2; video/x-ultimotion; video/x-vmnc; video/x-vp3; video/x-vp5; video/x-vp6; video/x-vp6-alpha; video/x-vp6-flash; video/x-vp8; video/x-wmv, wmvversion=(int)3, format=(string){ WMV3, WVC1, WMVA, MSS2 }; video/x-wmv, wmvversion=(int){ 2, 1 }; video/x-xan, wcversion=(int){ 4, 3 }; video/x-zlib; video/x-zmbv
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Gstreamer-Elements: avdec_4xm, avdec_8bps, avdec_8svx_exp, avdec_8svx_fib, avdec_aac, avdec_aac_latm, avdec_aasc, avdec_ac3, avdec_adpcm_4xm, avdec_adpcm_adx, avdec_adpcm_ct, avdec_adpcm_ea, avdec_adpcm_ea_maxis_xa, avdec_adpcm_ea_r1, avdec_adpcm_ea_r2, avdec_adpcm_ea_r3, avdec_adpcm_ea_xas, avdec_adpcm_ima_amv, avdec_adpcm_ima_apc, avdec_adpcm_ima_dk3, avdec_adpcm_ima_dk4, avdec_adpcm_ima_ea_eacs, avdec_adpcm_ima_ea_sead, avdec_adpcm_ima_iss, avdec_adpcm_ima_qt, avdec_adpcm_ima_smjpeg, avdec_adpcm_ima_wav, avdec_adpcm_ima_ws, avdec_adpcm_ms, avdec_adpcm_sbpro_2, avdec_adpcm_sbpro_3, avdec_adpcm_sbpro_4, avdec_adpcm_swf, avdec_adpcm_thp, avdec_adpcm_vima, avdec_adpcm_xa, avdec_adpcm_yamaha, avdec_aic, avdec_alac, avdec_alias_pix, avdec_als, avdec_amrnb, avdec_amrwb, avdec_amv, avdec_anm, avdec_ansi, avdec_ape, avdec_asv1, avdec_asv2, avdec_atrac1, avdec_atrac3, avdec_atrac3plus, avdec_aura, avdec_aura2, avdec_avs, avdec_bethsoftvid, avdec_bfi, avdec_binkaudio_dct, avdec_binkaudio_rdft, avdec_binkvideo, avdec_bmp, avdec_bmv_audio, avdec_bmv_video, avdec_brender_pix, avdec_c93, avdec_camstudio, avdec_camtasia, avdec_cavs, avdec_cdgraphics, avdec_cdxl, avdec_cinepak, avdec_cljr, avdec_cllc, avdec_comfortnoise, avdec_cook, avdec_cyuv, avdec_dca, avdec_dfa, avdec_dnxhd, avdec_dpx, avdec_dsicinaudio, avdec_dsicinvideo, avdec_dvvideo, avdec_dxa, avdec_dxtory, avdec_eac3, avdec_eacmv, avdec_eamad, avdec_eatgq, avdec_eatgv, avdec_eatqi, avdec_escape124, avdec_escape130, avdec_exr, avdec_ffv1, avdec_ffvhuff, avdec_fic, avdec_flac, avdec_flashsv, avdec_flashsv2, avdec_flic, avdec_flv, avdec_fraps, avdec_frwu, avdec_g2m, avdec_g722, avdec_g723_1, avdec_g726, avdec_gsm, avdec_gsm_ms, avdec_h261, avdec_h263, avdec_h263i, avdec_h264, avdec_h265, avdec_hnm4video, avdec_huffyuv, avdec_iac, avdec_idcinvideo, avdec_iff_byterun1, avdec_iff_ilbm, avdec_imc, avdec_indeo2, avdec_indeo3, avdec_indeo4, avdec_indeo5, avdec_interplay_dpcm, avdec_interplayvideo, avdec_jpeg2000, avdec_jpegls, avdec_jv, avdec_kgv1, avdec_kmvc, avdec_lagarith, avdec_loco, avdec_mace3, avdec_mace6, avdec_mdec, avdec_metasound, avdec_mimic, avdec_mjpeg, avdec_mjpegb, avdec_mlp, avdec_mmvideo, avdec_motionpixels, avdec_mp1float, avdec_mp2float, avdec_mp3, avdec_mp3adu, avdec_mp3adufloat, avdec_mp3float, avdec_mp3on4, avdec_mp3on4float, avdec_mpc7, avdec_mpc8, avdec_mpeg2video, avdec_mpeg4, avdec_msa1, avdec_msmpeg4, avdec_msmpeg4v1, avdec_msmpeg4v2, avdec_msrle, avdec_mss1, avdec_mss2, avdec_msvideo1, avdec_mszh, avdec_mts2, avdec_mvc1, avdec_mvc2, avdec_mxpeg, avdec_nellymoser, avdec_nuv, avdec_on2avc, avdec_opus, avdec_paf_audio, avdec_paf_video, avdec_pam, avdec_pbm, avdec_pcm_lxf, avdec_pcm_s24le_planar, avdec_pcm_s32le_planar, avdec_pcm_s8_planar, avdec_pcx, avdec_pgm, avdec_pgmyuv, avdec_pictor, avdec_png, avdec_ppm, avdec_prores, avdec_ptx, avdec_qcelp, avdec_qdm2, avdec_qdraw, avdec_qpeg, avdec_qtrle, avdec_r10k, avdec_ralf, avdec_real_144, avdec_real_288, avdec_rl2, avdec_roq_dpcm, avdec_roqvideo, avdec_rpza, avdec_rv10, avdec_rv20, avdec_rv30, avdec_rv40, avdec_s302m, avdec_sanm, avdec_sgi, avdec_sgirle, avdec_shorten, avdec_sipr, avdec_smackaud, avdec_smackvid, avdec_smc, avdec_sol_dpcm, avdec_sp5x, avdec_sunrast, avdec_svq1, avdec_svq3, avdec_tak, avdec_targa, avdec_thp, avdec_tiertexseqvideo, avdec_tiff, avdec_tmv, avdec_truehd, avdec_truemotion1, avdec_truemotion2, avdec_truespeech, avdec_tscc2, avdec_tta, avdec_twinvq, avdec_txd, avdec_ultimotion, avdec_utvideo, avdec_v410, avdec_vb, avdec_vble, avdec_vc1, avdec_vc1image, avdec_vcr1, avdec_vmdaudio, avdec_vmdvideo, avdec_vmnc, avdec_vp3, avdec_vp5, avdec_vp6, avdec_vp6a, avdec_vp6f, avdec_vp7, avdec_vp8, avdec_vp9, avdec_vqavideo, avdec_webp, avdec_wmalossless, avdec_wmapro, avdec_wmav1, avdec_wmav2, avdec_wmavoice, avdec_wmv1, avdec_wmv2, avdec_wmv3, avdec_wmv3image, avdec_wnv1, avdec_ws_snd1, avdec_xan_dpcm, avdec_xan_wc3, avdec_xan_wc4, avdec_xbm, avdec_xl, avdec_xwd, avdec_yop, avdec_zerocodec, avdec_zlib, avdec_zmbv, avdeinterlace, avdemux_4xm, avdemux_aiff, avdemux_ape, avdemux_avs, avdemux_daud, avdemux_ea, avdemux_film_cpk, avdemux_gxf, avdemux_idcin, avdemux_ipmovie, avdemux_mm, avdemux_mmf, avdemux_mpc, avdemux_mxf, avdemux_nsv, avdemux_nut, avdemux_nuv, avdemux_psxstr, avdemux_pva, avdemux_smk, avdemux_sol, avdemux_tta, avdemux_vmd, avdemux_voc, avdemux_wc3movie, avdemux_wsaud, avdemux_wsvqa, avdemux_yuv4mpegpipe, avenc_a64multi, avenc_a64multi5, avenc_aac, avenc_ac3, avenc_ac3_fixed, avenc_adpcm_adx, avenc_adpcm_ima_qt, avenc_adpcm_ima_wav, avenc_adpcm_ms, avenc_adpcm_swf, avenc_adpcm_yamaha, avenc_alac, avenc_alias_pix, avenc_asv1, avenc_asv2, avenc_bmp, avenc_cljr, avenc_comfortnoise, avenc_dnxhd, avenc_dpx, avenc_dvvideo, avenc_eac3, avenc_ffv1, avenc_ffvhuff, avenc_flashsv, avenc_flv, avenc_g722, avenc_g726, avenc_h261, avenc_h263, avenc_h263p, avenc_huffyuv, avenc_jpegls, avenc_ljpeg, avenc_mjpeg, avenc_mp2, avenc_mpeg1video, avenc_mpeg2video, avenc_mpeg4, avenc_msmpeg4, avenc_msmpeg4v2, avenc_nellymoser, avenc_pam, avenc_pbm, avenc_pcx, avenc_pgm, avenc_pgmyuv, avenc_png, avenc_ppm, avenc_prores, avenc_qtrle, avenc_real_144, avenc_roq_dpcm, avenc_roqvideo, avenc_rv10, avenc_rv20, avenc_sgi, avenc_sunrast, avenc_svq1, avenc_targa, avenc_tiff, avenc_utvideo, avenc_v410, avenc_wmav1, avenc_wmav2, avenc_wmv1, avenc_wmv2, avenc_xbm, avenc_xwd, avenc_zmbv, avmux_3g2, avmux_3gp, avmux_a64, avmux_adts, avmux_adx, avmux_aiff, avmux_amr, avmux_asf, avmux_asf_stream, avmux_au, avmux_avi, avmux_avm2, avmux_daud, avmux_dv, avmux_dvd, avmux_f4v, avmux_filmstrip, avmux_flv, avmux_gxf, avmux_hds, avmux_hls, avmux_ilbc, avmux_ipod, avmux_ismv, avmux_ivf, avmux_latm, avmux_matroska, avmux_md5, avmux_mmf, avmux_mov, avmux_mp2, avmux_mp3, avmux_mp4, avmux_mpeg, avmux_mpegts, avmux_mpjpeg, avmux_mxf, avmux_mxf_d10, avmux_nut, avmux_ogg, avmux_oma, avmux_psp, avmux_rcv, avmux_rm, avmux_rso, avmux_rtsp, avmux_sap, avmux_smjpeg, avmux_smoothstreaming, avmux_sox, avmux_spdif, avmux_svcd, avmux_swf, avmux_vcd, avmux_vob, avmux_voc, avmux_wav, avmux_webm, avmux_yuv4mpegpipe
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Suggests: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: all host applications (e.g. roard, roarpluginrunner and roarplaylistd).
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: librplay-perl
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Conflicts: rplay-perl
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - perl modules
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/librplay-perl_3.3.2-14_all.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: librplay3
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/librplay3_3.3.2-14_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - shared libraries
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: Contains shared libraries for the rplay network audio system.
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: librplay3-dev
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6-dev | libc-dev, librplay3 (= 3.3.2-14), dpkg (>= 1.15.4) | install-info
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/librplay3-dev_3.3.2-14_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - development libraries
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: Contains header files and development libraries for the rplay network
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Recommends: roarplaylistd-tools, roarplaylistd-client
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Suggests: vclt-tools, roarplaylistd-codechelper-gst, libroar-plugins-universal
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/roarplaylistd/roarplaylistd_0.1.9-1_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: roarplaylistd-codechelper-gst
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Suggests: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: roarplaylistd helper script for GStreamer codecs
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/roarplaylistd/roarplaylistd-codechelper-gst_0.1.9-1_all.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: roarplaylistd-dbg
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: roarplaylistd (= 0.1.9-1)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/roarplaylistd/roarplaylistd-dbg_0.1.9-1_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: This package provides debugging symbols for the roarplaylistd package.
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: roarplaylistd-dev
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/roarplaylistd/roarplaylistd-dev_0.1.9-1_all.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: roarplaylistd-tools
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: roarplaylistd
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Provides: roarplaylistd-client
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Suggests: roarplaylistd, savannahice
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/roarplaylistd/roarplaylistd-tools_0.1.9-1_all.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: rplay-client
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6 (>= 2.13-28), libreadline6 (>= 6.0), librplay3 (>= 3.3.2-2), dpkg (>= 1.15.4) | install-info, devrplay3
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/rplay-client_3.3.2-14_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - basic clients
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: This package contains the basic rplay clients (rplay, rptp).  The clients
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: rplay-contrib
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6 (>= 2.13-28), librplay3 (>= 3.3.2-2), librplay-perl, perl
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/rplay-contrib_3.3.2-14_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - contributed binaries
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: rplay-server
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Source: rplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6 (>= 2.13-28), libgsm1 (>= 1.0.13), librplay3 (>= 3.3.2-2)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Breaks: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Replaces: rplay (<< 3.3.2-9)
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Homepage: http://rplay.doit.org/
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/r/rplay/rplay-server_3.3.2-14_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: rplay network audio system - server
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: This package contains the rplay server.  The rplay server allows sounds
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: libc6 (>= 2.13-28), libice6 (>= 1:1.0.0), librplay3 (>= 3.3.2-2), libsm6, libx11-6, libxext6, libxmu6, libxpm4, libxt6
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Package: xmms2-plugin-airplay
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Filename: pool/main/x/xmms2/xmms2-plugin-airplay_0.8+dfsg-12+b2_armhf.deb
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Description: XMMS2 - airplay output plug-in
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages: This package enables airplay output for XMMS2.
+/var/lib/apt/lists/mirrordirector.raspbian.org_raspbian_dists_jessie_main_binary-armhf_Packages:Depends: xmms2-plugin-airplay, xmms2-plugin-alsa, xmms2-plugin-ao, xmms2-plugin-apefile, xmms2-plugin-asf, xmms2-plugin-asx, xmms2-plugin-avcodec, xmms2-plugin-cdda, xmms2-plugin-cue, xmms2-plugin-curl, xmms2-plugin-daap, xmms2-plugin-faad, xmms2-plugin-flac, xmms2-plugin-flv, xmms2-plugin-gme, xmms2-plugin-gvfs, xmms2-plugin-html, xmms2-plugin-ices, xmms2-plugin-icymetaint, xmms2-plugin-id3v2, xmms2-plugin-jack, xmms2-plugin-karaoke, xmms2-plugin-m3u, xmms2-plugin-mad, xmms2-plugin-mms, xmms2-plugin-modplug, xmms2-plugin-mp4, xmms2-plugin-mpg123, xmms2-plugin-musepack, xmms2-plugin-normalize, xmms2-plugin-ofa, xmms2-plugin-oss, xmms2-plugin-pls, xmms2-plugin-pulse, xmms2-plugin-rss, xmms2-plugin-sid, xmms2-plugin-smb, xmms2-plugin-speex, xmms2-plugin-tta, xmms2-plugin-vocoder, xmms2-plugin-vorbis, xmms2-plugin-wavpack, xmms2-plugin-xml, xmms2-plugin-xspf
+Binary file /var/log/messages matches
+Binary file /var/log/daemon.log matches
+Binary file /var/log/user.log.1 matches
+/var/log/auth.log:Dec 17 20:52:36 raspberrypi sudo:       pi : TTY=pts/0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/nano /ect/rplay.conf
+/var/log/auth.log:Dec 17 20:53:04 raspberrypi sudo:       pi : TTY=pts/0 ; PWD=/home/pi ; USER=root ; COMMAND=/usr/bin/nano /etc/rplay.conf
+/var/log/auth.log:Dec 17 21:24:55 raspberrypi sudo:       pi : TTY=pts/3 ; PWD=/home/pi ; USER=root ; COMMAND=/bin/grep -H -r rplay /
+/var/log/user.log:Dec 13 11:17:07 raspberrypi rplay[560]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 13 11:17:07 raspberrypi rplay[560]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 13 11:17:07 raspberrypi rplay[560]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/user.log:Dec 14 10:17:08 raspberrypi rplay[565]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 14 10:17:08 raspberrypi rplay[565]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 14 10:17:08 raspberrypi rplay[565]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/user.log:Dec 15 04:17:07 raspberrypi rplay[566]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 15 04:17:07 raspberrypi rplay[566]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 15 04:17:07 raspberrypi rplay[566]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/user.log:Dec 16 00:17:09 raspberrypi rplay[561]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 16 00:17:09 raspberrypi rplay[561]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 16 00:17:09 raspberrypi rplay[561]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/user.log:Dec 16 02:17:07 raspberrypi rplay[556]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 16 02:17:07 raspberrypi rplay[556]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 16 02:17:07 raspberrypi rplay[556]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/user.log:Dec 16 09:17:08 raspberrypi rplay[559]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 16 09:17:08 raspberrypi rplay[559]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 16 09:17:08 raspberrypi rplay[559]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/user.log:Dec 17 06:17:08 raspberrypi rplay[558]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/user.log:Dec 17 06:17:08 raspberrypi rplay[558]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/user.log:Dec 17 06:17:08 raspberrypi rplay[558]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+Binary file /var/log/syslog.1 matches
+Binary file /var/log/messages.1 matches
+/var/log/syslog:Dec 17 06:17:05 raspberrypi systemd[1]: Starting LSB: rplay server...
+/var/log/syslog:Dec 17 06:17:06 raspberrypi rplay[528]: Starting rplay:.
+/var/log/syslog:Dec 17 06:17:06 raspberrypi systemd[1]: Started LSB: rplay server.
+/var/log/syslog:Dec 17 06:17:07 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 06:17:08 raspberrypi rplay[528]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/syslog:Dec 17 06:17:08 raspberrypi rplay[558]: *** WARNING *** The program 'rplay' uses the Apple Bonjour compatibility layer of Avahi.
+/var/log/syslog:Dec 17 06:17:08 raspberrypi rplay[558]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/syslog:Dec 17 06:17:08 raspberrypi rplay[558]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/syslog:Dec 17 06:17:08 raspberrypi rplay[528]: *** WARNING *** Please fix your application to use the native API of Avahi!
+/var/log/syslog:Dec 17 06:17:08 raspberrypi rplay[528]: *** WARNING *** For more information see <http://0pointer.de/avahi-compat?s=libdns_sd&e=rplay>
+/var/log/syslog:Dec 17 18:34:04 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 19:13:46 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 19:15:26 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 19:22:17 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 19:58:15 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 20:09:24 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 20:10:15 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 20:15:49 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/syslog:Dec 17 20:32:23 raspberrypi rplay[528]: ALSA lib pcm.c:2239:(snd_pcm_open_noupdate) Unknown PCM cards.pcm.front
+/var/log/dpkg.log:2015-12-10 07:24:08 install rplay:armhf <none> 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:08 status half-installed rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 status unpacked rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 status unpacked rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 configure rplay:armhf 1.0.1 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 status unpacked rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 status unpacked rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 status unpacked rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:11 status half-configured rplay:armhf 1.0.1
+/var/log/dpkg.log:2015-12-10 07:24:13 status installed rplay:armhf 1.0.1
+Binary file /var/log/auth.log.1 matches
+Binary file /var/log/daemon.log.1 matches
+Binary file /var/cache/apt/pkgcache.bin matches
+Binary file /var/cache/apt/srcpkgcache.bin matches
+/var/backups/dpkg.status.0:Package: rplay
+/var/backups/dpkg.status.0:Source: rplay
+/var/backups/dpkg.status.0: /etc/rplay.conf a277de79b9da42ab804ab49b25002459
+/var/backups/dpkg.status.0: /etc/init.d/rplay ef6bcbd778b161c8c1dea711e78145ce
+/var/backups/dpkg.status.0:Description: Provides the rplay binary that enables iOS devices to send audio, video and screens to the rasberry pi device. It implements Apple AirPlay Protocol and supports AirPlay Mirroring.
+/var/backups/dpkg.status.0:Gstreamer-Decoders: application/gxf; application/mxf; application/x-ape; application/x-gst-av-avs; application/x-gst-av-daud; application/x-gst-av-ea; application/x-gst-av-film_cpk; application/x-gst-av-idcin; application/x-gst-av-ipmovie; application/x-gst-av-mm; application/x-gst-av-mmf; application/x-gst-av-nut; application/x-gst-av-nuv; application/x-gst-av-psxstr; application/x-gst-av-smk; application/x-gst-av-sol; application/x-gst-av-vmd; application/x-gst-av-wc3movie; application/x-gst-av-wsaud; application/x-gst-av-wsvqa; application/x-yuv4mpeg, y4mversion=(int)2; audio/AMR; audio/AMR-WB; audio/G722; audio/mpeg, mpegversion=(int)1, layer=(int)[ 1, 3 ]; audio/mpeg, mpegversion=(int)4, stream-format=(string)loas; audio/mpeg, mpegversion=(int){ 2, 4 }, stream-format=(string){ raw, adts, adif }; audio/ms-gsm; audio/qcelp; audio/x-ac3; audio/x-adpcm, layout=(string){ yamaha, xa, thp, swf, sbpro4, sbpro3, sbpro2, microsoft, westwood, dvi, smjpeg, quicktime, iss, ea-sead, ea-eacs, dk4, dk3, amv, g726, g721, ea-xas, ea-r1, ea-maxis-xa, ea, ct, adx, 4xm, ea-r3 }; audio/x-aiff; audio/x-alac; audio/x-dpcm, layout=(string){ xan, sol, roq, interplay }; audio/x-dts; audio/x-eac3; audio/x-ffmpeg-parsed-ape; audio/x-ffmpeg-parsed-musepack, streamversion=(int){ 8, 7 }; audio/x-flac; audio/x-gsm; audio/x-gst-av-mp3adu; audio/x-gst-av-mp3on4; audio/x-gst-av-vmdaudio; audio/x-gst-av-ws_snd1; audio/x-imc; audio/x-mace, maceversion=(int){ 6, 3 }; audio/x-mlp; audio/x-musepack, streamversion=(int)7; audio/x-nellymoser; audio/x-pn-realaudio, raversion=(int){ 2, 1, 8 }; audio/x-qdm2; audio/x-shorten; audio/x-sipro; audio/x-smpte-302m; audio/x-true-hd; audio/x-truespeech; audio/x-tta; audio/x-ttafile; audio/x-twin-vq; audio/x-vnd.sony.atrac1; audio/x-vnd.sony.atrac3; audio/x-voc; audio/x-wma, wmaversion=(int){ 2, 1, 3, 4 }; audio/x-wms; image/bmp; image/jpeg, parsed=(boolean)true; image/pbm; image/png; image/ppm; image/tiff; image/x-pcx; image/x-portable-anymap; image/x-portable-graymap; image/x-sgi; image/x-sun-raster; image/x-tga; unknown/unknown; video/mpeg, mpegversion=(int)4, systemstream=(boolean)false; video/mpeg, mpegversion=(int)[ 1, 2 ], systemstream=(boolean)false; video/sp5x; video/x-4xm; video/x-aasc; video/x-amv; video/x-apple-intermediate-codec; video/x-apple-video; video/x-asus, asusversion=(int){ 2, 1 }; video/x-ati-vcr, vcrversion=(int)1; video/x-camstudio; video/x-camtasia; video/x-cinepak; video/x-cirrus-logic-accupak; video/x-compressed-yuv; video/x-divx, divxversion=(int)[ 3, 5 ]; video/x-dnxhd; video/x-dv, systemstream=(boolean)false; video/x-ffv, ffvversion=(int)1; video/x-flash-screen; video/x-flash-video, flvversion=(int)1; video/x-fraps; video/x-gst-av-8bps; video/x-gst-av-avs; video/x-gst-av-cavs; video/x-gst-av-ffvhuff; video/x-gst-av-flic; video/x-gst-av-idcinvideo; video/x-gst-av-interplayvideo; video/x-gst-av-mdec; video/x-gst-av-mmvideo; video/x-gst-av-pgmyuv; video/x-gst-av-qpeg; video/x-gst-av-roqvideo; video/x-gst-av-vmdvideo; video/x-gst-av-vqavideo; video/x-gst-av-wnv1; video/x-gst-av-xl; video/x-h261; video/x-h263, variant=(string)itu; video/x-h264, alignment=(string)au, stream-format=(string){ avc, byte-stream }; video/x-h265, alignment=(string)au, stream-format=(string){ hvc1, hev1, byte-stream }; video/x-huffyuv; video/x-indeo, indeoversion=(int){ 5, 4, 3, 2 }; video/x-intel-h263, variant=(string)intel; video/x-kmvc; video/x-lagarith; video/x-loco; video/x-mimic; video/x-mjpeg-b; video/x-msmpeg, msmpegversion=(int){ 43, 42, 41 }; video/x-msvideocodec, msvideoversion=(int)1; video/x-mszh; video/x-nsv; video/x-nuv; video/x-pn-realvideo, rmversion=(int){ 4, 3, 2, 1 }; video/x-prores; video/x-pva; video/x-qdrw; video/x-rle, layout=(string){ quicktime, microsoft }; video/x-smc; video/x-svq, svqversion=(int){ 3, 1 }; video/x-truemotion, trueversion=(int){ 2, 1 }; video/x-tscc, tsccversion=(int)2; video/x-ultimotion; video/x-vmnc; video/x-vp3; video/x-vp5; video/x-vp6; video/x-vp6-alpha; video/x-vp6-flash; video/x-vp8; video/x-wmv, wmvversion=(int)3, format=(string){ WMV3, WVC1, WMVA, MSS2 }; video/x-wmv, wmvversion=(int){ 2, 1 }; video/x-xan, wcversion=(int){ 4, 3 }; video/x-zlib; video/x-zmbv
+/var/backups/dpkg.status.0:Gstreamer-Elements: avdec_4xm, avdec_8bps, avdec_8svx_exp, avdec_8svx_fib, avdec_aac, avdec_aac_latm, avdec_aasc, avdec_ac3, avdec_adpcm_4xm, avdec_adpcm_adx, avdec_adpcm_ct, avdec_adpcm_ea, avdec_adpcm_ea_maxis_xa, avdec_adpcm_ea_r1, avdec_adpcm_ea_r2, avdec_adpcm_ea_r3, avdec_adpcm_ea_xas, avdec_adpcm_ima_amv, avdec_adpcm_ima_apc, avdec_adpcm_ima_dk3, avdec_adpcm_ima_dk4, avdec_adpcm_ima_ea_eacs, avdec_adpcm_ima_ea_sead, avdec_adpcm_ima_iss, avdec_adpcm_ima_qt, avdec_adpcm_ima_smjpeg, avdec_adpcm_ima_wav, avdec_adpcm_ima_ws, avdec_adpcm_ms, avdec_adpcm_sbpro_2, avdec_adpcm_sbpro_3, avdec_adpcm_sbpro_4, avdec_adpcm_swf, avdec_adpcm_thp, avdec_adpcm_vima, avdec_adpcm_xa, avdec_adpcm_yamaha, avdec_aic, avdec_alac, avdec_alias_pix, avdec_als, avdec_amrnb, avdec_amrwb, avdec_amv, avdec_anm, avdec_ansi, avdec_ape, avdec_asv1, avdec_asv2, avdec_atrac1, avdec_atrac3, avdec_atrac3plus, avdec_aura, avdec_aura2, avdec_avs, avdec_bethsoftvid, avdec_bfi, avdec_binkaudio_dct, avdec_binkaudio_rdft, avdec_binkvideo, avdec_bmp, avdec_bmv_audio, avdec_bmv_video, avdec_brender_pix, avdec_c93, avdec_camstudio, avdec_camtasia, avdec_cavs, avdec_cdgraphics, avdec_cdxl, avdec_cinepak, avdec_cljr, avdec_cllc, avdec_comfortnoise, avdec_cook, avdec_cyuv, avdec_dca, avdec_dfa, avdec_dnxhd, avdec_dpx, avdec_dsicinaudio, avdec_dsicinvideo, avdec_dvvideo, avdec_dxa, avdec_dxtory, avdec_eac3, avdec_eacmv, avdec_eamad, avdec_eatgq, avdec_eatgv, avdec_eatqi, avdec_escape124, avdec_escape130, avdec_exr, avdec_ffv1, avdec_ffvhuff, avdec_fic, avdec_flac, avdec_flashsv, avdec_flashsv2, avdec_flic, avdec_flv, avdec_fraps, avdec_frwu, avdec_g2m, avdec_g722, avdec_g723_1, avdec_g726, avdec_gsm, avdec_gsm_ms, avdec_h261, avdec_h263, avdec_h263i, avdec_h264, avdec_h265, avdec_hnm4video, avdec_huffyuv, avdec_iac, avdec_idcinvideo, avdec_iff_byterun1, avdec_iff_ilbm, avdec_imc, avdec_indeo2, avdec_indeo3, avdec_indeo4, avdec_indeo5, avdec_interplay_dpcm, avdec_interplayvideo, avdec_jpeg2000, avdec_jpegls, avdec_jv, avdec_kgv1, avdec_kmvc, avdec_lagarith, avdec_loco, avdec_mace3, avdec_mace6, avdec_mdec, avdec_metasound, avdec_mimic, avdec_mjpeg, avdec_mjpegb, avdec_mlp, avdec_mmvideo, avdec_motionpixels, avdec_mp1float, avdec_mp2float, avdec_mp3, avdec_mp3adu, avdec_mp3adufloat, avdec_mp3float, avdec_mp3on4, avdec_mp3on4float, avdec_mpc7, avdec_mpc8, avdec_mpeg2video, avdec_mpeg4, avdec_msa1, avdec_msmpeg4, avdec_msmpeg4v1, avdec_msmpeg4v2, avdec_msrle, avdec_mss1, avdec_mss2, avdec_msvideo1, avdec_mszh, avdec_mts2, avdec_mvc1, avdec_mvc2, avdec_mxpeg, avdec_nellymoser, avdec_nuv, avdec_on2avc, avdec_opus, avdec_paf_audio, avdec_paf_video, avdec_pam, avdec_pbm, avdec_pcm_lxf, avdec_pcm_s24le_planar, avdec_pcm_s32le_planar, avdec_pcm_s8_planar, avdec_pcx, avdec_pgm, avdec_pgmyuv, avdec_pictor, avdec_png, avdec_ppm, avdec_prores, avdec_ptx, avdec_qcelp, avdec_qdm2, avdec_qdraw, avdec_qpeg, avdec_qtrle, avdec_r10k, avdec_ralf, avdec_real_144, avdec_real_288, avdec_rl2, avdec_roq_dpcm, avdec_roqvideo, avdec_rpza, avdec_rv10, avdec_rv20, avdec_rv30, avdec_rv40, avdec_s302m, avdec_sanm, avdec_sgi, avdec_sgirle, avdec_shorten, avdec_sipr, avdec_smackaud, avdec_smackvid, avdec_smc, avdec_sol_dpcm, avdec_sp5x, avdec_sunrast, avdec_svq1, avdec_svq3, avdec_tak, avdec_targa, avdec_thp, avdec_tiertexseqvideo, avdec_tiff, avdec_tmv, avdec_truehd, avdec_truemotion1, avdec_truemotion2, avdec_truespeech, avdec_tscc2, avdec_tta, avdec_twinvq, avdec_txd, avdec_ultimotion, avdec_utvideo, avdec_v410, avdec_vb, avdec_vble, avdec_vc1, avdec_vc1image, avdec_vcr1, avdec_vmdaudio, avdec_vmdvideo, avdec_vmnc, avdec_vp3, avdec_vp5, avdec_vp6, avdec_vp6a, avdec_vp6f, avdec_vp7, avdec_vp8, avdec_vp9, avdec_vqavideo, avdec_webp, avdec_wmalossless, avdec_wmapro, avdec_wmav1, avdec_wmav2, avdec_wmavoice, avdec_wmv1, avdec_wmv2, avdec_wmv3, avdec_wmv3image, avdec_wnv1, avdec_ws_snd1, avdec_xan_dpcm, avdec_xan_wc3, avdec_xan_wc4, avdec_xbm, avdec_xl, avdec_xwd, avdec_yop, avdec_zerocodec, avdec_zlib, avdec_zmbv, avdeinterlace, avdemux_4xm, avdemux_aiff, avdemux_ape, avdemux_avs, avdemux_daud, avdemux_ea, avdemux_film_cpk, avdemux_gxf, avdemux_idcin, avdemux_ipmovie, avdemux_mm, avdemux_mmf, avdemux_mpc, avdemux_mxf, avdemux_nsv, avdemux_nut, avdemux_nuv, avdemux_psxstr, avdemux_pva, avdemux_smk, avdemux_sol, avdemux_tta, avdemux_vmd, avdemux_voc, avdemux_wc3movie, avdemux_wsaud, avdemux_wsvqa, avdemux_yuv4mpegpipe, avenc_a64multi, avenc_a64multi5, avenc_aac, avenc_ac3, avenc_ac3_fixed, avenc_adpcm_adx, avenc_adpcm_ima_qt, avenc_adpcm_ima_wav, avenc_adpcm_ms, avenc_adpcm_swf, avenc_adpcm_yamaha, avenc_alac, avenc_alias_pix, avenc_asv1, avenc_asv2, avenc_bmp, avenc_cljr, avenc_comfortnoise, avenc_dnxhd, avenc_dpx, avenc_dvvideo, avenc_eac3, avenc_ffv1, avenc_ffvhuff, avenc_flashsv, avenc_flv, avenc_g722, avenc_g726, avenc_h261, avenc_h263, avenc_h263p, avenc_huffyuv, avenc_jpegls, avenc_ljpeg, avenc_mjpeg, avenc_mp2, avenc_mpeg1video, avenc_mpeg2video, avenc_mpeg4, avenc_msmpeg4, avenc_msmpeg4v2, avenc_nellymoser, avenc_pam, avenc_pbm, avenc_pcx, avenc_pgm, avenc_pgmyuv, avenc_png, avenc_ppm, avenc_prores, avenc_qtrle, avenc_real_144, avenc_roq_dpcm, avenc_roqvideo, avenc_rv10, avenc_rv20, avenc_sgi, avenc_sunrast, avenc_svq1, avenc_targa, avenc_tiff, avenc_utvideo, avenc_v410, avenc_wmav1, avenc_wmav2, avenc_wmv1, avenc_wmv2, avenc_xbm, avenc_xwd, avenc_zmbv, avmux_3g2, avmux_3gp, avmux_a64, avmux_adts, avmux_adx, avmux_aiff, avmux_amr, avmux_asf, avmux_asf_stream, avmux_au, avmux_avi, avmux_avm2, avmux_daud, avmux_dv, avmux_dvd, avmux_f4v, avmux_filmstrip, avmux_flv, avmux_gxf, avmux_hds, avmux_hls, avmux_ilbc, avmux_ipod, avmux_ismv, avmux_ivf, avmux_latm, avmux_matroska, avmux_md5, avmux_mmf, avmux_mov, avmux_mp2, avmux_mp3, avmux_mp4, avmux_mpeg, avmux_mpegts, avmux_mpjpeg, avmux_mxf, avmux_mxf_d10, avmux_nut, avmux_ogg, avmux_oma, avmux_psp, avmux_rcv, avmux_rm, avmux_rso, avmux_rtsp, avmux_sap, avmux_smjpeg, avmux_smoothstreaming, avmux_sox, avmux_spdif, avmux_svcd, avmux_swf, avmux_vcd, avmux_vob, avmux_voc, avmux_wav, avmux_webm, avmux_yuv4mpegpipe
+grep: /run/user/1000/gvfs: Permission denied
+Binary file /run/log/journal/5e3a8d5cbaff427898fd4b9ec446e38e/system.journal matches
+/run/systemd/generator.late/hyperion.service:After=rplay.service xrdp.service triggerhappy.service
+/run/systemd/generator.late/rplay.service:SourcePath=/etc/init.d/rplay
+/run/systemd/generator.late/rplay.service:Description=LSB: rplay server
+/run/systemd/generator.late/rplay.service:ExecStart=/etc/init.d/rplay start
+/run/systemd/generator.late/rplay.service:ExecStop=/etc/init.d/rplay stop
+/etc/rplay.conf:airplay=1
+/etc/init.d/rplay:# This script starts and stops rplay
+/etc/init.d/rplay:# make sure to adjust the hardcoded path for rplay binary, the default path is /usr/bin/rplay
+/etc/init.d/rplay:# sudo cp rplay.init /etc/init.d/rplay
+/etc/init.d/rplay:# sudo chmod a+x ./rplay
+/etc/init.d/rplay:# sudo update-rc.d rplay defaults
+/etc/init.d/rplay:# Provides:          rplay
+/etc/init.d/rplay:# Short-Description: rplay server
+/etc/init.d/rplay:# Description:       VMLite Airplay/Mirroring Receiver
+/etc/init.d/rplay:EXECUTABLE=/usr/bin/rplay
+/etc/init.d/rplay:PID=/var/run/rplay/rplay.pid
+/etc/init.d/rplay:LOG=/var/log/rplay.log
+/etc/init.d/rplay:          log_success_msg "rplay already started."
+/etc/init.d/rplay:      log_daemon_msg "Starting rplay"
+/etc/init.d/rplay:      log_daemon_msg "Stopping rplay"
+/etc/init.d/rplay:      log_action_begin_msg "Restarting rplay"
+/etc/init.d/rplay:      echo "Usage: rplay {start|stop|restart}" >&2
+/etc/init.d/.depend.stop:TARGETS = dhcpcd rplay xrdp triggerhappy fake-hwclock hyperion postgresql avahi-daemon lightdm plymouth urandom alsa-utils sendsigs rsyslog umountnfs.sh nfs-common rpcbind hwclock.sh networking umountfs umountroot halt reboot
+/etc/init.d/.depend.start:TARGETS = rsyslog dhcpcd rplay xrdp triggerhappy bootlogs killprocs motd hyperion postgresql dbus single dphys-swapfile ssh cron ntp rsync avahi-daemon lightdm plymouth rmnologin rc.local
+/etc/init.d/.depend.start:plymouth: hyperion rsyslog postgresql dhcpcd avahi-daemon dbus rplay xrdp triggerhappy lightdm bootlogs motd dphys-swapfile ssh cron ntp rsync
+/etc/init.d/.depend.start:rmnologin: hyperion rsyslog postgresql dhcpcd avahi-daemon dbus rplay xrdp triggerhappy lightdm bootlogs motd dphys-swapfile ssh cron ntp rsync
+/etc/init.d/.depend.start:rc.local: hyperion rsyslog postgresql dhcpcd avahi-daemon dbus rplay xrdp triggerhappy lightdm bootlogs motd dphys-swapfile ssh cron ntp rsync
+/etc/services:rplay		5555/udp			# RPlay audio service
+grep: /sys/fs/ext4/mmcblk0p2/trigger_fs_error: Permission denied
+grep: /sys/fs/fuse/connections/31/abort: Invalid argument
+grep: /sys/fs/cgroup/devices/devices.allow: Invalid argument
+grep: /sys/fs/cgroup/devices/devices.deny: Invalid argument
+grep: /sys/fs/cgroup/blkio/blkio.reset_stats: Invalid argument
+grep: /sys/bus/cpu/uevent: Permission denied
+grep: /sys/bus/cpu/drivers_probe: Permission denied
+grep: /sys/bus/i2c/drivers/dummy/bind: Permission denied
+grep: /sys/bus/i2c/drivers/dummy/uevent: Permission denied
+grep: /sys/bus/i2c/drivers/dummy/unbind: Permission denied
+grep: /sys/bus/i2c/drivers/stmpe-i2c/bind: Permission denied
+grep: /sys/bus/i2c/drivers/stmpe-i2c/uevent: Permission denied
+grep: /sys/bus/i2c/drivers/stmpe-i2c/unbind: Permission denied
+grep: /sys/bus/i2c/uevent: Permission denied
+grep: /sys/bus/i2c/drivers_probe: Permission denied
+grep: /sys/bus/hid/drivers/hid-generic/bind: Permission denied
+grep: /sys/bus/hid/drivers/hid-generic/new_id: Permission denied
+grep: /sys/bus/hid/drivers/hid-generic/uevent: Permission denied
+grep: /sys/bus/hid/drivers/hid-generic/unbind: Permission denied
+grep: /sys/bus/hid/uevent: Permission denied
+grep: /sys/bus/hid/drivers_probe: Permission denied
+grep: /sys/bus/mmc/drivers/mmcblk/bind: Permission denied
+grep: /sys/bus/mmc/drivers/mmcblk/uevent: Permission denied
+grep: /sys/bus/mmc/drivers/mmcblk/unbind: Permission denied
+grep: /sys/bus/mmc/uevent: Permission denied
+grep: /sys/bus/mmc/drivers_probe: Permission denied
+grep: /sys/bus/spi/drivers/stmpe-spi/bind: Permission denied
+grep: /sys/bus/spi/drivers/stmpe-spi/uevent: Permission denied
+grep: /sys/bus/spi/drivers/stmpe-spi/unbind: Permission denied
+grep: /sys/bus/spi/drivers/spidev/bind: Permission denied
+grep: /sys/bus/spi/drivers/spidev/uevent: Permission denied
+grep: /sys/bus/spi/drivers/spidev/unbind: Permission denied
+grep: /sys/bus/spi/uevent: Permission denied
+grep: /sys/bus/spi/drivers_probe: Permission denied
+grep: /sys/bus/usb/drivers/hub/bind: Permission denied
+grep: /sys/bus/usb/drivers/hub/uevent: Permission denied
+grep: /sys/bus/usb/drivers/hub/unbind: Permission denied
+grep: /sys/bus/usb/drivers/usb/bind: Permission denied
+grep: /sys/bus/usb/drivers/usb/uevent: Permission denied
+grep: /sys/bus/usb/drivers/usb/unbind: Permission denied
+grep: /sys/bus/usb/drivers/usbfs/bind: Permission denied
+grep: /sys/bus/usb/drivers/usbfs/uevent: Permission denied
+grep: /sys/bus/usb/drivers/usbfs/unbind: Permission denied
+grep: /sys/bus/usb/drivers/usb-storage/bind: Permission denied
+grep: /sys/bus/usb/drivers/usb-storage/uevent: Permission denied
+grep: /sys/bus/usb/drivers/usb-storage/unbind: Permission denied
+grep: /sys/bus/usb/drivers/rt2800usb/bind: Permission denied
+grep: /sys/bus/usb/drivers/rt2800usb/uevent: Permission denied
+grep: /sys/bus/usb/drivers/rt2800usb/unbind: Permission denied
+grep: /sys/bus/usb/drivers/usbhid/bind: Permission denied
+grep: /sys/bus/usb/drivers/usbhid/uevent: Permission denied
+grep: /sys/bus/usb/drivers/usbhid/unbind: Permission denied
+grep: /sys/bus/usb/drivers/smsc95xx/bind: Permission denied
+grep: /sys/bus/usb/drivers/smsc95xx/uevent: Permission denied
+grep: /sys/bus/usb/drivers/smsc95xx/unbind: Permission denied
+grep: /sys/bus/usb/uevent: Permission denied
+grep: /sys/bus/usb/drivers_probe: Permission denied
+grep: /sys/bus/amba/drivers/uart-pl011/bind: Permission denied
+grep: /sys/bus/amba/drivers/uart-pl011/uevent: Permission denied
+grep: /sys/bus/amba/drivers/uart-pl011/unbind: Permission denied
+grep: /sys/bus/amba/uevent: Permission denied
+grep: /sys/bus/amba/drivers_probe: Permission denied
+grep: /sys/bus/scsi/drivers/sd/bind: Permission denied
+grep: /sys/bus/scsi/drivers/sd/uevent: Permission denied
+grep: /sys/bus/scsi/drivers/sd/unbind: Permission denied
+grep: /sys/bus/scsi/uevent: Permission denied
+grep: /sys/bus/scsi/drivers_probe: Permission denied
+grep: /sys/bus/sdio/uevent: Permission denied
+grep: /sys/bus/sdio/drivers_probe: Permission denied
+grep: /sys/bus/clocksource/uevent: Permission denied
+grep: /sys/bus/clocksource/drivers_probe: Permission denied
+grep: /sys/bus/event_source/uevent: Permission denied
+grep: /sys/bus/event_source/drivers_probe: Permission denied
+grep: /sys/bus/workqueue/uevent: Permission denied
+grep: /sys/bus/workqueue/drivers_probe: Permission denied
+grep: /sys/bus/container/uevent: Permission denied
+grep: /sys/bus/container/drivers_probe: Permission denied
+grep: /sys/bus/iscsi_flashnode/uevent: Permission denied
+grep: /sys/bus/iscsi_flashnode/drivers_probe: Permission denied
+grep: /sys/bus/platform/drivers/leds-gpio/bind: Permission denied
+grep: /sys/bus/platform/drivers/leds-gpio/uevent: Permission denied
+grep: /sys/bus/platform/drivers/leds-gpio/unbind: Permission denied
+grep: /sys/bus/platform/drivers/CCI-400 PMU/bind: Permission denied
+grep: /sys/bus/platform/drivers/CCI-400 PMU/uevent: Permission denied
+grep: /sys/bus/platform/drivers/CCI-400 PMU/unbind: Permission denied
+grep: /sys/bus/platform/drivers/raspberrypi-firmware/bind: Permission denied
+grep: /sys/bus/platform/drivers/raspberrypi-firmware/uevent: Permission denied
+grep: /sys/bus/platform/drivers/raspberrypi-firmware/unbind: Permission denied
+grep: /sys/bus/platform/drivers/stmpe-gpio/bind: Permission denied
+grep: /sys/bus/platform/drivers/stmpe-gpio/uevent: Permission denied
+grep: /sys/bus/platform/drivers/stmpe-gpio/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835-mbox/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835-mbox/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835-mbox/unbind: Permission denied
+grep: /sys/bus/platform/drivers/sdhost-bcm2835/bind: Permission denied
+grep: /sys/bus/platform/drivers/sdhost-bcm2835/uevent: Permission denied
+grep: /sys/bus/platform/drivers/sdhost-bcm2835/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD0/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD0/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD0/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD1/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD1/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD1/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD2/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD2/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD2/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD3/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD3/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD3/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD4/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD4/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD4/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD5/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD5/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD5/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD6/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD6/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD6/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD7/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD7/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_AUD7/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708_gpio/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708_gpio/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708_gpio/unbind: Permission denied
+grep: /sys/bus/platform/drivers/alarmtimer/bind: Permission denied
+grep: /sys/bus/platform/drivers/alarmtimer/uevent: Permission denied
+grep: /sys/bus/platform/drivers/alarmtimer/unbind: Permission denied
+grep: /sys/bus/platform/drivers/dwc_otg/bind: Permission denied
+grep: /sys/bus/platform/drivers/dwc_otg/uevent: Permission denied
+grep: /sys/bus/platform/drivers/dwc_otg/unbind: Permission denied
+grep: /sys/bus/platform/drivers/spi-bcm2835/bind: Permission denied
+grep: /sys/bus/platform/drivers/spi-bcm2835/uevent: Permission denied
+grep: /sys/bus/platform/drivers/spi-bcm2835/unbind: Permission denied
+grep: /sys/bus/platform/drivers/poweroff-gpio/bind: Permission denied
+grep: /sys/bus/platform/drivers/poweroff-gpio/uevent: Permission denied
+grep: /sys/bus/platform/drivers/poweroff-gpio/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708_fb/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708_fb/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708_fb/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708-dmaengine/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708-dmaengine/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2708-dmaengine/unbind: Permission denied
+grep: /sys/bus/platform/drivers/uio_pdrv_genirq/bind: Permission denied
+grep: /sys/bus/platform/drivers/uio_pdrv_genirq/uevent: Permission denied
+grep: /sys/bus/platform/drivers/uio_pdrv_genirq/unbind: Permission denied
+grep: /sys/bus/platform/drivers/serial8250/bind: Permission denied
+grep: /sys/bus/platform/drivers/serial8250/uevent: Permission denied
+grep: /sys/bus/platform/drivers/serial8250/unbind: Permission denied
+grep: /sys/bus/platform/drivers/of_serial/bind: Permission denied
+grep: /sys/bus/platform/drivers/of_serial/uevent: Permission denied
+grep: /sys/bus/platform/drivers/of_serial/unbind: Permission denied
+grep: /sys/bus/platform/drivers/CCI-400/bind: Permission denied
+grep: /sys/bus/platform/drivers/CCI-400/uevent: Permission denied
+grep: /sys/bus/platform/drivers/CCI-400/unbind: Permission denied
+grep: /sys/bus/platform/drivers/pinctrl-bcm2835/bind: Permission denied
+grep: /sys/bus/platform/drivers/pinctrl-bcm2835/uevent: Permission denied
+grep: /sys/bus/platform/drivers/pinctrl-bcm2835/unbind: Permission denied
+grep: /sys/bus/platform/drivers/mmc-bcm2835/bind: Permission denied
+grep: /sys/bus/platform/drivers/mmc-bcm2835/uevent: Permission denied
+grep: /sys/bus/platform/drivers/mmc-bcm2835/unbind: Permission denied
+grep: /sys/bus/platform/drivers/arm-pmu/bind: Permission denied
+grep: /sys/bus/platform/drivers/arm-pmu/uevent: Permission denied
+grep: /sys/bus/platform/drivers/arm-pmu/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_thermal/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_thermal/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_thermal/unbind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_vchiq/bind: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_vchiq/uevent: Permission denied
+grep: /sys/bus/platform/drivers/bcm2835_vchiq/unbind: Permission denied
+grep: /sys/bus/platform/drivers/gpiomem-bcm2835/bind: Permission denied
+grep: /sys/bus/platform/drivers/gpiomem-bcm2835/uevent: Permission denied
+grep: /sys/bus/platform/drivers/gpiomem-bcm2835/unbind: Permission denied
+grep: /sys/bus/platform/uevent: Permission denied
+grep: /sys/bus/platform/drivers_probe: Permission denied
+grep: /sys/bus/clockevents/uevent: Permission denied
+grep: /sys/bus/clockevents/drivers_probe: Permission denied
+grep: /sys/devices/system/clocksource/clocksource0/unbind_clocksource: Permission denied
+grep: /sys/devices/system/clockevents/clockevent0/unbind_device: Permission denied
+grep: /sys/devices/system/clockevents/clockevent1/unbind_device: Permission denied
+grep: /sys/devices/system/clockevents/clockevent2/unbind_device: Permission denied
+grep: /sys/devices/system/clockevents/clockevent3/unbind_device: Permission denied
+grep: /sys/devices/virtual/net/lo/phys_port_name: Operation not supported
+grep: /sys/devices/virtual/net/lo/speed: Invalid argument
+grep: /sys/devices/virtual/net/lo/name_assign_type: Invalid argument
+grep: /sys/devices/virtual/net/lo/phys_switch_id: Operation not supported
+grep: /sys/devices/virtual/net/lo/duplex: Invalid argument
+grep: /sys/devices/virtual/net/lo/phys_port_id: Operation not supported
+grep: /sys/devices/virtual/block/ram0/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram0/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram0/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram0/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram0/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram1/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram1/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram1/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram1/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram1/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram2/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram2/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram2/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram2/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram2/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram3/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram3/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram3/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram3/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram3/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram4/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram4/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram4/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram4/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram4/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram5/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram5/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram5/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram5/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram5/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram6/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram6/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram6/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram6/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram6/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram7/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram7/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram7/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram7/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram7/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram8/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram8/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram8/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram8/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram8/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram9/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram9/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram9/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram9/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram9/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop0/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop0/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop0/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop0/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop0/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop1/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop1/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop1/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop1/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop1/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop2/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop2/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop2/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop2/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop2/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop3/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop3/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop3/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop3/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop3/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop4/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop4/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop4/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop4/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop4/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop5/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop5/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop5/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop5/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop5/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop6/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop6/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop6/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop6/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop6/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/loop7/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/loop7/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/loop7/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/loop7/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/loop7/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram10/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram10/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram10/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram10/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram10/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram11/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram11/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram11/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram11/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram11/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram12/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram12/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram12/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram12/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram12/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram13/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram13/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram13/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram13/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram13/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram14/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram14/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram14/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram14/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram14/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/block/ram15/trace/pid: No such device or address
+grep: /sys/devices/virtual/block/ram15/trace/end_lba: No such device or address
+grep: /sys/devices/virtual/block/ram15/trace/enable: No such device or address
+grep: /sys/devices/virtual/block/ram15/trace/act_mask: No such device or address
+grep: /sys/devices/virtual/block/ram15/trace/start_lba: No such device or address
+grep: /sys/devices/virtual/graphics/fbcon/rotate_all: Permission denied
+grep: /sys/devices/platform/soc/soc:fb/graphics/fb0/bl_curve: No such device
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.1/1-1.1:1.0/net/eth0/phys_port_name: Operation not supported
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.1/1-1.1:1.0/net/eth0/name_assign_type: Invalid argument
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.1/1-1.1:1.0/net/eth0/phys_switch_id: Operation not supported
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.1/1-1.1:1.0/net/eth0/phys_port_id: Operation not supported
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.1/remove: Permission denied
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.2/remove: Permission denied
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/net/wlan0/phys_port_name: Operation not supported
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/net/wlan0/speed: Invalid argument
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/net/wlan0/phys_switch_id: Operation not supported
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/net/wlan0/duplex: Invalid argument
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3:1.0/net/wlan0/phys_port_id: Operation not supported
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/remove: Permission denied
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.5/remove: Permission denied
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/1-1/remove: Permission denied
+grep: /sys/devices/platform/soc/3f980000.usb/usb1/remove: Permission denied
+grep: /sys/devices/platform/soc/3f980000.usb/disconnect_us: Permission denied
+grep: /sys/class/gpio/unexport: Input/output error
+grep: /sys/class/gpio/export: Input/output error
+grep: /sys/kernel/slab/TCP/free_calls: Function not implemented
+grep: /sys/kernel/slab/TCP/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/UDP/free_calls: Function not implemented
+grep: /sys/kernel/slab/UDP/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000024/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000024/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000032/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000032/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000040/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000040/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000048/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000048/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000056/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000056/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000064/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000064/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000080/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000080/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000088/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000088/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000104/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000104/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000128/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000128/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000136/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000136/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000144/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000144/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000152/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000152/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000160/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000160/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000176/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000176/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000192/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000192/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000232/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000232/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000240/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000240/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000256/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000256/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000288/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000288/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000320/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000320/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000328/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000328/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000384/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000384/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000448/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000448/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000512/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000512/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000576/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000576/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000640/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000640/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000704/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000704/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000768/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000768/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000832/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0000832/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001024/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001024/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001072/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001072/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001144/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001144/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001536/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0001536/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0002048/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0002048/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0003072/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0003072/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0003136/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0003136/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0004096/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0004096/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0008192/free_calls: Function not implemented
+grep: /sys/kernel/slab/:t-0008192/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/mqueue_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/mqueue_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/TCPv6/free_calls: Function not implemented
+grep: /sys/kernel/slab/TCPv6/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/UDPv6/free_calls: Function not implemented
+grep: /sys/kernel/slab/UDPv6/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/anon_vma/free_calls: Function not implemented
+grep: /sys/kernel/slab/anon_vma/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/tw_sock_TCP/free_calls: Function not implemented
+grep: /sys/kernel/slab/tw_sock_TCP/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/radix_tree_node/free_calls: Function not implemented
+grep: /sys/kernel/slab/radix_tree_node/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/fat_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/fat_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/UDP-Lite/free_calls: Function not implemented
+grep: /sys/kernel/slab/UDP-Lite/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/proc_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/proc_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000016/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000016/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000024/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000024/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000032/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000032/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000040/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000040/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000064/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000064/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000072/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000072/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000104/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000104/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000112/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000112/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000136/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000136/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000176/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000176/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000192/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000192/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000464/free_calls: Function not implemented
+grep: /sys/kernel/slab/:at-0000464/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/kmem_cache_node/free_calls: Function not implemented
+grep: /sys/kernel/slab/kmem_cache_node/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/fat_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/fat_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/sock_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/sock_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/fuse_inode/free_calls: Function not implemented
+grep: /sys/kernel/slab/fuse_inode/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/UDPLITEv6/free_calls: Function not implemented
+grep: /sys/kernel/slab/UDPLITEv6/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/fscache_cookie_jar/free_calls: Function not implemented
+grep: /sys/kernel/slab/fscache_cookie_jar/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/tw_sock_TCPv6/free_calls: Function not implemented
+grep: /sys/kernel/slab/tw_sock_TCPv6/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/ext4_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/ext4_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/rpc_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/rpc_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/shmem_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/shmem_inode_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/bdev_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/bdev_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/cachefiles_object_jar/free_calls: Function not implemented
+grep: /sys/kernel/slab/cachefiles_object_jar/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/kmem_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/kmem_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/sighand_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/sighand_cache/alloc_calls: Function not implemented
+grep: /sys/kernel/slab/nfs_inode_cache/free_calls: Function not implemented
+grep: /sys/kernel/slab/nfs_inode_cache/alloc_calls: Function not implemented

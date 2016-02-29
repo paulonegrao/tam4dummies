@@ -1,0 +1,228 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+div.lecture-panel {
+    // padding-top: 1.5em;
+    height: 5em;
+    border-left: 1em solid #9E8D00;
+    margin-bottom: 9px;
+
+    h2 {
+      margin-top: 0;
+      color: white;
+    }
+}
+
+div.topic-group {
+  margin-bottom: 1em;
+}
+
+div.topic-panel {
+  margin-left: 3em;
+  margin-bottom: 5px;
+
+  a {
+    color: black;
+    background: rgb(67, 60, 8);
+    display: block;
+    padding: 0.5em 0 0.5em 1em;
+  }
+
+  a:hover {
+    color: gray;
+    background: #9E8D00;
+    text-decoration: none;
+  }
+}
+
+a.topic-link {
+  display: block;
+  padding-left: 1em;
+  height: 100%;
+  background: rgb(67, 60, 8);
+  font-size: 1.5em;
+  padding-top: 0.9em;
+  color: black;
+
+  span {
+    background: gray;
+    color: white;
+  }
+
+}
+
+a.topic-link:hover {
+  background: #9E8D00;
+  text-decoration: none;
+}
+
+//--------------------------
+
+body {
+//  background-color: rgb(230, 217, 7);
+  //background-color: rgb(254, 225, 11);
+  background-color: black;
+}
+.up-div {
+  background-color: black;
+  > img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+.down-div {
+  background-color: rgb(215, 200, 82);
+  > img {
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
+    }
+}
+
+.maluca {
+  background-color: green;
+  color: white;
+}
+.created-by {
+  font-size: 65%;
+  color:rgba(0, 0, 0, 0.39);
+}
+.icon-big {
+  font-size: 25px;
+}
+.label_check_boxes label {
+  margin-left: 5px;
+  margin-right: 25px;
+}
+$bgDefault      : rgb(255, 227, 0);
+$bgHighlight    : rgba(0, 0, 0, 0.38);
+$colDefault     : rgb(123, 117, 62);
+$colHighlight   : #ffffff;
+$contrast       : #9e8d00;
+$dropDown       : false;
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    &:hover, &:focus {
+      background-color: $contrast; }
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight; }}
+      //@if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          padding-top: 0px;
+          padding-bottom: 0px;
+          min-width: 10px;
+          > li > a {
+            padding-top: 6px;
+            padding-bottom: 6px;
+            color: $colDefault;
+            &:hover,  &:focus {
+              color: $colHighlight;
+              background-color: $contrast; }}
+          .divider {
+            background-color: $bgHighlight;}}
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}
+
+///////////////////////////////
+
+
+div.navbar-padding {
+  margin-bottom: 75px;
+}
+
+.flash-box {
+    padding: 15px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.flash-box.warning {
+  border-left: 8px solid #ffd714;
+}
+
+.flash-box.notice {
+  border-left: 8px solid #87cb00;
+}
+
+textarea#post_code  {
+  height: 20em;
+}
+
+.padded {
+  margin: 0.75em;
+}
+
+code {
+}
+
+// Hacks for the navbar popping higher on the mobile media query
+nav.navbar.navbar-default.navbar-fixed-top {
+  height: 52px;
+}
+
+.container-fluid{
+  height: 52px;
+}
+//-----------------------------------
+video {
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+
+    -o-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+    vertical-align: top;
+    width: 100%;
+}
+
+p { padding: 1em; }
+
+// li {
+//     border-bottom: 1px solid rgb(189, 189, 189);
+//     border-left: 1px solid rgb(189, 189, 189);
+//     padding: .5em;
+// }

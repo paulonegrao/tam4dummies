@@ -1,0 +1,2 @@
+module TakesHelper
+end

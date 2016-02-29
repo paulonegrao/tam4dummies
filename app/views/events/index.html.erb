@@ -1,0 +1,45 @@
+<script>
+$(function() {
+
+  $('#stream.submit').click(function(e){
+    e.preventDefault();
+    $("#stream_form").attr('action', '/topics/' + $( "#topics_select option:selected" ).attr("value") + '/stream/create');
+    //$('YOURFORM').submit();
+  }
+});
+</script>
+<%= form_for :stream, url: {action: "show"}, html: {method: "post", id: 'stream_form'} do |f| %>
+  <%= f.label "Lecture" %>
+  <%= f.select :lecture_id, options_for_select(@lectures.collect { |lecture| ["#{lecture.chapter}. #{lecture.subject}", lecture.id] }, 1), {}, { id: 'lectures_select' } %>
+
+  <%= f.label "Topic" %>
+  <%= f.select :topic_id, options_for_select(@topics.collect { |topic| ["#{topic.number}. #{topic.title}", topic.id] }, 0), {}, { id: 'topics_select' } %>
+
+  <%= f.label "Description" %>
+  <%= f.text_field :description, placeholder: 'describe this Stream here (optional).', size: '50' %>
+
+  <%= f.text_field :timestamp, readonly: true, value: "#{Time.parse(DateTime.now.to_s)}", size: '50'%>
+  <%= f.submit "Go!", id: 'stream_submit' %>
+<% end %>
+
+              <table style="width: 100%;" id="rooms-list"></table>
+
+                <!-- local/remote videos container -->
+          <div class="row">
+            <div class="col-md-10">
+              <div style="background: red;">
+                <div id="videos-container"></div>
+                <video id="teste" width="320" height="240" autoplay></video>
+              </div>
+            </div>
+            <div class="col-md-2">
+                <button id="share-screen" class="tam-button" disabled><img src="<%= asset_path 'capturing_tam.png' %>"></button>
+                <button id="cut-screen" class="tam-button" disabled><img src="<%= asset_path 'cut_tam.png' %>"></button>
+            </div>
+          </div>
+         </div>
+         <script>
+$("#stream_form").submit(function(){
+ $("#stream_form").attr('action', '/topics/' + $( "#topics_select option:selected" ).attr("value") + '/streams');
+});
+</script>

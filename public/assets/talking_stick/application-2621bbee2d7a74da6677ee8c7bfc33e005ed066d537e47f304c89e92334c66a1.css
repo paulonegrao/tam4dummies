@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+html,
+body,
+body > .container-fluid,
+body > .container-fluid > .row
+body > .container-fluid > .row > [class^="col-xs-"]  {
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+#localvideo-container {
+  width: 100%;
+  left: 1em;
+  z-index: 99;
+}
+
+#localvideo {
+  width: 100%;
+  padding-top: 1em;
+  max-width: 200px;
+}
+
+.modal #localvideo {
+  max-height: 320px;
+  width: 100%;
+  max-width: none;
+}
+
+#partnervideos {
+  width: 100%;
+  height: 100%;
+}
+
+#partnervideos .video {
+  float: right;
+  padding: 1em;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+#partnervideos .video video {
+  width: 100%;
+}
+
+#video-preview p {
+  font-size: 1.4em;
+  line-height: 1.3em;
+  padding: 1em 0;
+}
+
+#form-submit-buttons {
+  padding-top: 20px;
+}

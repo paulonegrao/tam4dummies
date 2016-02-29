@@ -1,0 +1,17 @@
+<% if Time.now.utc - @event.updated_at > 3 %>
+    if ($('#on-off-air').hasClass('on-air')) {
+          $('#on-off-air').removeClass('on-air');
+          $('#on-off-air').addClass('off-air');
+    };
+    
+    $('#on-off-air').attr('onclick', "");
+    $('#on-off-air').attr('data-live', "");
+<% else %>
+    if ($('#on-off-air').hasClass('off-air')) {
+          $('#on-off-air').removeClass('off-air');
+          $('#on-off-air').addClass('on-air');
+    };
+
+    $('#on-off-air').attr('onclick', '<%= "#{@event.live_yt_id}" %>');
+    $('#on-off-air').attr('data-live', '<%= "#{@event.live_id}" %>');
+<% end %>

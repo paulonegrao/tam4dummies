@@ -1,0 +1,6 @@
+<option value="<%= topic.id %>"><%= "#{topic.number}. #{topic.title}" %></option>
+<script>
+var t = <%= "#{topic.number}" %>
+var stream_action = "/topics/" + <%= "#{topic.number}" %> + "/sreams/create"
+document.getElementById("stream_form").action = "teste";
+</script>

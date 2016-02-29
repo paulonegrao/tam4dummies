@@ -1,0 +1,1 @@
+$('#tam-event-form').html("<%= j (render 'form') %>");
