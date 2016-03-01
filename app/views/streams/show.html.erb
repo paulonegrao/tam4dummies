@@ -124,16 +124,16 @@
 
                         video.play();
 // tam-liveon ....
-                        <% if current_user.role == 'robot' %>
+<% if current_user.role == 'robot' %>
 // robot video playing... fires cmd on server to stream video to youtube live
-<!-- AJAX to Start Youtube Live Streaming  -->
+// AJAX to Start Youtube Live Streaming
 $.ajax({
-  type: "GET",
-  url:"<%= live_stream_start %>",
+  type: "POST",
+  url:"<%= live_stream_start_path %>",
   processData: false,
   contentType: 'application/json'
 });
-                        <% end %>
+<% end %>
 
                         // rotateVideo(video);
                     },
