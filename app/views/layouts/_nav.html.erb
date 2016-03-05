@@ -1,13 +1,14 @@
 <nav class="nav navbar-default">
   <div class="container">
       <ul class="nav navbar-nav">
-        <li class="<%= [root_path, lectures_path].include?(request.path) ? 'navlink open' : '' %>"><%= link_to "Home".html_safe, root_path %></li>
+        <!-- <li class="<#%= [root_path, lectures_path].include?(request.path) ? 'navlink open' : '' %>"><%= link_to "Home".html_safe, root_path %></li> -->
+        <li class="<%= request.path.include?("root") ? 'navlink open' : '' %>"><%= link_to "Home".html_safe, root_path %></li>
       </ul>
       <ul class="nav navbar-nav">
         <li class="<%= request.path.include?("lectures") ? 'navlink open' : '' %>"><%= link_to "Lectures".html_safe, lectures_path %></li>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="<%= request.path.include?("lectures/new")? 'navlink open' : '' %>"><%= link_to "New Stream".html_safe, new_lecture_path %></li>
+        <li class="<%= request.path.include?("lectures/new") ? 'navlink open' : '' %>"><%= link_to "New Stream".html_safe, new_lecture_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

@@ -74,11 +74,13 @@ body {
     }
 }
 .down-div {
-  background-color: rgb(215, 200, 82);
+  height: auto;
+  letter-spacing: 2px;
+  color: $colDefault;
+  background-color: $bgDefault;
   > img {
       display: block;
-      margin-left: auto;
-      margin-right: 0;
+      margin: auto;
     }
 }
 

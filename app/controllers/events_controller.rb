@@ -23,7 +23,8 @@ class EventsController < ApplicationController
 
       @event.update(event_params)
       if @event.update_attributes(:updated_at => Time.now)
-        format.html
+        system('touch /home/pi/rails/tam4dummies/stream/tam_keep_alive &')
+	      format.html
         format.js { render :update_success }
       else
         format.html

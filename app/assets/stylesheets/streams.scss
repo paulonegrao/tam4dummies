@@ -1,6 +1,25 @@
 // Place all the styles related to the streams controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url(http://fonts.googleapis.com/css?family=Nothing+You+Could+Do);
+
+.affix {
+	/*width: inherit;*/
+}
+
+
+h1 {
+	font-family: 'Nothing You Could Do', cursive;
+	margin-top: 50px;
+	margin-bottom: 18px;
+	border-bottom: 2px solid #08c;
+	line-height: 33px;
+}
+h1#introduction {
+	font-weight: bold;
+	border-bottom: 2px solid transparent;
+	color: #468847;
+}
 .form_stream {
   display: inline-block;
   color: #9E9E9E;
@@ -64,6 +83,17 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
+.tam-patam {
+  background-image: url(asset_path('bt_patam'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .offset {
   margin-top: 2px;
+}
+#tam-event-keep-alive-video {
+  width: 0px;
+  height: 0px;
+  background-color: black;
+  visibility: hidden;
 }

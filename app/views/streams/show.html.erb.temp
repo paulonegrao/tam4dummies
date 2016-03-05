@@ -45,13 +45,13 @@
                                   <button id="share-screen" class="tam-button tam-capturing"></button>
                                   <div class="offset">.</div>
                                   <!-- onika <button id="cut-screen" class="tam-button" onclick="window.location.reload();"><img src="<%#= asset_path 'bt_tam_cut.png' %>"></button> -->
-                                  <button id="tam-patam" class="tam-button tam-patam"></button>
+                                  <button id="tam-roomToken" class="tam-button join"><img src="<%= asset_path 'bt_tam_cut.png' %>"></button>
                                 <% else %>
                                 <!--  <button id="share-screen" class="tam-button" disabled><img src="<%#= asset_path 'bt_tam_liveoff.png' %>"></button> -->
                                   <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
                                   <div class="offset">.</div>
                                   <!-- onika <button id="cut-screen" class="tam-button" onclick="window.location.reload();"><img src="<%#= asset_path 'bt_tam_cut.png' %>"></button> -->
-                                  <button id="tam-patam" class="tam-button"><img src="<%= asset_path 'bt_patam.png' %>"></button>
+                                  <button id="ze" class="tam-button join"><img src="<%= asset_path 'bt_tam_cut.png' %>"></button>
                                 <% end %>
                               </div>
 
@@ -198,7 +198,7 @@ $.ajax({
                         }
 
                         if(state == 'connected') {
-//tamcode                   alert('A user successfully received your screen.');
+  //tamcode                 alert('A user successfully received your screen.');
                         }
                     }
                 };
