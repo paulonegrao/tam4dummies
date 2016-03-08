@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227214901) do
+ActiveRecord::Schema.define(version: 20160307005911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,10 @@ ActiveRecord::Schema.define(version: 20160227214901) do
     t.text     "description"
     t.integer  "lecture_id"
     t.integer  "topic_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "broadcast_id"
+    t.string   "stream_name"
   end
 
   add_index "streams", ["lecture_id"], name: "index_streams_on_lecture_id", using: :btree

@@ -129,7 +129,7 @@
 // AJAX to Start Youtube Live Streaming
 $.ajax({
   type: "POST",
-  url:"<%= live_stream_start_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
+  url:"<%= live_stream_start_path %>",
   processData: false,
   contentType: 'application/json'
 });
@@ -198,7 +198,7 @@ $.ajax({
                         }
 
                         if(state == 'connected') {
-//tamcode                   alert('A user successfully received your screen.');
+                            alert('A user successfully received your screen.');
                         }
                     }
                 };
@@ -312,7 +312,7 @@ $.ajax({
                             video.setAttribute('muted', true);
                             video.setAttribute('id', 'video_tam');
 // tamcode changing capturing/cut button and action
-// if video playing fires keep-alive to sign that the video is 'ON AIR' / or reloads new_topics_stream_path(@topic)
+// if video playing fires keep-alive to sign that the video is 'ON AIR' / or reloads page
 <!-- AJAX to update Take for a new Stream/Take  -->
 $.ajax({
   type: "POST",
@@ -326,19 +326,17 @@ $.ajax({
           // <#% end %>
 
 var tam_alive = document.getElementById('tam-event-keep-alive-video');
-var loop_tam_alive = setInterval(function(){
+setInterval(function(){
   if (video.currentTime > 0) {
       tam_alive.click();
   } else {
-     // window.location.reload();
-     window.location.href = "<%= new_topic_stream_path(@topic) %>";
-     clearInterval(loop_tam_alive);
+      window.location.reload();
   };
 }, 3000);
                             var tam_obj = $('#share-screen');
                             tam_obj.removeClass('tam-capturing');
                             tam_obj.addClass('tam-cut');
-                            tam_obj.attr('onclick', 'window.location.replace("<%= new_topic_stream_path(@topic) %>")');
+                            tam_obj.attr('onclick', 'window.location.reload()');
                         },
                         onerror: function() {
                             if (isChrome && location.protocol === 'http:') {
@@ -542,3 +540,4 @@ var loop_tam_alive = setInterval(function(){
 
                 console.log('current chromeMediaSource', DetectRTC.screen.chromeMediaSource);
             </script>
+

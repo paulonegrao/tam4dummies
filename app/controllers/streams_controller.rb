@@ -17,23 +17,42 @@ class StreamsController < ApplicationController
     @lecture = Lecture.find @topic.lecture_id
     @stream.lecture = @lecture
     @stream.timestamp = "#{Time.parse(DateTime.now.to_s)}"
-    if @stream.save
-      # create the Broadcsat at Youtube Live
-# byebug
-#       args = "--broadcast-title testetam"
-#       check_results = `python /Users/paulonegrao/codecore/railsdir/tam_for_dummies_app/app/views/events/yt_setup.py --broadcast-title testetam`
-#       # check_results = system("python /Users/paulonegrao/codecore/railsdir/tam_for_dummies_app/app/views/events/yt_setup.py #{args}")
-      # puts check_results # => 'OK!'
+    
+    # create Broadcast on Youtube Live Streaming
+    title = "'#{@lecture.chapter}.#{@topic.number} - #{@topic.title}'"
+    titlest = "tam4dummies_stream_#{Stream.maximum(:id)+1}"
 
-      #render text: "#{@topic.title} #{@stream.lecture_id}"
-        @topic = Topic.find params[:topic_id]
-        redirect_to topic_stream_path(@topic, @stream), notice: "Stream created successfully"
+    time_now  = Time.now + 60
+    starttime = time_now.iso8601
+    
+    endtime = time_now + 2*60*60
+    endtime = endtime.iso8601
+
+    if @stream.description = ""
+       description = "not informed"
     else
-        flash[:alert] = @stream.errors.full_messages.join(", ")
-        render :new
-        #render "topics/#{@topics}/streams/new"
+       description = "'#{@stream.description}'"
     end
 
+    output = eval %Q[`mvn -f /home/pi/ytlive/api-samples/java/pom.xml exec:java -Dexec.mainClass="com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast" -Dexec.args="#{title} #{titlest} #{starttime} #{endtime} #{description}"`]
+    
+    result = $?.success?
+    if result
+       outputw = output.split('@@t4d_arg=')
+       @stream.broadcast_id = outputw[1]
+       @stream.stream_name  = outputw[2]	
+       if @stream.save
+          @topic = Topic.find params[:topic_id]
+          redirect_to topic_stream_path(@topic, @stream), notice: "Stream created successfully"
+       else
+          flash[:alert] = @stream.errors.full_messages.join(", ")
+          render :new
+          #render "topics/#{@topics}/streams/new"
+       end
+    else
+       flash[:alert] = "Youtube Broadcast Stream not created. Try again."
+       render :new
+    end
 
   end
 

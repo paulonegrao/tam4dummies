@@ -10,5 +10,6 @@ echo $ed
 args=$1" "$2" "$sd" "$ed" "$3
 echo $args
 
-EXECUTABLE='mvn -f /home/pi/ytlive/api-samples/java/pom.xml exec:java -Dexec.mainClass="com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast" -Dexec.args="'$args$
+EXECUTABLE='mvn -f /home/pi/ytlive/api-samples/java/pom.xml exec:java -Dexec.mainClass="com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast" -Dexec.args="'$args'"'
 eval $EXECUTABLE
+

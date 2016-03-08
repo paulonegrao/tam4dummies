@@ -11,7 +11,10 @@ class TakesController < ApplicationController
   end
 
   def live_stream_start    
-    system('/home/pi/rails/tam4dummies/stream/stream_yt.sh &')
+    # kill any stream_yt.sh still running
+    system('pkill -f "tam4dummies/stream/stream_yt.sh"')
+ 
+    system("/home/pi/rails/tam4dummies/stream/stream_yt.sh #{params[:stream_name]} #{params[:broadcast_id]} &")
     @pid = $?
     render :live_stream_started
   end
