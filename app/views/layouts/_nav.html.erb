@@ -8,7 +8,7 @@
         <li class="<%= request.path.include?("lectures") ? 'navlink open' : '' %>"><%= link_to "Lectures".html_safe, lectures_path %></li>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="<%= request.path.include?("lectures/new") ? 'navlink open' : '' %>"><%= link_to "New Stream".html_safe, new_lecture_path %></li>
+        <li class="<%= request.path.include?("tameline") ? 'navlink open' : '' %>"><%= link_to "TAMeline".html_safe, tameline_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
@@ -33,10 +33,9 @@
     <!-- </div> -->
   </div>
 </nav>
-    <div class="row">
+
       <div class="col-md-10"></div>
       <div class="col-md-2 offset">
         <%= link_to '', events_show_path, remote: true, id:'tam-event-keep-alive' %>
         <button id="on-off-air" class="tam-btonair off-air" data-live="0" disabled></button>
       </div>
-    </div>

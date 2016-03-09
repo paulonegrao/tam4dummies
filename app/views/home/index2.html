@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tam for Dummies</title>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+  <script src=”timeline/js/storyjs-embed.js”></script>
+
+</head>
+<body>
+  <nav class="nav navbar-default">
+  <div class="container">
+      <ul class="nav navbar-nav">
+        <!-- <li class="<#%= [root_path, lectures_path].include?(request.path) ? 'navlink open' : '' %>"><a href="/">Home</a></li> -->
+        <li class=""><a href="/">Home</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/lectures">Lectures</a></li>
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class=""><a href="/lectures/new">New Stream</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              Hello Tam Kbeili! <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a rel="nofollow" data-method="delete" href="/sessions">Log Out</a></li>
+            </ul>
+          </li>
+          <ul class="nav navbar-nav">
+          </ul>
+    <!-- </div> -->
+  </div>
+</nav>
+    <div class="row">
+      <div class="col-md-10"></div>
+      <div class="col-md-2 offset">
+        <a id="tam-event-keep-alive" data-remote="true" href="/events/show"></a>
+        <button id="on-off-air" class="tam-btonair off-air" data-live="0" disabled></button>
+      </div>
+    </div>
+
+
+
+    <div class='up-div'>
+      <img src="/assets/t4d-m-b5c86a895f86f5594560d8fbd5199fff457fb5fc63f6bf8c62fdc0ef7f0a5e22.png" />
+      <iframe src='//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1hiDqpEPZk-WF1X7kStc8jmqi4dRkRXBRzZH-QXgSqTI&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' frameborder='0'></iframe>
+    </div>
+<iframe src='//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1ftuHPVzcNQfv9KCvskb_LUHl-A1HO6WiojRv3bm5tCA&font=Default&lang=en&initial_zoom=2&height=300' width='100%' height='300' frameborder='0'></iframe>
+    <div class="row">
+      <div class='down-div' style="width:auto; padding-top:0px;">
+          <img width="60%" src="/assets/tam_home-1acdd87d571fbfdf84f8b06b2b97cff75b8bf4907a940882cd49f514ad974d4a.png" />
+      </div>
+    </div>
+
+</body>
+</html>

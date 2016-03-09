@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get "/tam14"  => "home#tam14"
   get "/getScreenId"  => "home#getScreenId"
 
+  get "/timelines/tameline" => "timelines#tameline", as: :tameline
+
   get '/tfdstuff'    => 'tfd#tfdstuff'
   # get '/serve_media/:filename'  =>  'tfd#serve'
   match '/tfd/:name'  =>  'tfd#serve', :as => :custom_image, via: [:get, :post]

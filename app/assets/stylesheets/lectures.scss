@@ -224,3 +224,22 @@ p { padding: 1em; }
 //     border-left: 1px solid rgb(189, 189, 189);
 //     padding: .5em;
 // }
+///////////// Timeline.js overrides /////////////////////
+.tl-text {
+  background-color: rgba(0, 0, 0, 0.0);
+}
+.tl-slide {
+  background-color: rgba(0, 0, 0, 0.06);
+}
+//.tl-timenav {
+//   background-color: blue;
+// }
+.tl-timenav-slider-background {
+  background-color: rgba(158, 158, 158, 0.23);
+}
+.tl-timeline {
+  background-color: black;
+}
+.tl-animate {
+  background-color: black;
+}
