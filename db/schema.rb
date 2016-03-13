@@ -11,10 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307005911) do
+ActiveRecord::Schema.define(version: 20160309182750) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "dummits", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "stream_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "dummits", ["stream_id"], name: "index_dummits_on_stream_id", using: :btree
+  add_index "dummits", ["user_id"], name: "index_dummits_on_user_id", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.integer  "live_id"
@@ -75,6 +87,8 @@ ActiveRecord::Schema.define(version: 20160307005911) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "dummits", "streams"
+  add_foreign_key "dummits", "users"
   add_foreign_key "streams", "lectures"
   add_foreign_key "streams", "topics"
   add_foreign_key "takes", "streams"

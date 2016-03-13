@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!-- always load the CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.knightlab.com/libs/timeline/latest/css/timeline.css">
+<!-- and then one of either -->
+<script type="text/javascript" src="https://cdn.knightlab.com/libs/timeline/latest/js/timeline.js"></script>
+<!-- or -->
+<script type="text/javascript" src="https://cdn.knightlab.com/libs/timeline/latest/js/timeline-min.js"></script>
+<!-- but no need for both -->
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    //$("p").detach();
+var t = $("#d2").offset();
+    $("#d2").detach().appendTo('body', window.parent.document);
+$("#d2").css("top", t.top);
+$("#d2").css("left", t.left);
+//$('body', window.parent.document).append("this is coming from my iframe");
+  });
+});
+</script>
+<style>
+li:nth-child(even) {
+  content: "par";
+}
+li:nth-child(odd) {
+  content: "impar";
+}
+</style>
+</head>
+<body>
+<iframe src='//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1ftuHPVzcNQfv9KCvskb_LUHl-A1HO6WiojRv3bm5tCA&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' frameborder='0'></iframe>
+  <div>
+<div id="d1" style="width: 300px; height: 100px; background-color: red;">
+<br /><br /><br /><br />
+<div id="d2" style="width: 100px; height: 100px; background-color: blue;"></div>
+</div>
+</div>
+<ul id="footer">
+  <li id="dn1" style="width: 200px; height: 100px; background-color: yellow;">
+    <a href="#"> teste </a>
+  </li>
+  <li id="dn2" style="width: 200px; height: 100px; background-color: green;">
+    <a href="#"> teste </a>
+  </li>
+  <li id="dn3" style="width: 200px; height: 100px; background-color: cyan;">
+    <a href="#"> teste </a>
+  </li>
+</ul >
+
+<p>This is a paragraph.</p>
+<p>This is another paragraph.</p>
+<button>Remove all p elements</button>
+
+</body>
+</html>

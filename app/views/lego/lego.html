@@ -10,94 +10,52 @@
     div {
       width: 200px;
       height: 200px;
-      background-color: coral;
-      background-image: url('../../assets/images/tam_icon.png');
-}
-      animation: square-to-circle 2s .5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
+      background-image: url('../../assets/images/legored.png');
+      background-size: contain;
+      background-repeat: no-repeat;
     }
+    #lego.animate {
+    	animation-name: ani1;
+    	animation-duration: 10s;
+    	animation-timing-function: ease;
+    	animation-iteration-count: 1;
+    	animation-direction: normal;
+    }
+      /*animation: square-to-circle 2s .5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
+    }*/
 
-    @keyframes square-to-circle {
+    @keyframes ani1 {
       0%  {
         border-radius:0 0 0 0;
-        background:coral;
+        /*background:coral;*/
         transform:rotate(0deg);
       }
       25%  {
         border-radius:50% 0 0 0;
-        background:darksalmon;
+        /*background:darksalmon;*/
         transform:rotate(45deg);
       }
       50%  {
         border-radius:50% 50% 0 0;
-        background:indianred;
+        /*background:indianred;*/
         transform:rotate(90deg);
       }
       75%  {
         border-radius:50% 50% 50% 0;
-        background:lightcoral;
+        /*background:lightcoral;*/
         transform:rotate(135deg);
       }
       100% {
         border-radius:50%;
-        background:darksalmon;
+        /*background:darksalmon;*/
         transform:rotate(180deg);
       }
     }
+
     </style>
     </head>
 <body>
-  <script>
-  $(document).ready(function() { 
-     createStoryJS({
-         width: ‘800’, 
-         height: ‘600’, 
-         source: ‘js/timeline.json’, 
-         embed_id: ‘my-timeline’ 
-     });
-     var data =
-        {“timeline”:{ 
-            “headline”:”My Week”,
-            “type”:”default”,
-            “text”:”This is a collection of my     favourite things over the last week”,
-            “startDate”:”2012,12,19”,  
-            “date”: [{“startDate”:”2013,04,10”,
-            “endDate”:”2013,04,11”,
-            “headline”:”Tweet, tweet!”,
-            “text”:”<p>I like this tweet</p>”,
-            “asset”: {
-             “media”:”https://twitter.com/    webdesignermag/status/279240825651752961”,
-             “credit”:”Web Designer”,
-             “caption”:””
-        }}]}};
-        function youtube() {
-          $.get(‘https://gdata.youtube.com/feeds/api/users/USERNAME/favorites?alt=json’, function(data) {
-          });
-        };
-        for (var i=0; i < data.feed.entry.length;     i++) {
-             var url = data.feed.entry[i].media$group.media$player[0].url,
-             taintedId = url.substr(url.        indexOf(‘?v=’), 14),
-             id = taintedId.replace(‘?v=’, ‘’),
-             timestamp = Date.parse(data.feed.    entry[i].published.$t),
-             date = new Date(timestamp),
-             month = date.getMonth() + 1;
-        };
-        var video = {
-          headline: data.feed.entry[i].title.$t,
-          text: ‘’,
-          asset: {
-            media: ‘http://youtu.be/’ + id,
-            credit: data.feed.entry[i].author[0].    name.$t,
-            caption: data.feed.entry[i].content.$t
-          },
-          startDate: date.getFullYear() + ‘,’ +     month + ‘,’ + date.getDate(),
-          endDate: this.startDate
-        };
-        timeline.timeline.date.push(video);
-}); 
- </script>
-<div></div>
-
-<section id=”my-timeline”></section>
+<div id="lego"></div>
 
 </body>
 </html>

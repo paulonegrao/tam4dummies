@@ -42,6 +42,9 @@ h1#introduction {
   margin-right: 0;
 }
 //-------------------------
+.transparent {
+  opacity: 0;
+}
 .hidden {
   visibility: hidden;
 }
@@ -88,8 +91,13 @@ h1#introduction {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.tam-dummit {
+  background-image: url(asset_path('bt_dummit'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .offset {
-  margin-top: 2px;
+  line-height: 10px;
 }
 #tam-event-keep-alive-video {
   width: 0px;

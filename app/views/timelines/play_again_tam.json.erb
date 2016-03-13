@@ -1,0 +1,40 @@
+{
+    "title": {
+        "media": {
+          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>",
+          "caption": "a ShutUp & Code! production",
+          "credit": "<a href='https://tams4dummies.com:3001'>tam4dummies.com</a>",
+          "thumbnail": "<%= asset_path 'patambig.png' %>"
+        },
+        "text": {
+          "headline": "<%= @headline %>",
+          "text": "<p><%= @description %></p>"
+        }
+    },
+    "events": [
+<% @dummits.each_with_index do |dummit, index| %>
+    <% minute = dummit.title.split(":")[0] %>
+    <% second = dummit.title.split(":")[1] %>
+      {
+        "media": {
+          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>&t=<%= minute %>m<%= second %>s",
+          "caption": "",
+          "credit": "<a href='https://www.youtube.com/tv#/watch?v=<%= @broadcast_id %>&t=<%= minute %>m<%= second %>s'>watch in fullscreen</a>"
+        },
+        "start_date": {
+          "hour": "00",
+          "minute": "<%= minute %>",
+          "second": "<%= second %>"
+        },
+        "text": {
+          "headline": "DUMM-ITed at <%= dummit.title %>",
+          "text": "<p><%= dummit.body %></p>"
+        }
+  <% if index == @dummits.size - 1 %>
+     }
+  <% else %>
+     },
+  <% end %>
+<% end %>
+   ]
+}

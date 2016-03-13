@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/getScreenId"  => "home#getScreenId"
 
   get "/timelines/tameline" => "timelines#tameline", as: :tameline
+  get "/timelines/play_again_tam" => "timelines#play_again_tam", as: :play_again_tam
 
   get '/tfdstuff'    => 'tfd#tfdstuff'
   # get '/serve_media/:filename'  =>  'tfd#serve'
@@ -26,6 +27,11 @@ Rails.application.routes.draw do
   resources :streams, only: [] do
     resources :takes, only: [:create]
   end
+
+  resources :streams, only: [] do
+    resources :dummits
+  end
+
   post 'takes/live_stream_start', as: 'live_stream_start'
 
   get '/auth/:provider/callback', to: 'yt_sessions#create'

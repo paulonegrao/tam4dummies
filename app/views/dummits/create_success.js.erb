@@ -1,0 +1,35 @@
+$("#dummit-new-3 a").html($("#dummit_title").val() + "<br />" + $("#dummit_body").val());
+$("#dummit-grid-tail a").html($("#dummit_title").val() + "<br />" + $("#dummit_body").val());
+$("#dummit-new-2").addClass('hidden');
+$("#dummit-new-3").removeClass('hidden');
+
+var dummit_new_pos = $("#dummit-new-3").position();
+var dummit_new_off = $("#dummit-new-3").offset();
+var dummit_tail_off = $("#dummit-grid-tail").offset();
+var target_left = (dummit_tail_off.left - dummit_new_off.left) + "px";
+var target_top = (dummit_tail_off.top - dummit_new_off.top) + "px";
+$("#dummit-new-3").css({
+      position: "absolute",
+      transition: "1s ease",
+      transform: "translate(" + target_left + ", " + target_top + ") rotate(180deg) rotate(180deg)"
+});
+
+setTimeout(function(){
+
+    var tail_index = $("#dummit-grid-tail").index();
+    $("#dummit-grid-tail").clone().appendTo("#dummit-grid-ul");
+    $("#dummit-grid-ul li:nth-child(" + (tail_index + 1) + ")").attr("id", "#dummit-grid-tail-" + tail_index + 1);
+
+    // $("#dummit-grid-ul li:nth-child(" + (tail_index + 1) + ")").removeClass("hidden");
+    $("#dummit-grid-ul li:nth-child(" + (tail_index + 1) + ")").removeClass("transparent");
+    $("#dummit-new-3").remove();
+
+    $("#dummit-new-ul").append('<li id="dummit-new-3" class="hidden"><a href="#" id="dummit-new-3-content"></a></li>');
+
+    $("#dummit-new-1").attr("class", $("#dummit-grid-tail a").css("content").slice(1, -1));
+    $("#dummit-new-2").attr("class", $("#dummit-grid-tail a").css("content").slice(1, -1));
+    $("#dummit-new-3").attr("class", $("#dummit-grid-tail a").css("content").slice(1, -1));
+    $("#dummit-new-2").addClass('hidden');
+    $("#dummit-new-3").addClass('hidden');
+
+}, 900);

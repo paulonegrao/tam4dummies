@@ -40,11 +40,11 @@
         </div>
         <div class="row">
             <div class="col-md-10">
-                <span id="grayboard" class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
+                <span class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
 <!--  VIDEO CONTAINER -->
                     <div id="videos-container"></div>
                     <video id="teste" width="100%" height="240" autoplay></video>
-<!-- DUMMIT GRID -->
+
                     <section id="dummit-grid-section" class="dummit hidden" style="padding-left: 13px; padding-top: 13px;">
                         <h3>Dumm-it's</h3>
                         <ul id="dummit-grid-ul" style="padding-top: 13px;">
@@ -56,7 +56,7 @@
                                     </a>
                                 </li>
                             <% end %>
-                                <li id="dummit-grid-tail" class="transparent">
+                                <li id="dummit-grid-tail" class="hidden">
                                     <a href="#">
                                     </a>
                                 </li>
@@ -75,17 +75,14 @@
                 <% else %>
 
                     <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
-
                     <div class="offset">.</div>
 
                     <button id="tam-patam" class="tam-button"><img src="<%= asset_path 'bt_patam.png' %>"></button>
 
-                    <div class="offset">.</div>
-
                     <button id="tam-dummit" class="tam-button"><img src="<%= asset_path 'bt_dummit.png' %>"></button>
 
                     <section id="dummit-new-section" class="dummit-new hidden">
-                        <ul id="dummit-new-ul" style="margin-bottom: 0px; padding-top: 10px; padding-bottom: 10px; margin-top: -10; border-top-width: 10px; margin-top: 38px;">
+                        <ul id="dummit-new-ul" style="margin-bottom: 0px; padding-top: 5px; margin-top: -10; border-top-width: 10px; margin-top: 36px;">
                             <li id="dummit-new-1" style="margin-right: 0px; margin-left: 28px;">
                                 <a href="#">Click to create a Dumm-it Note
                                 </a>
@@ -94,9 +91,9 @@
                                 <%= form_for [@stream, @dummit], remote: true do |f| %>
                                     <div class="form-groupa">
                                         <a href="#"><p>
-                                            <%= f.label :title, value: "sambarilovi", :name => "title"%>
+                                            <%= f.label :title, value: "sambarilovi"%>
                                             <%= f.button "<span class='glyphicon glyphicon-check'></span>".html_safe, type: "submit", class: "btns btns-success padddeds" %>
-                                            <%= f.text_area :body, placeholder: "enter your note here...", size: "25x5", id:"dummit-new-2-tarea" %>
+                                            <%= f.text_area :body, placeholder: "enter your note here...", size: "25x5", class: "form-controla" %>
                                         </p></a>
                                     </div>
                                 <% end %>
@@ -106,7 +103,6 @@
                                 </a>
                             </li>
                         </ul>
-                        <div class="offset">.</div>
                     </section>
                 <% end %>
             </div>
@@ -144,10 +140,10 @@
 
             </script>
         <% end %>
-        <script>
 //////////////////////////////////////////////////////////////////////////
 ///// Play it Again TAM //////// call Timeline Page //////////////////////
 //////////////////////////////////////////////////////////////////////////
+        <script>
             $("#tam-patam").on("click", function() {
                 window.location.href = '<%= "#{play_again_tam_path}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
             });

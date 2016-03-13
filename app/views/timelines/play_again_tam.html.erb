@@ -1,0 +1,13 @@
+<div style='width: 100%; height: 80%;'>
+    <div id="timeline"></div>
+    <style>
+    .tl-icon-youtube:before {
+			content:url(<%= asset_path 'dummit_24x24.png' %>);
+		}
+    </style>
+    <script>
+      var timeline = new TL.Timeline('timeline', '<%= play_again_tam_path("json", @params_patam) %>', {
+      	ga_property_id: "UA-27829802-4"
+      });
+    </script>
+</div>

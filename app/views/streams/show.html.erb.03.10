@@ -8,9 +8,8 @@
 
     <div class="github-stargazers"></div>
     <table style="width: 100%;" class="hidden" id="rooms-list"></table>
-    <div class="container" style="margin-left: 80px; margin-right: 80px; width: auto;">
+    <div class="container">
         <div class="row">
-<!-- form Creat Stream -->
             <%= form_for "" do |f| %>
                 <div class="col-md-10" style="padding-right: 0;">
                     <span  class="col-md-2 form_stream">
@@ -40,31 +39,29 @@
         </div>
         <div class="row">
             <div class="col-md-10">
-                <span id="grayboard" class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
-<!--  VIDEO CONTAINER -->
+                <span class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
                     <div id="videos-container"></div>
                     <video id="teste" width="100%" height="240" autoplay></video>
-<!-- DUMMIT GRID -->
-                    <section id="dummit-grid-section" class="dummit hidden" style="padding-left: 13px; padding-top: 13px;">
+
+                    <section id="dummit-grid-section" class="dummit hidden">
                         <h3>Dumm-it's</h3>
-                        <ul id="dummit-grid-ul" style="padding-top: 13px;">
-                            <% @dummits.each do |d| %>
+                        <ul id="dummit-grid-ul">
+                            <% @dummits.each_with_index do |d, index| %>
                                 <li>
-                                    <a href="#">
-                                        <p><%= d.title %></p>
-                                        <textarea rows="8" cols="10" style="border: none; background-color: transparent;"><%= d.body %></textarea>
-                                    </a>
+                                  <a href="#">
+                                      <h2><%= d.title %></h2>
+                                      <p><%= d.body %></p>
+                                  </a>
                                 </li>
+                                <% if index == @dummits.size - 1 %>
+                                    <li id="dummit-grid-tail"></li>
+                                <% end %>
                             <% end %>
-                                <li id="dummit-grid-tail" class="transparent">
-                                    <a href="#">
-                                    </a>
-                                </li>
                         </ul>
                     </section>
                 </span>
             </div>
-            <div class="col-md-2" style="padding-left: 0px; padding-right: 0px;">
+            <div class="col-md-2">
                 <% if current_user.role == 'instructor' %>
                     <button id="share-screen" class="tam-button tam-capturing"></button>
 
@@ -75,44 +72,40 @@
                 <% else %>
 
                     <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
-
                     <div class="offset">.</div>
 
                     <button id="tam-patam" class="tam-button"><img src="<%= asset_path 'bt_patam.png' %>"></button>
 
-                    <div class="offset">.</div>
-
                     <button id="tam-dummit" class="tam-button"><img src="<%= asset_path 'bt_dummit.png' %>"></button>
 
                     <section id="dummit-new-section" class="dummit-new hidden">
-                        <ul id="dummit-new-ul" style="margin-bottom: 0px; padding-top: 10px; padding-bottom: 10px; margin-top: -10; border-top-width: 10px; margin-top: 38px;">
-                            <li id="dummit-new-1" style="margin-right: 0px; margin-left: 28px;">
-                                <a href="#">Click to create a Dumm-it Note
+                        <ul id="dummit-new-ul">
+                            <li id="dummit-new-1">
+                                <a href="#">Click to create a Sticy Note
                                 </a>
                             </li>
-                            <li id="dummit-new-2" class="hidden" style="margin-right: 0px; margin-left: 28px;">
+                            <li id="dummit-new-2" class="hidden">
+                                <a href="#">
                                 <%= form_for [@stream, @dummit], remote: true do |f| %>
-                                    <div class="form-groupa">
-                                        <a href="#"><p>
-                                            <%= f.label :title, value: "sambarilovi", :name => "title"%>
-                                            <%= f.button "<span class='glyphicon glyphicon-check'></span>".html_safe, type: "submit", class: "btns btns-success padddeds" %>
-                                            <%= f.text_area :body, placeholder: "enter your note here...", size: "25x5", id:"dummit-new-2-tarea" %>
-                                        </p></a>
+                                    <div class="form-group">
+                                        <%= f.text_field :title, readonly: true, value: "sambarilovi"%>
+                                        <%= f.button "<span class='glyphicon glyphicon-check'></span>".html_safe, type: "submit", class: "btn btn-success paddded" %>
+                                        <p><%= f.text_area :body, placeholder: "enter your note here...", class: "form-control" %></p>
                                     </div>
                                 <% end %>
+                                </a>
                             </li>
-                            <li id="dummit-new-3" class="hidden" style="margin-right: 0px; margin-left: 28px;">
+                            <li id="dummit-new-3" class="hidden">
                                 <a href="#" id="dummit-new-3-content">
                                 </a>
                             </li>
                         </ul>
-                        <div class="offset">.</div>
                     </section>
                 <% end %>
             </div>
         </div>
     </div>
-        <div>
+    <div>
 <!-- AJAX to update Event with Stream data and update the 'updated_at' field  -->
           <%= form_for @event, as: :event, url: event_path(@event), method: :patch, remote: true do |f| %>
             <%= f.hidden_field :live_id, value: "0"%>
@@ -123,7 +116,7 @@
         </div>
         <% if current_user.role == 'robot' %>
             <script>
-                    setInterval(function(){
+                setInterval(function(){
                     var tam_obj = $('#on-off-air');
                     if (tam_obj.hasClass('on-air')) {
                         if ($('#event_live_id').attr('value') == 0) {
@@ -134,6 +127,7 @@
                             var tam_obj = $('#tam-roomToken');
                             if (tam_obj.hasClass('tam-liveoff')) {
                                 tam_obj.click();
+                                // document.getElementsByTagName('video')[0].webkitEnterFullscreen();
                             };
                         } else {
                           window.location.href = tam_obj.attr('onclick');
@@ -144,18 +138,15 @@
 
             </script>
         <% end %>
-        <script>
-//////////////////////////////////////////////////////////////////////////
-///// Play it Again TAM //////// call Timeline Page //////////////////////
-//////////////////////////////////////////////////////////////////////////
-            $("#tam-patam").on("click", function() {
-                window.location.href = '<%= "#{play_again_tam_path}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
-            });
-        </script>
 <% end %>
             <script>
 
             <script>
+
+
+            // document.getElementsByTagName('video')[0].webkitEnterFullscreen();
+
+
                 var isWebRTCExperimentsDomain = document.domain.indexOf('tam4dummies.com') != -1;
                 var config = {
                     openSocket: function(config) {
@@ -190,6 +181,7 @@ $.ajax({
   contentType: 'application/json'
 });
 <% end %>
+
                         // rotateVideo(video);
                     },
                     onRoomFound: function(room) {
@@ -221,7 +213,8 @@ $.ajax({
                         '<td class="hidden"><button class="tam-join hidden"></button></td>';
 
                         roomsList.insertBefore(tr, roomsList.firstChild);
-///////////////////////////////////////////////////////////////////////////
+
+                        //onika var button = tr.querySelector('.join');
                         var buttonJoin = tr.querySelector('.tam-join');
                         var button = document.getElementById('tam-roomToken');
                         button.onclick = function() {
@@ -252,7 +245,7 @@ $.ajax({
                         }
 
                         if(state == 'connected') {
-//tamcode                 alert('A user successfully received your screen.');
+//tamcode                   alert('A user successfully received your screen.');
                         }
                     }
                 };
