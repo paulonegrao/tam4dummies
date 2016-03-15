@@ -30,12 +30,14 @@
             </ul>
           </li>
         <% end %>
-    <!-- </div> -->
   </div>
 </nav>
-
-      <div class="col-md-10"></div>
-      <div class="col-md-2 offset">
-        <%= link_to '', events_show_path, remote: true, id:'tam-event-keep-alive' %>
-        <button id="on-off-air" class="tam-btonair off-air" data-live="0" disabled></button>
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <%= render "/layouts/flash_messages" %>
+      </div>
+      <div class="col-md-2">
+<!-- f4d.s02 -  -->
+          <%= link_to '', events_show_path, remote: true, id:'tam-event-keep-alive' %>
+          <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" disabled></button>
       </div>

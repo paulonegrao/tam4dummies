@@ -1,2 +1,0 @@
-<p>Congrats, you are going to <%= @topic.title.titleize %>!</p>
-<p><%= link_to 'Back', events_index_path %></p>

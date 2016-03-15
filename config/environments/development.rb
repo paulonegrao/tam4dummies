@@ -42,5 +42,5 @@ Rails.application.configure do
   # SSL
   config.use_ssl = true
   config.ssl_port = 3001
-  
+
 end

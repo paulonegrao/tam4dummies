@@ -1,4 +1,0 @@
-<%= form_tag "", remote: true do |f|    %>
-  <%= hidden_field_tag 'tam_live_id', value="#{@event.live_id}"%>
-  <%= hidden_field_tag 'tam_updated_at', value="#{@event.updated_at}"%>
-<% end %>

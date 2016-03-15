@@ -6,7 +6,7 @@ $(document).on("page:change", function() {
   $(".dropdown").on("hidden.bs.dropdown", function() {
     $(".navlink").addClass("open");
   });
-// fires AJAX to refresh ON-AIR icon
+// td4.s01 - fires AJAX to refresh ON-AIR icon (@ _nav.html.erb)
   setInterval(function(){
     document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
     }, 3000);

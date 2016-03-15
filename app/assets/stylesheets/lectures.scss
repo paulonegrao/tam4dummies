@@ -243,3 +243,21 @@ p { padding: 1em; }
 .tl-animate {
   background-color: black;
 }
+.alert-success {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(139, 195, 74, 0.36);
+    border-color: black;
+    color: rgba(139, 195, 74, 0.64);
+    border-top-width: 2px;
+    border-bottom-width: 0px;
+}
+.alert-danger {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background-color: rgba(233, 30, 30, 0.37);
+    border-color: black;
+    color: rgba(244, 67, 54, 0.54);
+    border-top-width: 2px;
+    border-bottom-width: 0px;
+}

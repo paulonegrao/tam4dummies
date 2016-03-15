@@ -99,6 +99,57 @@
 ///////////// dummit-new //////////////////
 ////////////////////////////////////////////////////////////////////////////
 .dummit-new {
+    #dummit-new-ul {
+    margin-bottom: 0px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-top: -10;
+    border-top-width: 10px;
+    margin-top: 36px;
+    }
+    #dummit-new-1 {
+    margin-right: 0px;
+    margin-left: 28px;
+    }
+    #dummit-new-1 a{
+    background-size: 130px;
+    background-position: center;
+    background-image: url(asset_path('dummit_new_bg'));
+    background-repeat: no-repeat;
+    border: none;
+    }
+    #dummit-new-2 {
+    margin-right: 0px;
+    margin-left: 28px;
+    }
+    #dummit-new-2 a{
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+    #dummit-new-3 {
+    margin-right: 0px;
+    margin-left: 28px;
+    }
+    #dummit_submit {
+    background-color: transparent;
+    background-image: url(asset_path('checkicon'));
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: none;
+    }
+    #dummit_title {
+    font-family: arial;
+    font-size:80%;
+    border: none;
+    background-color: transparent;
+    }
+    #dummit_body {
+      margin: 2px;
+      border: none;
+      background-color: transparent;
+    }
     h2,p,textarea{
       font-size:120%;
       font-weight:normal;

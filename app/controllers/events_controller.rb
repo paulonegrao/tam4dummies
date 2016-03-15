@@ -23,6 +23,7 @@ class EventsController < ApplicationController
 
       @event.update(event_params)
       if @event.update_attributes(:updated_at => Time.now)
+# t4d.s03 - TOUCH "tam_keep_alive"; live_id=0; live_yt_id=resquest_path
         system('touch /home/pi/rails/tam4dummies/stream/tam_keep_alive &')
 	      format.html
         format.js { render :update_success }
@@ -33,6 +34,7 @@ class EventsController < ApplicationController
     end
   end
 
+# t4d.s03 - find las (and unic) Event and passes it to show.js.erb (on events view)
   def show
     @event = Event.last
     respond_to do |format|
