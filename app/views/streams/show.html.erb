@@ -78,9 +78,11 @@
                 <% else %>
                     <div class="container">
                         <% if @take.present? %>
-                            <button id="tam-roomToken" class="tam-button tam-liveoff hidden"></button>
+                            <div id="tam-liveoff-div" class="hidden">
+                                <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
+                                <div class="offset">.</div>
+                            </div>
 
-                            <div class="offset">.</div>
                             <button id="tam-patam" class="tam-button tam-patam"></button>
 
                             <div class="offset">.</div>
@@ -168,9 +170,9 @@
 // t4dcode: checks if it is at the live "topics/x/streams/y" page them changes "tam-liveoff" accordingly
                         if (window.location.href.includes(tam_obj.attr('onclick')) &&
                             tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
-                              $('#tam-roomToken').attr('class', "tam-button tam-liveoff");
+                              $('#tam-liveoff-div').attr('class', "");
                         } else {
-                              $('#tam-roomToken').attr('class', "tam-button tam-liveoff hidden");
+                              $('#tam-liveoff-div').attr('class', "hidden");
                         };
                     };
                 }, 3000);
@@ -217,7 +219,7 @@
 // AJAX to Start Youtube Live Streaming
 $.ajax({
   type: "POST",
-  url:"<%= takes_starts_yt_live_stream_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
+  url:"<%= takes_start_yt_live_stream_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
   processData: false,
   contentType: 'application/json'
 });

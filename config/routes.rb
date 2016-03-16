@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     resources :dummits
   end
 
-  post 'takes/takes_starts_yt_live_stream', as: 'takes_starts_yt_live_stream'
+  post 'takes/takes_start_yt_live_stream', as: 'takes_start_yt_live_stream'
 
   get '/auth/:provider/callback', to: 'yt_sessions#create'
   delete '/logout', to: 'yt_sessions#destroy', as: :logout
