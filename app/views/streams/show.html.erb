@@ -77,7 +77,7 @@
 
                 <% else %>
                     <div class="container">
-                        <% if !@take.present? %>
+                        <% if @take.present? %>
                             <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
 
                             <div class="offset">.</div>
@@ -127,10 +127,10 @@
             <%= f.hidden_field :live_yt_id, value: "#{request.path}"%>
             <%= f.submit "", id: 'tam-event-keep-alive-video', class: "transparent" %>
           <% end %>
-
         </div>
         <% if current_user.role == 'robot' %>
             <script>
+//////////////// ROBOT ///////////////////////////////////////////////////
                     setInterval(function(){
                     var tam_obj = $('#on-off-air');
                     if (tam_obj.hasClass('on-air')) {
@@ -153,6 +153,27 @@
 
                 }, 3000);
 
+            </script>
+        <% end %>
+        <% if current_user.role == 'dummy' %>
+            <script>
+//////////////// DUMMY ///////////////////////////////////////////////////
+                    setInterval(function(){
+                    var tam_obj = $('#on-off-air');
+                    if (tam_obj.hasClass('on-air')) {
+// t4dcode: if "event_live_id" == 0 it needs to be updated with "data-live" from on-off-air
+                        if ($('#event_live_id').attr('value') == 0) {
+                          $('#event_live_id').attr('value', $('#on-off-air').attr('data-live'));
+                        };
+// t4dcode: checks if it is at the live "topics/x/streams/y" page them changes "tam-liveoff" accordingly
+                        if (window.location.href.includes(tam_obj.attr('onclick')) &&
+                            tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
+                              $('#tam-roomToken').attr('class', "tam-button tam-liveoff");
+                        } else {
+                              $('#tam-roomToken').attr('class', "tam-button tam-liveoff hidden");
+                        };
+                    };
+                }, 3000);
             </script>
         <% end %>
         <script>

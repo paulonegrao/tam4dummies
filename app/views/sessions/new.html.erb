@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <h2>sign in</h2>
+        <h2 class="fontpad">sign in</h2>
     </div>
     <div class="col-md-2"></div>
     <div class="container">
@@ -9,11 +9,11 @@
         <div class="col-md-8">
             <%= form_tag sessions_path do %>
                 <div class="form-group">
-                    <%= label_tag :email, "email" %>
+                    <%= label_tag :email, "email", class: "label" %>
                     <%= email_field_tag :email, "", class: "form-control"%>
                 </div>
                 <div class="form-group">
-                    <%= label_tag :password, "password" %>
+                    <%= label_tag :password, "password", class: "label" %>
                     <div class="form-group form-inline">
                         <%= password_field_tag :password, "", class: "form-control", size: 20%>
 
