@@ -38,7 +38,11 @@
                                         <% image_topic = asset_path 'thumb_default.png' %>
                                   <%# end %> -->
                                   <!-- <%#= link_to "#{image_tag image_topic, class: 'img-circle', width: '50', height: '50'} &nbsp;&nbsp; #{topic.title}".html_safe, lecture_topic_path(lecture, topic) %> -->
-                                  <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
+                                  <% if user_signed_in? %>
+                                      <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
+                                  <% else %>
+                                      <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, new_session_path %>
+                                  <% end %>
                                 </span>
                               </div>
                         <% end %>

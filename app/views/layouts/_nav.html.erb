@@ -19,8 +19,8 @@
               <li><%= link_to "Log Out", sessions_path, method: :delete %></li>
             </ul>
           </li>
-          <ul class="nav navbar-nav">
-          </ul>
+          <!-- <ul class="nav navbar-nav">
+          </ul> -->
         <% else %>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Let's Rock!<span class="caret"></span></a>
@@ -30,14 +30,17 @@
             </ul>
           </li>
         <% end %>
+      </ul>
   </div>
 </nav>
-      <div class="col-md-2"></div>
-      <div class="col-md-8">
-          <%= render "/layouts/flash_messages" %>
-      </div>
-      <div class="col-md-2">
-<!-- f4d.s02 -  -->
-          <%= link_to '', events_show_path, remote: true, id:'tam-event-keep-alive' %>
-          <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" disabled></button>
-      </div>
+<div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <%= render "/layouts/flash_messages" %>
+    </div>
+    <div class="col-md-2">
+    <!-- f4d.s02 -  -->
+        <%= link_to '', events_show_path, remote: true, id:'tam-event-keep-alive' %>
+        <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" disabled></button>
+    </div>
+</div>

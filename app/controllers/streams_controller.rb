@@ -35,7 +35,7 @@ class StreamsController < ApplicationController
     else
        description = "'#{@stream.description}'"
     end
-
+# t4d.sxx - Create Broadcast at Youtube
     output = eval %Q[`mvn -f /home/pi/ytlive/api-samples/java/pom.xml exec:java -Dexec.mainClass="com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast" -Dexec.args="#{title} #{titlest} #{starttime} #{endtime} #{description}"`]
 
     result = $?.success?
@@ -63,6 +63,7 @@ class StreamsController < ApplicationController
     @lecture = Lecture.find @topic.lecture_id
     @stream = Stream.find params[:id]
     @event = Event.last
+    @take = Take.where("stream_id = ?", params[:id])
     @dummits = Dummit.all
     @dummit = Dummit.new
   end

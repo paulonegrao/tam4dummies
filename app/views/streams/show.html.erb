@@ -68,23 +68,27 @@
 <!-- t4d setup of first button regarding user.role  -->
 <!-- if "instructor" button="tam-capturing"; else button="tam-liveoff" -->
                 <% if current_user.role == 'instructor' %>
-                    <button id="share-screen" class="tam-button tam-capturing"></button>
+                    <% if !@take.present? %>
+                        <button id="share-screen" class="tam-button tam-capturing"></button>
 
-                    <div class="offset">.</div>
-
+                        <div class="offset">.</div>
+                    <% end %>
                     <button id="tam-patam" class="tam-button tam-patam"></button>
 
                 <% else %>
                     <div class="container">
-                        <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
+                        <% if !@take.present? %>
+                            <button id="tam-roomToken" class="tam-button tam-liveoff"></button>
 
-                        <div class="offset">.</div>
+                            <div class="offset">.</div>
+                            <button id="tam-patam" class="tam-button tam-patam"></button>
 
-                        <button id="tam-patam" class="tam-button tam-patam"></button>
+                            <div class="offset">.</div>
 
-                        <div class="offset">.</div>
-
-                        <button id="tam-dummit" class="tam-button tam-dummit"></button>
+                            <button id="tam-dummit" class="tam-button tam-dummit"></button>
+                        <% else %>
+                            <button id="tam-patam" class="tam-button tam-patam"></button>
+                        <% end %>
                     </div>
 <!-- t4d section "dummit-new-section": setup form input dumm-its -->
                     <section id="dummit-new-section" class="dummit-new hidden">
@@ -139,6 +143,7 @@
                             tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
                             var tam_obj = $('#tam-roomToken');
                             if (tam_obj.hasClass('tam-liveoff')) {
+// t4dcode: robot RPi entering in "tam-liveon" state
                                 tam_obj.click();
                             };
                         } else {
@@ -146,7 +151,7 @@
                         };
                     };
 
-                }, 5000);
+                }, 3000);
 
             </script>
         <% end %>
@@ -158,10 +163,9 @@
                 window.location.href = '<%= "#{play_again_tam_path}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
             });
         </script>
-<% end %>
 <!-- ?????????????????????????????????? <script> -->
 
-            <script>
+        <script>
                 var isWebRTCExperimentsDomain = document.domain.indexOf('tam4dummies.com') != -1;
                 var config = {
                     openSocket: function(config) {
@@ -186,12 +190,13 @@
 
                         video.play();
 // tam-liveon ....
+// t4d.s08 - preparing to stream to Youtube at the RPi
 <% if current_user.role == 'robot' %>
 // robot video playing... fires cmd on server to stream video to youtube live
 // AJAX to Start Youtube Live Streaming
 $.ajax({
   type: "POST",
-  url:"<%= live_stream_start_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
+  url:"<%= takes_starts_yt_live_stream_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
   processData: false,
   contentType: 'application/json'
 });
@@ -602,3 +607,6 @@ var loop_tam_alive = setInterval(function(){
 
                 console.log('current chromeMediaSource', DetectRTC.screen.chromeMediaSource);
             </script>
+<% else %>
+    render "new_session_path"
+<% end %>

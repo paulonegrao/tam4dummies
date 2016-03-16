@@ -11,13 +11,14 @@ class TakesController < ApplicationController
 
   end
 
-  def live_stream_start
-    # kill any stream_yt.sh still running
-    system('pkill -f "tam4dummies/stream/stream_yt.sh"')
+  def takes_starts_yt_live_stream
+# t4d.s09 - call "stream_yt.sh" to initiate Stream to Youtube Live Streaming
+    # kills any stream_yt.sh leftovers still running
+    # system('pkill -f "tam4dummies/stream/stream_yt.sh"')
 
     system("/home/pi/rails/tam4dummies/stream/stream_yt.sh #{params[:stream_name]} #{params[:broadcast_id]} &")
     @pid = $?
-    render :live_stream_started
+    render :takes_starts_yt_live_streamed
   end
 
 end
