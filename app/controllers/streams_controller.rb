@@ -30,18 +30,22 @@ class StreamsController < ApplicationController
     endtime = time_now + 2*60*60
     endtime = endtime.iso8601
 
-    if @stream.description = ""
-       description = "not informed"
+    if !@stream.description.present?
+       description = "'not informed'"
     else
        description = "'#{@stream.description}'"
     end
 # t4d.sxx - Create Broadcast at Youtube
     # output = eval %Q[`mvn -f /home/pi/ytlive/api-samples/java/pom.xml exec:java -Dexec.mainClass="com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast" -Dexec.args="#{title} #{titlest} #{starttime} #{endtime} #{description}"`]
-    output = eval %Q[`java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast "#{title} #{titlest} #{starttime} #{endtime} #{description}"`]
+    output = []
+    IO.popen("java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast #{argscreate}").each do |line|
+         p line.chomp
+         output << line.chomp
+    end
 
-    result = $?.success?
-    if result
-       outputw = output.split('@@t4d_arg=')
+    outputw = output.split('@@t4d_arg=')
+
+    if outputw.length == 4
        @stream.broadcast_id = outputw[1]
        @stream.stream_name  = outputw[2]
        if @stream.save
