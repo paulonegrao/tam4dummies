@@ -36,7 +36,9 @@ class StreamsController < ApplicationController
        description = "'#{@stream.description}'"
     end
 # t4d.sxx - Create Broadcast at Youtube
-    # output = eval %Q[`mvn -f /home/pi/ytlive/api-samples/java/pom.xml exec:java -Dexec.mainClass="com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast" -Dexec.args="#{title} #{titlest} #{starttime} #{endtime} #{description}"`]
+
+    argscreate = "#{title} #{titlest} #{starttime} #{endtime} #{description}"
+
     output = []
     IO.popen("java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast #{argscreate}").each do |line|
          p line.chomp
