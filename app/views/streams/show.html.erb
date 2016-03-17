@@ -103,7 +103,7 @@
                                         <a href="#"><p>
 <!-- t4dcode setup dummit form -->
                                             <%= f.hidden_field :title, value: "", id: "dummit_shot"%>
-                                            <%= f.label_tag "", "", id: "dummit_shot_short", Size: 10%>
+                                            <%= label_tag "", "", id: "dummit_shot_short", Size: 10%>
                                             <%= f.submit "", id: "dummit_submit", class: "pull-right"%>
                                             <%= f.text_area :body, placeholder: "enter your note here...", size: "19x5" %>
                                         </p></a>
@@ -408,7 +408,7 @@ $.ajax({
 // AJAX to CREATE Take for a new Stream/Take (fires t4d.s06)
 $.ajax({
   type: "POST",
-  url:"<%= capture_tam_path(@stream)  %>",
+  url:"<%= capture_tam_path(:stream_id => @stream)  %>",
   processData: false,
   contentType: 'application/json'
 });

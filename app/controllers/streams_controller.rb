@@ -80,9 +80,9 @@ class StreamsController < ApplicationController
 
 
   def capture_tam
-    @stream = Stream.find params[:id]
+    @stream = Stream.find params[:stream_id]
     @stream.capture_date = Time.now
-    @stream.update
+    @stream.update(stream_params)
     render :capture_tam_live
   end
 
@@ -96,6 +96,13 @@ class StreamsController < ApplicationController
     @pid = $?
     render :start_yt_live_on
   end
+
+  private
+
+    def stream_params
+      params.require(:event).permit([:timestamp, :description, :broadcast_id, :stream_name, :capture_date])
+    end
+
 
 
 end
