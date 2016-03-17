@@ -19,7 +19,7 @@ $(document).on("page:change", function() {
     $("#dummit-new-1").on("click", function() {
         $("#dummit-new-1").addClass("hidden");
         $("#dummit-new-2").removeClass("hidden");
-        var captureDate = $("#on-off-air").attr("data-capture-date");
+        var captureDate = $("#on-off-air").attr("data-live-capture-date");
         var dummitShot = (Date() - captureDate);
         $("#dummit_shot").attr("value", dummitShot);
         $("#dummit_shot_short").html(dummitShot.toLocaleFormat('%H-%M-%S'));
