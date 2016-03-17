@@ -50,7 +50,7 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit([:live_id, :live_yt_id])
+      params.require(:event).permit([:live_id, :capture_date, :live_yt_id])
     end
 
 end

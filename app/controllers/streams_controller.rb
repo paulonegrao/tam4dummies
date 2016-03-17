@@ -78,4 +78,12 @@ class StreamsController < ApplicationController
     @dummit = Dummit.new
   end
 
+
+  def capture_tam
+    @stream = Stream.find params[:id]
+    @stream.capture_date = Time.now
+    @stream.update
+    render :capture_tam_live
+  end
+
 end

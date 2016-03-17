@@ -1,6 +1,5 @@
 $(document).on("page:change", function() {
     $("#tam-dummit").on("click", function() {
-      debugger;
       var tam_obj = $('#on-off-air');
       if (tam_obj.hasClass('on-air')) {
         // t4dcode: if "event_live_id" = "on-off-air data-live" & current page is = "on-off-air onclick" -> go DUMMIT; else alert msgs
@@ -20,6 +19,10 @@ $(document).on("page:change", function() {
     $("#dummit-new-1").on("click", function() {
         $("#dummit-new-1").addClass("hidden");
         $("#dummit-new-2").removeClass("hidden");
+        var captureDate = $("#on-off-air").attr("data-capture-date");
+        var dummitShot = (Date() - captureDate);
+        $("#dummit_shot").attr("value", dummitShot);
+        $("#dummit_shot_short").html(dummitShot.toLocaleFormat('%H-%M-%S'));
         $("#dummit_body").focus();
     });
 });

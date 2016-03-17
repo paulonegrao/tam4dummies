@@ -7,6 +7,7 @@
 
       $('#on-off-air').attr('onclick', "");
       $('#on-off-air').attr('data-live', "");
+      $('#on-off-air').attr('data-capture-date', "");
 <% else %>
       if ($('#on-off-air').hasClass('off-air')) {
             $('#on-off-air').removeClass('off-air');
@@ -15,4 +16,5 @@
 
       $('#on-off-air').attr('onclick', '<%= "#{@event.live_yt_id}" %>');
       $('#on-off-air').attr('data-live', '<%= "#{@event.live_id}" %>');
+      $('#on-off-air').attr('data-capture-date', '<%= "#{@event.live_capture_date}" %>');
 <% end %>

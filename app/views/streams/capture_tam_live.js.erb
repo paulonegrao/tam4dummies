@@ -1,0 +1,3 @@
+//  t4d.s07 - updates field "live_id" in events form (inside stream#show.html.erb) to carry take.id
+$('#event_live_id').attr('value', '<%= "#{@stream.id}" %>');
+$('#event_live_capture_date').attr('value', '<%= "#{@stream.capture_date}" %>');

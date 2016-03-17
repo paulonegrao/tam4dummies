@@ -66,13 +66,14 @@
 <!-- t4d setup of first button regarding user.role  -->
 <!-- if "instructor" button="tam-capturing"; else button="tam-liveoff" -->
                 <% if current_user.role == 'instructor' %>
-                    <% if !@take.present? %>
-                        <button id="share-screen" class="tam-button tam-capturing"></button>
+                    <div class="container">
+                        <% if !@take.present? %>
+                            <button id="share-screen" class="tam-button tam-capturing"></button>
 
-                        <div class="offset">.</div>
-                    <% end %>
-                    <button id="tam-patam" class="tam-button tam-patam"></button>
-
+                            <div class="offset">.</div>
+                        <% end %>
+                        <button id="tam-patam" class="tam-button tam-patam"></button>
+                    </div>
                 <% else %>
                     <div class="container">
                         <% if @take.present? %>
@@ -101,7 +102,8 @@
                                     <div>
                                         <a href="#"><p>
 <!-- t4dcode setup dummit form -->
-                                            <%= f.text_field :title, value: "sambarilovi", readonly: true, size: 10, disabled: true%>
+                                            <%= f.hidden_field :title, value: "", id: "dummit_shot"%>
+                                            <%= f.label_tag "", "", id: "dummit_shot_short", Size: 10%>
                                             <%= f.submit "", id: "dummit_submit", class: "pull-right"%>
                                             <%= f.text_area :body, placeholder: "enter your note here...", size: "19x5" %>
                                         </p></a>
@@ -124,6 +126,7 @@
           <%= form_for @event, as: :event, url: event_path(@event), method: :patch, remote: true do |f| %>
 <!-- remembeing... :live_id is #event_live_id -->
             <%= f.hidden_field :live_id, value: "0"%>
+            <%= f.hidden_field :live_capture_date, value: ""%>
             <%= f.hidden_field :live_yt_id, value: "#{request.path}"%>
             <%= f.submit "", id: 'tam-event-keep-alive-video', class: "transparent" %>
           <% end %>

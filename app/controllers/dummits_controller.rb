@@ -21,6 +21,7 @@ class DummitsController < ApplicationController
     end
   end
 
+  private
 
   def dummit_params
     dummit_params = params.require(:dummit).permit([:title, :body])
