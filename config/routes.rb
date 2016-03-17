@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
   #mount TalkingStick::Engine, at: '/talking_stick'
   root "home#index"
-  get "/indexo"  => "home#indexo"
   get "/teste"  => "home#teste"
 
-  get "/tam12"  => "home#tam12"
-  get "/tam13"  => "home#tam13"
-  get "/tam14"  => "home#tam14"
   get "/getScreenId"  => "home#getScreenId"
 
   get "/timelines/tameline" => "timelines#tameline", as: :tameline
@@ -32,7 +28,10 @@ Rails.application.routes.draw do
     resources :dummits
   end
 
-  post 'takes/takes_start_yt_live_stream', as: 'takes_start_yt_live_stream'
+  # post 'takes/takes_start_yt_live_stream', as: 'takes_start_yt_live_stream'
+
+  post 'streams/start_yt_live', as: 'start_yt_live'
+  post 'streams/capture_tam', as: 'capture_tam'
 
   get '/auth/:provider/callback', to: 'yt_sessions#create'
   delete '/logout', to: 'yt_sessions#destroy', as: :logout
@@ -45,12 +44,6 @@ Rails.application.routes.draw do
   get 'events/index'
   get 'events/update_topics', as: 'update_topics'
   get 'events/show'
-  get 'events/yt1'
-  get 'events/yt1_g'
-  get 'events/yt1_get'
-  get 'events/ytv3'
-  get 'events/ytv3_1'
-  get 'events/ytv3_1_g'
 
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection

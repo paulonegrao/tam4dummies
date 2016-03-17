@@ -73,7 +73,7 @@ class StreamsController < ApplicationController
     @lecture = Lecture.find @topic.lecture_id
     @stream = Stream.find params[:id]
     @event = Event.last
-    @take = Take.where("stream_id = ?", params[:id])
+    # @take = Take.where("stream_id = ?", params[:id])
     @dummits = Dummit.all
     @dummit = Dummit.new
   end
@@ -85,5 +85,17 @@ class StreamsController < ApplicationController
     @stream.update
     render :capture_tam_live
   end
+
+
+  def start_yt_live
+# t4d.s09 - call "stream_yt.sh" to initiate Stream to Youtube Live Streaming
+    # kills any stream_yt.sh leftovers still running
+    # system('pkill -f "tam4dummies/stream/stream_yt.sh"')
+
+    system("/home/pi/rails/tam4dummies/stream/stream_yt.sh #{params[:stream_name]} #{params[:broadcast_id]} &")
+    @pid = $?
+    render :start_yt_live_on
+  end
+
 
 end
