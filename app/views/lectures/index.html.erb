@@ -28,11 +28,7 @@
                       <%  @streams.each do |stream| %>
                             <div class="stream-panel">
                               <span>
-                                <% if user_signed_in? %>
-                                    <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
-                                <% else %>
-                                    <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, new_session_path %>
-                                <% end %>
+                                  <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
                               </span>
                             </div>
                       <% end %>

@@ -1,4 +1,6 @@
 class StreamsController < ApplicationController
+  before_action :authenticate_user, except: [:index]
+
   def index
     @stream = Stream.all.order("timestamp ASC")
   end
@@ -75,6 +77,5 @@ class StreamsController < ApplicationController
     @dummits = Dummit.all
     @dummit = Dummit.new
   end
-
 
 end

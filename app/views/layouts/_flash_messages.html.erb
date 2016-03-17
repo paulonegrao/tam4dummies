@@ -1,10 +1,11 @@
 <% if flash[:notice] %>
-  <div class="alert alert-success animated fadeOut" data-dismiss="alert">
+  <span class="alert col-md-11 alert-success animated fadeOut" data-dismiss="alert">
     <%= flash[:notice] %>
-  </div>
+    <% flash.discard(:warning) %>
+  </span>
 
 <% elsif flash[:alert] %>
-  <div class="alert alert-danger">
+  <span class="alert col-md-11 alert-danger" data-dismiss="alert">
     <%= flash[:alert] %>
-  </div>
+  </span>
 <% end %>

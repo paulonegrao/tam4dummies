@@ -96,6 +96,11 @@ h1#introduction {
   background-size: contain;
   background-repeat: no-repeat;
 }
+.tam-stream {
+  background-image: url(asset_path('bt_stream'));
+  background-size: contain;
+  background-repeat: no-repeat;
+}
 .offset {
 	color: transparent;
   line-height: 10px;
