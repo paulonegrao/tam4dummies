@@ -631,5 +631,7 @@ var loop_tam_alive = setInterval(function(){
                 console.log('current chromeMediaSource', DetectRTC.screen.chromeMediaSource);
             </script>
 <% else %>
-    render "new_session_path"
+      <script>
+          window.location.href = <%= "new_session_path" %>
+      </script>
 <% end %>

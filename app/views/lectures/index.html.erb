@@ -1,53 +1,43 @@
 <div class="container">
-<h3>Lectures</h3>
+<h3 class="fontpad">Lectures</h3>
 
-  <% @lectures.each do |lecture| %>
-      <% url_cat = (lecture.id)%>
-      <% @topics = lecture.topics.order('number ASC') %>
-      <div class="lecture-panel">
-        <%=  link_to "<span class='badge'> #{@topics.count} </span> #{lecture.chapter}. #{lecture.subject}".html_safe,
-        "#topics-for-#{url_cat}", class: "topic-link", data: { toggle: "collapse" } %>
-      </div>
-      <div class="topic-group collapse" id='topics-for-<%= "#{url_cat}" %>'>
-            <%  @topics.each do |topic| %>
-                  <div class="topic-panel">
-                        <% url_top = (topic.id)%>
-                        <% @streams = topic.streams %>
-                        <div class="pull-right">
-                          <ul class="nav navbar-nav">
-                            <li><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe,
-                            new_topic_stream_path(topic), title: 'New Stream' %></li>
-                          </ul>
-                        </div>
-                          <!-- <%# if topic.image.url(:thumb) %>
-                                <%# image_topic = topic.image.url(:thumb) %>
-                          <%# else %>
-                                <% image_topic = asset_path 'thumb_default.png' %>
-                          <%# end %> -->
-                          <!-- <%#= link_to "#{image_tag image_topic, class: 'img-circle', width: '50', height: '50'} &nbsp;&nbsp; #{topic.title}".html_safe, lecture_topic_path(lecture, topic) %> -->
-                          <%=  link_to "<span class='badge'> #{@streams.count} </span> #{topic.number} - #{topic.title}".html_safe,
-                          "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
-                  </div>
-                  <div class="topic-group collapse" id='streams-for-<%= "#{url_top}" %>'>
-                        <%  @streams.each do |stream| %>
-                              <div class="topic-panel">
-                                <span>
-                                  <!-- <%# if topic.image.url(:thumb) %>
-                                        <%# image_topic = topic.image.url(:thumb) %>
-                                  <%# else %>
-                                        <% image_topic = asset_path 'thumb_default.png' %>
-                                  <%# end %> -->
-                                  <!-- <%#= link_to "#{image_tag image_topic, class: 'img-circle', width: '50', height: '50'} &nbsp;&nbsp; #{topic.title}".html_safe, lecture_topic_path(lecture, topic) %> -->
-                                  <% if user_signed_in? %>
-                                      <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
-                                  <% else %>
-                                      <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, new_session_path %>
-                                  <% end %>
-                                </span>
-                              </div>
-                        <% end %>
-                  </div>
-            <% end %>
-      </div>
-  <% end %>
+<% @lectures.each do |lecture| %>
+    <% url_lec = (lecture.id)%>
+    <% @topics = lecture.topics.order('number ASC') %>
+    <div class="lecture-panel">
+          <%=  link_to "<span class='badge'> #{@topics.count} </span> #{lecture.chapter}. #{lecture.subject}".html_safe,
+          "#topics-for-#{url_lec}", class: "topic-link", data: { toggle: "collapse" } %>
+    </div>
+    <div class="topic-group collapse" id='topics-for-<%= "#{url_lec}" %>'>
+          <%  @topics.each do |topic| %>
+                <div class="topic-panel">
+                      <% url_top = (topic.id)%>
+                      <% @streams = topic.streams %>
+                      <% if user_signed_in? %>
+                            <div class="pull-right">
+                              <ul class="nav navbar-nav">
+                                <li><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe,
+                                new_topic_stream_path(topic), title: 'New Stream' %></li>
+                              </ul>
+                            </div>
+                      <% end %>
+                      <%=  link_to "<span class='badge'> #{@streams.count} </span> #{topic.number} - #{topic.title}".html_safe,
+                            "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
+                </div>
+                <div class="topic-group collapse" id='streams-for-<%= "#{url_top}" %>'>
+                      <%  @streams.each do |stream| %>
+                            <div class="stream-panel">
+                              <span>
+                                <% if user_signed_in? %>
+                                    <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
+                                <% else %>
+                                    <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, new_session_path %>
+                                <% end %>
+                              </span>
+                            </div>
+                      <% end %>
+                </div>
+          <% end %>
+    </div>
+<% end %>
 </div>

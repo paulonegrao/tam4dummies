@@ -60,6 +60,25 @@ a.topic-link:hover {
   text-decoration: none;
 }
 
+div.stream-panel {
+  margin-left: 6em;
+  margin-bottom: 5px;
+
+  a {
+    color: black;
+    background: $contrast;
+    display: block;
+    padding: 0.5em 0 0.5em 1em;
+  }
+
+  a:hover {
+    color: gray;
+    background: $bgDefault;
+    text-decoration: none;
+  }
+}
+
+
 //--------------------------
 
 body {
