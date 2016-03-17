@@ -45,9 +45,10 @@ class StreamsController < ApplicationController
          output << line.chomp
     end
 
-    outputw = output.split('@@t4d_arg=')
+    outputw = output.join(",")
+    outputw = outputw.split('@@t4d_arg=')
 
-    if outputw.length == 4
+    if outputw.length > 2
        @stream.broadcast_id = outputw[1]
        @stream.stream_name  = outputw[2]
        if @stream.save
