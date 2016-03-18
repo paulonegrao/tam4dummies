@@ -19,7 +19,7 @@
     }
     h2,p,textarea{
       font-size:95%;
-      font-height:95%;
+      list-height:95%;
       font-weight:normal;
     }
     ul,li{
@@ -111,6 +111,10 @@
 ///////////// dummit-new //////////////////
 ////////////////////////////////////////////////////////////////////////////
 .dummit-new {
+   textarea{
+     background-color: transparent;
+     border: none;
+   }
     #dummit-new-ul {
     margin-bottom: 0px;
     padding-top: 20px;
@@ -157,7 +161,7 @@
     font-family: "Reenie Beanie",arial,sans-serif;
     margin: 2px;
     font-size:120%;
-    font-height:100%;
+    line-height:100%;
     font-weight:normal;
     border: none;
     background-color: transparent;
@@ -166,14 +170,14 @@
       font-family: "Reenie Beanie",arial,sans-serif;
       margin: 2px;
       font-size:120%;
-      font-height:100%;
+      line-height:100%;
       font-weight:normal;
       border: none;
       background-color: transparent;
     }
     h2,p,textarea{
       font-size:120%;
-      font-height:100%;
+      line-height:100%;
       font-weight:normal;
     }
     ul,li{
@@ -208,7 +212,7 @@
     }
     ul li h2{
       font-size:120%;
-      font-height:100%;
+      line-height:100%;
       font-weight:bold;
       padding-bottom:10px;
     }
