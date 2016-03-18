@@ -24,7 +24,7 @@ class DummitsController < ApplicationController
   private
 
   def dummit_params
-    dummit_params = params.require(:dummit).permit([:title, :body])
+    dummit_params = params.require(:dummit).permit([:title, :date, :body])
   end
 
   def find_dummit

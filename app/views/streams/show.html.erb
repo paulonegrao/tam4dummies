@@ -103,10 +103,10 @@
                                     <div>
                                         <a><p>
 <!-- t4dcode setup dummit form -->
-                                            <%= f.hidden_field :title, value: "", id: "dummit_date"%>
-                                            <%= label_tag "", "", id: "dummit_title", Size: 10%>
-                                            <%= f.submit "", id: "dummit_submit", class: "pull-right"%>
-                                            <%= f.text_area :body, placeholder: "enter your note here...", size: "19x5" %>
+                                            <%= f.hidden_field :date, value: "" %>
+                                            <%= f.text_field :title, "", readonly: true, Size: 10%>
+                                            <%= f.submit "", class: "pull-right"%>
+                                            <%= f.text_area :body, placeholder: "enter your note here...", size: "19x6" %>
                                         </p></a>
                                     </div>
                                 <% end %>
