@@ -33,7 +33,7 @@ $(document).on("page:change", function() {
         var hours       = "00" + parseInt((miliSeconds/(1000*60*60)));
         var hoursW      = hours.substr(hours.length-2);
         $("#dummit_date").attr("value", dateNow);
-        $("#dummit_title").html(hoursW + ":" + minutesW + ":" + secondsW);
+        $("#dummit_title").attr("value", hoursW + ":" + minutesW + ":" + secondsW);
         $("#dummit-new-1").addClass("hidden");
         $("#dummit-new-2").removeClass("hidden");
         $("#dummit_body").focus();
