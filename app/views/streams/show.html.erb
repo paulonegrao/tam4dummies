@@ -48,15 +48,15 @@
                         <ul id="dummit-grid-ul" style="padding-top: 13px;">
                             <% @dummits.each do |d| %>
                                 <li>
-                                    <a href="#">
-                                        <p><%= d.title %></p>
+                                    <a>
+                                        <p><%= d.title %>
                                         <!-- <textarea rows="8" cols="10" style="border: none; background-color: transparent;"><#%= d.body %></textarea> -->
-                                        <p><%= d.body %></p>
+                                        <textarea disabled><%= d.body %></textarea></p>
                                     </a>
                                 </li>
                             <% end %>
                                 <li id="dummit-grid-tail" class="transparent">
-                                    <a href="#">
+                                    <a>
                                     </a>
                                 </li>
                         </ul>
@@ -101,7 +101,7 @@
                             <li id="dummit-new-2" class="hidden">
                                 <%= form_for [@stream, @dummit], remote: true do |f| %>
                                     <div>
-                                        <a href="#"><p>
+                                        <a><p>
 <!-- t4dcode setup dummit form -->
                                             <%= f.hidden_field :title, value: "", id: "dummit_shot"%>
                                             <%= label_tag "", "", id: "dummit_shot_short", Size: 10%>
@@ -112,7 +112,7 @@
                                 <% end %>
                             </li>
                             <li id="dummit-new-3" class="hidden">
-                                <a href="#" id="dummit-new-3-content">
+                                <a id="dummit-new-3-content">
                                 </a>
                             </li>
                         </ul>
