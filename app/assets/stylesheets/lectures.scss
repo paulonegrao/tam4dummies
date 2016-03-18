@@ -225,6 +225,10 @@ nav.navbar.navbar-default.navbar-fixed-top {
   height: 52px;
 }
 //-----------------------------------
+#videos-container {
+  text-align: center;
+}
+
 video {
     -moz-transition: all 1s ease;
     -ms-transition: all 1s ease;
@@ -235,7 +239,9 @@ video {
     vertical-align: top;
     width: 100%;
 }
-
+.video50 {
+  width: 50%;
+}
 p { padding: 1em; }
 
 // li {
