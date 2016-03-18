@@ -14,7 +14,9 @@
       background-color: transparent;
       border: none;
     }
-
+    p {
+      padding-left: 2px;
+    }
     h2,p,textarea{
       font-size:95%;
       font-height:95%;
@@ -28,7 +30,6 @@
       padding:0;
     }
     ul p{
-      padding-left: 2px;
       overflow:hidden;
       padding:0;
     }
@@ -140,6 +141,8 @@
     #dummit-new-3 {
     margin-right: 0px;
     margin-left: 28px;
+    background-color: transparent;
+    border: none;
     }
     #dummit_submit {
     background-color: transparent;
@@ -152,12 +155,19 @@
     }
     #dummit_title {
     font-family: "Reenie Beanie",arial,sans-serif;
-    font-size:80%;
+    margin: 2px;
+    font-size:120%;
+    font-height:100%;
+    font-weight:normal;
     border: none;
     background-color: transparent;
     }
     #dummit_body {
+      font-family: "Reenie Beanie",arial,sans-serif;
       margin: 2px;
+      font-size:120%;
+      font-height:100%;
+      font-weight:normal;
       border: none;
       background-color: transparent;
     }

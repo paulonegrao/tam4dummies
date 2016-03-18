@@ -1,6 +1,6 @@
     <script src='https://cdn.webrtc-experiment.com/firebase.js'> </script>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Reenie+Beanie" />
-    <script src="http://code.jquery.com/jquery-git1.js"></script>
+    <script src="HTTPS://code.jquery.com/jquery-git1.js"></script>
     <script src="https://cdn.webrtc-experiment.com/Pluginfree-Screen-Sharing/conference.js">
     </script>
 
@@ -102,9 +102,9 @@
                                     <div>
                                         <a><p>
 <!-- t4dcode setup dummit form -->
-                                            <%= f.hidden_field :date, value: "" %>
-                                            <%= f.text_field :title, readonly: true, Size: 10, value: ""%>
-                                            <%= f.submit "", id: "dummit_submit", class: "pull-right"%>
+                                            <%= f.hidden_field :date %>
+                                            <%= f.text_field :title, readonly: true, Size: 10 %>
+                                            <%= f.submit "", id: "dummit_submit", class: "pull-right" %>
                                             <%= f.text_area :body, placeholder: "enter your note here...", size: "19x6" %>
                                         </p></a>
                                     </div>
@@ -420,7 +420,7 @@ var loop_tam_alive = setInterval(function(){
      window.location.href = "<%= new_topic_stream_path(@topic) %>";
      clearInterval(loop_tam_alive);
   };
-}, 3000);
+}, 2000);
 // changes button "tam-capturing" by "tam-cut" & respective onclick to new_topic_stream_path(@topic) -> forces new scream page
                             var tam_obj = $('#share-screen');
                             tam_obj.removeClass('tam-capturing');

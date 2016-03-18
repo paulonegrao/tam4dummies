@@ -34,6 +34,7 @@ $(document).on("page:change", function() {
         var hoursW      = hours.substr(hours.length-2);
         $("#dummit_date").attr("value", dateNow);
         $("#dummit_title").attr("value", hoursW + ":" + minutesW + ":" + secondsW);
+        $("#dummit_body").val("");
         $("#dummit-new-1").addClass("hidden");
         $("#dummit-new-2").removeClass("hidden");
         $("#dummit_body").focus();
