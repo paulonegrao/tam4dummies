@@ -1,5 +1,5 @@
 class StreamsController < ApplicationController
-  before_action :authenticate_user, except: [:index]
+  before_action :authenticate_user, except: [:index, :capture_tam, :start_yt_live]
 
   def index
     @stream = Stream.all.order("timestamp ASC")
@@ -81,9 +81,11 @@ class StreamsController < ApplicationController
 
   def capture_tam
     @stream = Stream.find params[:stream_id]
-    @stream.capture_date = Time.now
-    @stream.update(stream_params)
-    render :capture_tam_live
+    if @stream.update_attributes(:capture_date => Time.now)
+        render :capture_tam_live
+    else
+        render :capture_tam_error
+    end
   end
 
 
@@ -100,9 +102,7 @@ class StreamsController < ApplicationController
   private
 
     def stream_params
-      params.require(:event).permit([:timestamp, :description, :broadcast_id, :stream_name, :capture_date])
+      params.require(:stream).permit([:timestamp, :description, :broadcast_id, :stream_name, :capture_date])
     end
-
-
 
 end
