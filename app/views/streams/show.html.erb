@@ -51,7 +51,7 @@
                                     <a>
                                         <p><%= d.title %>
                                         <!-- <textarea rows="8" cols="10" style="border: none; background-color: transparent;"><#%= d.body %></textarea> -->
-                                        <textarea disabled><%= d.body %></textarea></p>
+                                        <textarea cols="16" rows="7" disabled><%= d.body %></textarea></p>
                                     </a>
                                 </li>
                             <% end %>
@@ -103,8 +103,8 @@
                                     <div>
                                         <a><p>
 <!-- t4dcode setup dummit form -->
-                                            <%= f.hidden_field :title, value: "", id: "dummit_shot"%>
-                                            <%= label_tag "", "", id: "dummit_shot_short", Size: 10%>
+                                            <%= f.hidden_field :title, value: "", id: "dummit_date"%>
+                                            <%= label_tag "", "", id: "dummit_title", Size: 10%>
                                             <%= f.submit "", id: "dummit_submit", class: "pull-right"%>
                                             <%= f.text_area :body, placeholder: "enter your note here...", size: "19x5" %>
                                         </p></a>

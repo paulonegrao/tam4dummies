@@ -6,8 +6,18 @@
 //   color:#fff;
 // }
 .dummit {
+   textarea{
+      padding-top: 0px;
+      padding-bottom: 0px;
+      padding-left: 2px;
+      padding-right: 0px;
+      background-color: transparent;
+      border: none;
+    }
+
     h2,p,textarea{
-      font-size:140%;
+      font-size:95%;
+      font-height:95%;
       font-weight:normal;
     }
     ul,li{
@@ -41,14 +51,14 @@
       float:left;
     }
     ul li h2{
-      font-size:140%;
+      font-size:95%;
       font-weight:bold;
       padding-bottom:0px;
     }
     ul li p,textarea{
       font-family:"Reenie Beanie",arial,sans-serif;
-      line-height: 50%;
-      font-size:140%;
+      line-height: 95%;
+      font-size:95%;
     }
     ul li a{
       -webkit-transform: rotate(-6deg);
@@ -85,9 +95,9 @@
       box-shadow:10px 10px 7px rgba(0,0,0,.7);
       -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
       -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
-      -webkit-transform: scale(1.25);
-      -moz-transform: scale(1.25);
-      -o-transform: scale(1.25);
+      -webkit-transform: scale(1.35);
+      -moz-transform: scale(1.35);
+      -o-transform: scale(1.35);
       position:relative;
       z-index:5;
     }

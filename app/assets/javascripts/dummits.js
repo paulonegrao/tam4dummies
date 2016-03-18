@@ -32,8 +32,8 @@ $(document).on("page:change", function() {
         var minutesW    = minutes.substr(minutes.length-2);
         var hours       = "00" + parseInt((miliSeconds/(1000*60*60)));
         var hoursW      = hours.substr(hours.length-2);
-        $("#dummit_shot").attr("value", dateNow);
-        $("#dummit_shot_short").html(hoursW + ":" + minutesW + ":" + secondsW);
+        $("#dummit_date").attr("value", dateNow);
+        $("#dummit_title").html(hoursW + ":" + minutesW + ":" + secondsW);
         $("#dummit-new-1").addClass("hidden");
         $("#dummit-new-2").removeClass("hidden");
         $("#dummit_body").focus();
