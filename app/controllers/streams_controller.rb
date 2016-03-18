@@ -74,7 +74,7 @@ class StreamsController < ApplicationController
     @stream = Stream.find params[:id]
     @event = Event.last
     # @take = Take.where("stream_id = ?", params[:id])
-    @dummits = Dummit.all
+    @dummits = Dummit.where(stream_id: params[:stream_id], user_id: current_user.id)
     @dummit = Dummit.new
   end
 

@@ -12,7 +12,7 @@
           <%  @topics.each do |topic| %>
                 <div class="topic-panel">
                       <% url_top = (topic.id)%>
-                      <% @streams = topic.streams %>
+                      <% @streams = topic.streams.order('timestamp DESC, capture_date DESC') %>
                       <% if user_signed_in? %>
                             <div class="pull-right">
                               <ul class="nav navbar-nav">

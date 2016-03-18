@@ -41,7 +41,6 @@
                 <span id="grayboard" class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
 <!--  VIDEO CONTAINER -->
                     <div id="videos-container"></div>
-                    <video id="teste" width="100%" height="240" autoplay></video>
 <!-- DUMMIT GRID -->
                     <section id="dummit-grid-section" class="dummit hidden" style="padding-left: 13px; padding-top: 13px;">
                         <h3>Dumm-it's</h3>
@@ -104,8 +103,8 @@
                                         <a><p>
 <!-- t4dcode setup dummit form -->
                                             <%= f.hidden_field :date, value: "" %>
-                                            <%= f.text_field :title, "", readonly: true, Size: 10%>
-                                            <%= f.submit "", class: "pull-right"%>
+                                            <%= f.text_field :title, readonly: true, Size: 10, value: ""%>
+                                            <%= f.submit "", id: "dummit_submit", class: "pull-right"%>
                                             <%= f.text_area :body, placeholder: "enter your note here...", size: "19x6" %>
                                         </p></a>
                                     </div>
@@ -386,8 +385,6 @@ $.ajax({
 
                     console.log( JSON.stringify( constraints , null, '\t') );
 // starting tam-capturing ////////////////////////////////////////////////////
-                    document.getElementById("teste").remove();
-
                     var video = document.createElement('video');
                     video.setAttribute('autoplay', true);
                     video.setAttribute('controls', true);
