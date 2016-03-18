@@ -1,5 +1,7 @@
-$("#dummit-new-3 a").html($("#dummit_title").val() + "<br />" + $("#dummit_body").val());
-$("#dummit-grid-tail a").html($("#dummit_title").val() + "<br />" + $("#dummit_body").val());
+$("#dummit-new-3 a").html("<p>" + $("#dummit_shot_short").text() + "</p><p>" + $("#dummit_body").text() + "</p>");
+$("#dummit-grid-tail a").html("<p>" + $("#dummit_shot_short").text() + "</p><p>" + $("#dummit_body").text() + "</p>");
+$("#dummit_shot_short").text("");
+$("#dummit_body").text("");
 $("#dummit-new-2").addClass('hidden');
 $("#dummit-new-3").removeClass('hidden');
 
@@ -32,4 +34,4 @@ setTimeout(function(){
     $("#dummit-new-2").addClass('hidden');
     $("#dummit-new-3").addClass('hidden');
 
-}, 900);
+}, 1000);

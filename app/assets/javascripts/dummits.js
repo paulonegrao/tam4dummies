@@ -1,6 +1,6 @@
 $(document).on("page:change", function() {
     $("#tam-dummit").on("click", function() {
-      if ($("#dummit-grid-section").hasClass("hidden");) {
+      if ($("#dummit-grid-section").hasClass("hidden")) {
           var tam_obj = $('#on-off-air');
           if (tam_obj.hasClass('on-air')) {
             // t4dcode: if "event_live_id" = "on-off-air data-live" & current page is = "on-off-air onclick" -> go DUMMIT; else alert msgs
@@ -14,14 +14,13 @@ $(document).on("page:change", function() {
               } else {
                 alert("This stream is not being currently captured. Go to " + $('#on-off-air').attr('onclick') + ", or click the ON-AIR button as a shortcut");
               }
-            } else {
+          } else {
               alert("Nothing is being captured at this moment (ON-AIR sign if off).");
-            }
-        } else {
-              $("#video_tam").removeClass("video50");
-              $("#dummit-grid-section").addClass("hidden");
-              $("#dummit-new-section").addClass("hidden");
-        }
+          }
+      } else {
+          $("#video_tam").removeClass("video50");            $("#dummit-grid-section").addClass("hidden");
+          $("#dummit-new-section").addClass("hidden");
+      }
     });
     $("#dummit-new-1").on("click", function() {
         var captureDate = new Date($("#on-off-air").attr("data-live-capture-date"));

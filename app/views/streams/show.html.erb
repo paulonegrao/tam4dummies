@@ -41,7 +41,7 @@
                 <span id="grayboard" class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
 <!--  VIDEO CONTAINER -->
                     <div id="videos-container"></div>
-                    <!-- <video id="teste" width="100%" height="240" autoplay></video> -->
+                    <video id="teste" width="100%" height="240" autoplay></video>
 <!-- DUMMIT GRID -->
                     <section id="dummit-grid-section" class="dummit hidden" style="padding-left: 13px; padding-top: 13px;">
                         <h3>Dumm-it's</h3>
@@ -50,7 +50,8 @@
                                 <li>
                                     <a href="#">
                                         <p><%= d.title %></p>
-                                        <textarea rows="8" cols="10" style="border: none; background-color: transparent;"><%= d.body %></textarea>
+                                        <!-- <textarea rows="8" cols="10" style="border: none; background-color: transparent;"><#%= d.body %></textarea> -->
+                                        <p><%= d.body %></p>
                                     </a>
                                 </li>
                             <% end %>
@@ -385,7 +386,7 @@ $.ajax({
 
                     console.log( JSON.stringify( constraints , null, '\t') );
 // starting tam-capturing ////////////////////////////////////////////////////
-                    // document.getElementById("teste").remove();
+                    document.getElementById("teste").remove();
 
                     var video = document.createElement('video');
                     video.setAttribute('autoplay', true);
