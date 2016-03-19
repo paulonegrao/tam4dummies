@@ -21,16 +21,16 @@
         "media": {
           "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>&t=<%= hour %>h<%= minute %>m<%= second %>s",
           "caption": "",
-          "credit": "<a href='https://www.youtube.com/tv#/watch?v=<%= @broadcast_id %>&t=<%= minute %>m<%= second %>s'>watch in fullscreen</a>"
+          "credit": "<a href='https://www.youtube.com/tv#/watch?v=<%= @broadcast_id %>&t=<%= hour %>h<%= minute %>m<%= second %>s'>watch in fullscreen</a>"
         },
         "start_date": {
-          "hour": "<%= hour %>"
+          "hour": "<%= hour %>",
           "minute": "<%= minute %>",
           "second": "<%= second %>"
         },
         "text": {
           "headline": "dumm-it at <%= dummit.title %> from start",
-          "text": "<p><%= dummit.body %></p>"
+          "text": "<p><%= dummit.body.html_safe %></p>"
         }
   <% if index == @dummits.size - 1 %>
      }

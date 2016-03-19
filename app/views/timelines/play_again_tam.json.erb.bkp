@@ -1,0 +1,33 @@
+{
+    "title": {
+        "media": {
+          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>",
+          "caption": "a ShutUp & Code! production",
+          "credit": "<a href='https://tams4dummies.com:3001'>tam4dummies.com</a>",
+          "thumbnail": "<%= asset_path 'patambig.png' %>"
+        },
+        "text": {
+          "headline": "<%= @headline %>",
+          "text": "<p><%= @description %></p>"
+        }
+    },
+    "events": [
+      {
+        "media": {
+          "url": "https://www.youtube.com/watch?v=<%=UL7YM-vWItM",
+          "caption": "",
+          "credit": "<a href='https://www.youtube.com/tv#/watch?v=UL7YM-vWItM'>watch in fullscreen</a>"
+        },
+        "start_date": {
+          "hour": "00",
+          "minute": "02",
+          "second": "05"
+        },
+        "text": {
+          "headline": "hhhhh",
+          "text": "<p>jjjj</p>"
+        }
+     }
+
+   ]
+}
