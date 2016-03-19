@@ -21,9 +21,9 @@ class EventsController < ApplicationController
     @event = Event.last
     respond_to do |format|
       # @event.update(event_params)
-      
-      event_params[:updated_at] = Time.now
-      if @event.update_attributes(event_params)
+      attr_update = event_params
+      attr_update[:updated_at] = Time.now
+      if @event.update_attributes(attr_update)
 # t4d.s03 - TOUCH "tam_keep_alive"; live_id=0; live_yt_id=resquest_path
         system('touch /home/pi/rails/tam4dummies/stream/tam_keep_alive &')
 	      format.html
