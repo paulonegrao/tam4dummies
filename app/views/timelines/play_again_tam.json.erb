@@ -13,16 +13,18 @@
     },
     "events": [
 <% @dummits.each_with_index do |dummit, index| %>
-    <% minute = dummit.title.split(":")[0] %>
-    <% second = dummit.title.split(":")[1] %>
+    <% titlew = dummit.title.split(":") %>
+    <% hour   = titlew[0] %>
+    <% minute = titlew[1] %>
+    <% second = titlew[2] %>
       {
         "media": {
-          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>&t=<%= minute %>m<%= second %>s",
+          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>&t=<%= hour %>h<%= minute %>m<%= second %>s",
           "caption": "",
           "credit": "<a href='https://www.youtube.com/tv#/watch?v=<%= @broadcast_id %>&t=<%= minute %>m<%= second %>s'>watch in fullscreen</a>"
         },
         "start_date": {
-          "hour": "00",
+          "hour": "<%= hour %>"
           "minute": "<%= minute %>",
           "second": "<%= second %>"
         },
