@@ -1,4 +1,5 @@
 class StreamsController < ApplicationController
+  protect_from_forgery except: :capture_tam
   before_action :authenticate_user, except: [:index, :capture_tam, :start_yt_live]
 
   def index
