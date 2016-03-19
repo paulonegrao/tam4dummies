@@ -80,7 +80,7 @@ class StreamsController < ApplicationController
 
 
   def capture_tam
-    @stream = Stream.find params[:stream_id]
+    @stream = Stream.find params[:id]
     if @stream.update_attributes(:capture_date => Time.now)
         render :capture_tam_live
     else

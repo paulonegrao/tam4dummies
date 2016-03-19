@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   # post 'takes/takes_start_yt_live_stream', as: 'takes_start_yt_live_stream'
 
   post 'streams/start_yt_live', as: 'start_yt_live'
-  post 'streams/capture_tam', as: 'capture_tam'
+  post 'streams/capture_tam/:id', to: 'streams#capture_tam', as: 'capture_tam'
 
   get '/auth/:provider/callback', to: 'yt_sessions#create'
   delete '/logout', to: 'yt_sessions#destroy', as: :logout

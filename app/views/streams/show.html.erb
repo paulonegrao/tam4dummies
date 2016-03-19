@@ -406,7 +406,7 @@ $.ajax({
 // AJAX to CREATE Take for a new Stream/Take (fires t4d.s06)
 $.ajax({
   type: "POST",
-  url:"<%= capture_tam_path(:stream_id => @stream)  %>",
+  url:"<%= capture_tam_path(@stream) %>",
   processData: false,
   contentType: 'application/json'
 });
