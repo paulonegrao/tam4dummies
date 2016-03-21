@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "home#index"
   get "/teste"  => "home#teste"
 
+  
+
   get "/getScreenId"  => "home#getScreenId"
 
   get "/timelines/tameline" => "timelines#tameline", as: :tameline
