@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get 'events/update_topics', as: 'update_topics'
   get 'events/show'
 
+  get 'lego/housekeeper'
+
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection
   end

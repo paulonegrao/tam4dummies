@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src=”timeline/js/storyjs-embed.js”></script>
+
+    <!-- <script src="inClass.js"></script> -->
+
+    <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-image: url('../../assets/images/legored.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    #lego.animate {
+    	animation-name: ani1;
+    	animation-duration: 10s;
+    	animation-timing-function: ease;
+    	animation-iteration-count: 1;
+    	animation-direction: normal;
+    }
+      /*animation: square-to-circle 2s .5s infinite cubic-bezier(1,.015,.295,1.225) alternate;
+    }*/
+
+    @keyframes ani1 {
+      0%  {
+        border-radius:0 0 0 0;
+        /*background:coral;*/
+        transform:rotate(0deg);
+      }
+      25%  {
+        border-radius:50% 0 0 0;
+        /*background:darksalmon;*/
+        transform:rotate(45deg);
+      }
+      50%  {
+        border-radius:50% 50% 0 0;
+        /*background:indianred;*/
+        transform:rotate(90deg);
+      }
+      75%  {
+        border-radius:50% 50% 50% 0;
+        /*background:lightcoral;*/
+        transform:rotate(135deg);
+      }
+      100% {
+        border-radius:50%;
+        /*background:darksalmon;*/
+        transform:rotate(180deg);
+      }
+    }
+
+    </style>
+    </head>
+<body>
+<div id="lego"></div>
+
+</body>
+</html>
