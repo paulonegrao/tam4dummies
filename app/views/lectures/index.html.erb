@@ -5,7 +5,7 @@
     <% url_lec = (lecture.id)%>
     <% @topics = lecture.topics.order('number ASC') %>
     <div class="lecture-panel">
-          <%=  link_to "<span class='badge'> #{@topics.count} </span> #{lecture.chapter}. #{lecture.subject}".html_safe,
+          <%=  link_to "#{lecture.chapter}. #{lecture.subject}<span class='badge pull-right' style='margin-top: 7px;'> #{@topics.count} </span>".html_safe,
           "#topics-for-#{url_lec}", class: "topic-link", data: { toggle: "collapse" } %>
     </div>
     <div class="topic-group collapse" id='topics-for-<%= "#{url_lec}" %>'>
@@ -13,15 +13,17 @@
                 <div class="topic-panel">
                       <% url_top = (topic.id)%>
                       <% @streams = topic.streams.order('timestamp DESC, capture_date DESC') %>
-                      <% if user_signed_in? %>
-                            <div class="pull-right">
-                              <ul class="nav navbar-nav">
-                                <li><%= link_to '<span class="glyphicon glyphicon-pencil"></span>'.html_safe,
-                                new_topic_stream_path(topic), title: 'New Stream' %></li>
+                      <% if user_signed_in? && current_user.role == "instructor"%>
+                              <ul class="nav navbar-nav pull-right">
+                                <li>
+                                  <table><tr>
+                                    <td><%= link_to image_tag("#{ asset_path 'create_broadcast.png'}", width: "38px", :border => 0, :alt => '', :title => ''), new_topic_stream_path(topic), {:style=>"padding-right: 14px;"} %></td>
+                                    <td><span class='badge'><%= "#{@streams.count}" %> </span></td>
+                                  </tr></table>
+                                </li>
                               </ul>
-                            </div>
                       <% end %>
-                      <%=  link_to "<span class='badge'> #{@streams.count} </span> #{topic.number} - #{topic.title}".html_safe,
+                      <%=  link_to "#{topic.number} - #{topic.title}".html_safe,
                             "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
                 </div>
                 <div class="topic-group collapse" id='streams-for-<%= "#{url_top}" %>'>
