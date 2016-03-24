@@ -1,0 +1,204 @@
+// @import url(https://fonts.googleapis.com/css?family=Nothing+You+Could+Do);
+.legopage {
+	background-color: rgba(0, 0, 0, 0.16);
+}
+#flashrow {
+	background-color: black;
+}
+#header p {
+	display: table-cell;
+	vertical-align: middle;
+}
+#headerc1 {
+	width: 200px;
+	height: 178px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-top: 20px;
+	margin-left: 80px;
+}
+#headerc2 {
+	font-family: 'Nothing You Could Do', cursive;
+	line-height: 26px;
+	font-size: 22px;
+	vertical-align: middle;
+	padding-top: 30px;
+}
+#headerc3 {
+	position: relative;
+	background-size: contain;
+	background-repeat: no-repeat;
+	margin-top: 20px;
+}
+#headerc1.legopinktop {
+	background-image: url(asset_path('raspberrypip.png'));
+}
+#headerc3.legopinktop {
+	width: 350px;
+	height: 156px;
+	top: 30px;
+	background-image: url(asset_path('raspberrypihw.png'));
+}
+#headerc1.legoredtop {
+	background-image: url(asset_path('railslogo.png'));
+}
+#headerc1.legoorange {
+	background-image: url(asset_path('webrtc.png'));
+}
+#headerc1.legoblack {
+	background-image: url(asset_path('airplay.png'));
+}
+#headerc1.legolgreen {
+	background-image: url(asset_path('chromeextension.png'));
+}
+#headerc1.legobrown {
+	background-image: url(asset_path('youtubels.png'));
+}
+#headerc1.legodgreen {
+	margin-top: 50px;
+	background-image: url(asset_path('openmax.png'));
+}
+#headerc1.legoyellow {
+	margin-top: 50px;
+	background-image: url(asset_path('gstreamer.png'));
+}
+#headerc1.legowhite {
+	margin-top: 50px;
+	background-image: url(asset_path('timelinejs.png'));
+}
+#legored {
+	position: absolute;
+	width: 30%;
+	height: 30%;
+	left: 500px;
+	top: -200px;
+	z-index: 1;
+	background-image: url(asset_path('legored2.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legoredtop {
+	position: absolute;
+	width: 22%;
+	height: 22%;
+	left: 500px;
+	top: -200px;
+	z-index: 12;
+	/*pointer-events: none;*/
+	visibility: hidden;
+	background-image: url(asset_path('legoredtop1.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legopink {
+	position: absolute;
+	width: 35%;
+	height: 35%;
+	left: 500px;
+	top: -200px;
+	z-index: 2;
+	background-image: url(asset_path('legopink.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legopinktop {
+	position: absolute;
+	width: 35%;
+	height: 35%;
+	left: 500px;
+	top: -200px;
+	z-index: 11;
+	/*pointer-events: none;*/
+	visibility: hidden;
+	background-image: url(asset_path('legopinktop.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legodgreen {
+	position: absolute;
+	width: 12%;
+	height: 12%;
+	left: 500px;
+	top: -200px;
+	z-index: 13;
+	background-image: url(asset_path('legodgreen.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legoyellow {
+	position: absolute;
+	width: 12.5%;
+	height: 12.5%;
+	left: 500px;
+	top: -200px;
+	z-index: 14;
+	background-image: url(asset_path('legoyellow.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legoblue {
+	position: absolute;
+	width: 20.5%;
+	height: 20.5%;
+	left: 500px;
+	top: -200px;
+	z-index: 16;
+	background-image: url(asset_path('legoblue.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legowhite {
+	position: absolute;
+	width: 20.5%;
+	height: 20.5%;
+	left: 500px;
+	top: -200px;
+	z-index: 15;
+	background-image: url(asset_path('legowhite.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legolgreen {
+	position: absolute;
+	width: 13%;
+	height: 13%;
+	left: 500px;
+	top: -200px;
+	z-index: 9;
+	background-image: url(asset_path('legolgreen.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legobrown {
+	position: absolute;
+	width: 13.5%;
+	height: 13.5%;
+	left: 500px;
+	top: -200px;
+	z-index: 10;
+	background-image: url(asset_path('legobrown.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legoblack {
+	position: absolute;
+	width: 18.8%;
+	height: 18.8%;
+	left: 500px;
+	top: -200px;
+	z-index: 8;
+	background-image: url(asset_path('legoblack.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#legoorange {
+	position: absolute;
+	width: 19%;
+	height: 19%;
+	left: 500px;
+	top: -200px;
+	z-index: 7;
+	background-image: url(asset_path('legoorange.png'));
+	background-size: contain;
+	background-repeat: no-repeat;
+}

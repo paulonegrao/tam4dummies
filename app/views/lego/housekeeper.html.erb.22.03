@@ -6,74 +6,6 @@
     <!-- <script src="inClass.js"></script> -->
 
     <style>
-    @import url(https://fonts.googleapis.com/css?family=Nothing+You+Could+Do);
-    body {
-      background-color: rgba(0, 0, 0, 0.16);
-    }
-    #flashrow {
-      background-color: black;
-    }
-    #header p {
-      display: table-cell;
-      vertical-align: middle;
-    }
-    #headerc1 {
-      width: 200px;
-      height: 178px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      margin-top: 20px;
-      margin-left: 80px;
-    }
-    #headerc2 {
-      font-family: 'Nothing You Could Do', cursive;
-      line-height: 26px;
-      font-size: 22px;
-      vertical-align: middle;
-      padding-top: 30px;
-    }
-    #headerc3 {
-      position: relative;
-      background-size: contain;
-      background-repeat: no-repeat;
-      margin-top: 20px;
-    }
-    #headerc1.legopinktop {
-      background-image: url(<%= asset_path 'raspberrypip.png' %>);
-    }
-    #headerc3.legopinktop {
-      width: 350px;
-      height: 156px;
-      top: 30px;
-      background-image: url(<%= asset_path 'raspberrypihw.png' %>);
-    }
-    #headerc1.legoredtop {
-      background-image: url(<%= asset_path 'railslogo.png' %>);
-    }
-    #headerc1.legoorange {
-      background-image: url(<%= asset_path 'webrtc.png' %>);
-    }
-    #headerc1.legoblack {
-      background-image: url(<%= asset_path 'airplay.png' %>);
-    }
-    #headerc1.legolgreen {
-      background-image: url(<%= asset_path 'chromeextension.png' %>);
-    }
-    #headerc1.legobrown {
-      background-image: url(<%= asset_path 'youtubels.png' %>);
-    }
-    #headerc1.legodgreen {
-      margin-top: 50px;
-      background-image: url(<%= asset_path 'openmax.png' %>);
-    }
-    #headerc1.legoyellow {
-      margin-top: 50px;
-      background-image: url(<%= asset_path 'gstreamer.png' %>);
-    }
-    #headerc1.legowhite {
-      margin-top: 50px;
-      background-image: url(<%= asset_path 'timelinejs.png' %>);
-    }
     #legored {
       position: absolute;
       width: 30%;
@@ -87,14 +19,14 @@
     }
     #legoredtop {
       position: absolute;
-      width: 22%;
-      height: 22%;
+      width: 30%;
+      height: 30%;
       left: 500px;
       top: -200px;
       z-index: 12;
       /*pointer-events: none;*/
       visibility: hidden;
-      background-image: url(<%= asset_path 'legoredtop1.png' %>);
+      background-image: url(<%= asset_path 'legoredtop.png' %>);
       background-size: contain;
       background-repeat: no-repeat;
     }
@@ -213,53 +145,21 @@
     </style>
     </head>
 <body>
-<div class="row">
-  <div id="header" class="">
-    <div id="headerc1" class="col-md-2"></div>
-    <div class="col-md-9">
-          <p id="headerc2" class=""></p>
-          <p id="headerc3" class=""></p>
-    </div>
-    <div class="col-md-1"></div>
-  </div>
-</div>
-<div class="row">
-  <div id="legoblocks">
-      <div id="legored" class="legos"></div>
-      <div id="legoredtop" class="legos"></div>
-      <div id="legopink" class="legos"></div>
-      <div id="legopinktop" class="legos"></div>
-      <div id="legodgreen" class="legos"></div>
-      <div id="legoyellow" class="legos"></div>
-      <div id="legoblue" class="legos"></div>
-      <div id="legowhite" class="legos"></div>
-      <div id="legobrown" class="legos"></div>
-      <div id="legolgreen" class="legos"></div>
-      <div id="legoblack" class="legos"></div>
-      <div id="legoorange" class="legos"></div>
-  </div>
+<div id="legoblocks">
+    <div id="legored" class="legos"></div>
+    <div id="legoredtop" class="legos"></div>
+    <div id="legopink" class="legos"></div>
+    <div id="legopinktop" class="legos"></div>
+    <div id="legodgreen" class="legos"></div>
+    <div id="legoyellow" class="legos"></div>
+    <div id="legoblue" class="legos"></div>
+    <div id="legowhite" class="legos"></div>
+    <div id="legobrown" class="legos"></div>
+    <div id="legolgreen" class="legos"></div>
+    <div id="legoblack" class="legos"></div>
+    <div id="legoorange" class="legos"></div>
 </div>
 <script>
-///////// blocks' body global vriables //////////////////////////////////////
-var c2_legopinktop = "<p>Raspberry Pi II - credit card–sized single-board computer</p><ul><li>CPU: 900 MHz quad-core ARM Cortex-A7</li><li>GPU: Broadcom VideoCore IV @ 250 MHz</li></ul>";
-
-var c2_legoredtop = "<p>Ruby on Rails - web application framework</p><ul><li>Ruby version: 2.2.1</li><li>Rails version: 4.2.5.2</li></ul>";
-
-var c2_legoorange = "<p>WebRTC - a free open project that provides browsers and mobile applications with Real-Time Communications (RTC) capabilities via APIs</p>";
-
-var c2_legoblack = "<p>AirPlay - Apple's protocol that allows wireless streaming between devices</p>";
-
-var c2_legolgreen = "<p>Google Chrome Extension - an addition to support <img src=" + "<%= asset_path 'tam4dummies_s_up.png' %>" + "> app</p>";
-
-var c2_legobrown = "<p>Youtube Live Streaming API - support to create, update, and manage live events on YouTube, allowing streaming videos in real time. Main resources applied:</strong> app</p><ul><li>LiveBroadcast: insert, bind and transition broadcasts</li><li>LiveStreams: insert and manage video streams</li></ul>";
-
-var c2_legodgreen = "<p>OpenMax API - Open Media Acceleration interface to perform graphic encoding & decoding, exploring the <img src=" + "<%= asset_path 'tam4dummies_s_up.png' %>" + "> Raspberry Pi's GPU accelerated hardware</p>";
-
-var c2_legoyellow = "<p>Gstreamer - a pipeline-based multimedia framework that links together a wide variety of media processing systems. Used to stream from the <img src=" + "<%= asset_path 'tam4dummies_s_up.png' %>" + "> Raspberry Pi to the YouTube RTM server</p>";
-
-var c2_legowhite = "<p>Timeline.js - an open-source tool that enables to build interactive timelines supporting JSON data format</p>";
-
-///////////// dropping blocks //////////////////////////////////////////////
 $( document ).ready(function() {
 
     var blocks = [["red", 0, 780, 350], ["pink", -180, 790, -330], ["dgreen", -150, 820, 360], ["yellow", 20, 810, -360], ["blue", 30, 805, 290], ["white", 60, 800, -140], ["brown", -50, 780, -300], ["black", -50, 790, 360], ["orange", -40, 790, -360],];
@@ -338,7 +238,7 @@ $( document ).ready(function() {
 
 ///////// housekeeper /////////////////////////////////////////////////////////
 
-      var blockshk = [["red", -120, 600, -360], ["redtop", 25, 649, -360], ["pink", 60, 570, 360], ["pinktop", 60, 570, 360], ["dgreen", 213, 571, -360], ["yellow", 200, 610, 360], ["blue", 255, 652, -360], ["white", 182, 651, 360], ["brown", -124, 691, 361], ["lgreen", -102, 646, 361], ["black", -13, 568, 361], ["orange", -84, 567, 361],];
+      var blockshk = [["red", -120, 680, -360], ["redtop", -120, 680, -360], ["pink", 60, 650, 360], ["pinktop", 60, 650, 360], ["dgreen", 213, 651, -360], ["yellow", 200, 690, 360], ["blue", 255, 732, -360], ["white", 182, 731, 360], ["brown", -124, 771, 361], ["lgreen", -102, 726, 361], ["black", -13, 648, 361], ["orange", -84, 647, 361],];
 
       setTimeout(function() {
           for(var i=0; i < blockshk.length; i++){
@@ -358,39 +258,42 @@ $( document ).ready(function() {
       }, 7200);
 
 ///////// HOVERING THE COMPONENTS ///////////////////////////////////
+    function ghosts(opacity) {
+      var ghostsblk = [["red", 1], ["redtop", 12], ["pink", 2], ["pinktop", 11], ["dgreen", 13], ["yellow", 14], ["blue", 16], ["white", 15], ["brown", 10], ["lgreen", 9], ["black", 8], ["orange", 7]];
+
+      for(var i=0; i < ghostsblk.length; i++){
+          $("#lego" + ghostsblk[i][0]).css("opacity", opacity);
+          if(opacity == 1) {
+              $("#lego" + ghostsblk[i][0]).css("z-index", ghostsblk[i][1]);
+          };
+      };
+    };
 
     $("#legoblocks").hover(
       function() {
-        $(".legos").css("opacity", 0.15);
+        $("#legoredtop").css("visibility", "hidden")
+        $("#legopinktop").css("visibility", "hidden")
+        $(".legos").css("z-index", 100);
+        ghosts(0.25);
       },
       function() {
-        $(".legos").css("opacity", 1);
+        ghosts(1);
+        $("#legoredtop").css("visibility", "visible");
+        $("#legopinktop").css("visibility", "visible");
       }
     );
 
     $(".legos").hover(
       function(event) {
-        event.stopPropagation;
+  //      event.stopPropagation;
         console.log($(this).attr("id"));
+        $(this).css("z-index", 200);
         $(this).css("opacity", 1);
-        if($(this).attr("id") == "legoredtop") {
-            $('#legored').css("opacity", 1);
-        };
-        $("#headerc1").addClass($(this).attr("id"));
-        $("#headerc2").addClass($(this).attr("id"));
-        $("#headerc2").html(eval("c2_" + $(this).attr("id")));
-        $("#headerc3").addClass($(this).attr("id"));
       },
       function(event) {
-        event.stopPropagation;
-        $(this).css("opacity", 0.15);
-        if($(this).attr("id") == "legoredtop") {
-            $('#legored').css("opacity", 0.15);
-        };
-        $("#headerc1").removeClass($(this).attr("id"));
-        $("#headerc2").removeClass($(this).attr("id"));
-        $("#headerc2").html("");
-        $("#headerc3").removeClass($(this).attr("id"));
+  //      event.stopPropagation;
+        $(this).css("opacity", 0.25);
+        $(this).css("z-index", 100);
       }
     );
 

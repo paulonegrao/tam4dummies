@@ -7,12 +7,24 @@
   <title>Creating infinite animations with jQuery's animate()</title>
 </head>
   <body>
-<ul>
-    <div id="d1" style="width:  100px;height: 100px;background-color: cyan; position: relative;">
-<li>1111</li><li>2222</li>
-</div>
-</ul>
-    <div id="d2" style="width:  100px;height: 100px;background-color: red; position: absolute;"></div>
 
+    <div id="d1" class="divs" style="width:  250px;height: 100px;background-color: cyan; position: absolute;"></div>
+
+
+    <div id="d2" class="divs" style="visibility: hidden; width:  100px;height: 100px;background-color: red; position: absolute;"></div>
+
+    <div id="d3">
+      <img id ="i3" src="../../assets/images/legopink.png">
+    </div>
+<script>
+$( document ).ready(function() {
+    $(".divs").hover(
+      function() { console.log($(this).attr("id")); }
+    );
+    $("#i3").hover(
+      function() { console.log("in i3"); }
+    );
+});
+</script>
   </body>
 </html>

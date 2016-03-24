@@ -10,6 +10,9 @@
       <ul class="nav navbar-nav">
         <li class="<%= request.path.include?("tameline") ? 'navlink open' : '' %>"><%= link_to "TAMeline".html_safe, tameline_path %></li>
       </ul>
+      <ul class="nav navbar-nav">
+        <li class="<%= request.path.include?("components") ? 'navlink open' : '' %>"><%= link_to "Components".html_safe, components_path, 'data-no-turbolink' => true %></li>
+      </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="dropdown">
@@ -33,7 +36,7 @@
       </ul>
   </div>
 </nav>
-<div class="row">
+<div id="flashrow" class="row">
     <div class="col-md-11"></div>
     <!-- <div class="col-md-8"> -->
         <%= render "/layouts/flash_messages" %>

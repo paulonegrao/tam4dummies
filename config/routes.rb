@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root "home#index"
   get "/teste"  => "home#teste"
 
-  
+
 
   get "/getScreenId"  => "home#getScreenId"
 
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   get 'events/update_topics', as: 'update_topics'
   get 'events/show'
 
-  get 'lego/housekeeper'
+  get 'lego/components', to: 'lego#components', as: 'components'
 
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection
