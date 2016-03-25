@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get 'events/show'
 
   get 'lego/components', to: 'lego#components', as: 'components'
+  get 'lego/lego', to: 'lego#lego', as: 'lego'
 
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection
