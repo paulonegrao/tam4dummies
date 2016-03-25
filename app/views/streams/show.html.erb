@@ -225,7 +225,7 @@
 // AJAX to Start Youtube Live Streaming
 $.ajax({
   type: "POST",
-  url:"<%= stream_start_yt_live_on_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
+  url:"<%= start_yt_live_path(:stream_name => @stream.stream_name, :broadcast_id => @stream.broadcast_id) %>",
   processData: false,
   contentType: 'application/json'
 });
