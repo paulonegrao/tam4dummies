@@ -19,10 +19,10 @@ eval $EXECUTABLE &
 while [ 1 -gt 0 ]; do
     # verifies  if tam_keep_alive update timestamp > 12 secs  ....
     alive=$(expr `date +%s` - `stat -c %Y /home/pi/rails/tam4dummies/stream/tam_keep_alive`)
-    if [ "$alive" -gt 12 ];  then
+    if [ "$alive" -gt 20 ];  then
        # kills current "gstreamer"
        # pkill -f -o "gst-launch-1.0 ximagesrc"
-       kill $(ps aux | grep "gst-launch-1.0 ximagesrc" | grep $2 | awk '{print $2}')
+       kill $(ps aux | grep "gst-launch-1.0 ximagesrc" | grep $1 | awk '{print $2}')
        # kills current "SetTransition LIVE" leftovers
        # pkill -f -o "youtube.cmdline.live.SetTransition -Dexec.args=live"
        kill $(ps aux | grep "youtube.cmdline.live.SetTransition -Dexec.args=live" | grep $2 | awk '{print $2}')

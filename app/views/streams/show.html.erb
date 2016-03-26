@@ -166,11 +166,10 @@
                     if (tam_obj.hasClass('on-air')) {
 // t4dcode: if "event_live_id" == 0 it needs to be updated with "data-live" from on-off-air
                         if ($('#event_live_id').attr('value') == 0) {
-                          $('#event_live_id').attr('value', $('#on-off-air').attr('data-live'));
+                          $(this).attr('value', tam_obj.attr('data-live'));
                         };
 // t4dcode: checks if it is at the live "topics/x/streams/y" page them changes "tam-liveoff" accordingly
-                        if (window.location.href.includes(tam_obj.attr('onclick')) &&
-                            tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
+                        if (window.location.href.includes(tam_obj.attr('onclick')) && tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
                               $('#tam-liveoff-div').attr('class', "");
                         } else {
                               $('#tam-liveoff-div').attr('class', "hidden");
@@ -192,7 +191,6 @@
                 window.location.href = '<%= "#{play_again_tam_path}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
             });
         </script>
-<!-- ?????????????????????????????????? <script> -->
 
         <script>
                 var isWebRTCExperimentsDomain = document.domain.indexOf('tam4dummies.com') != -1;
@@ -237,7 +235,6 @@ $.ajax({
                         if(location.hash.replace('#', '').length) {
                             // private rooms should auto be joined.
                             conferenceUI.joinRoom({
-                              //onika  roomToken: room.roomToken,
                                 roomToken: 'tam-roomToken',
                             joinUser: room.broadcaster
                             //    joinUser: 'tam_broadcaster'
@@ -270,6 +267,7 @@ $.ajax({
                             var tam_obj = $('#tam-roomToken');
                             tam_obj.removeClass('tam-liveoff');
                             tam_obj.addClass('tam-liveon');
+                            $('#tam-liveoff-div').attr('class', "");
                             tam_obj.attr('onclick', 'window.location.reload()');
                             conferenceUI.joinRoom({
                                 roomToken: button.id,
@@ -425,7 +423,8 @@ var loop_tam_alive = setInterval(function(){
      window.location.href = "<%= new_topic_stream_path(@topic) %>";
      clearInterval(loop_tam_alive);
   };
-}, 2000);
+}, 3000);
+
 // changes button "tam-capturing" by "tam-cut" & respective onclick to new_topic_stream_path(@topic) -> forces new scream page
                             var tam_obj = $('#share-screen');
                             tam_obj.removeClass('tam-capturing');

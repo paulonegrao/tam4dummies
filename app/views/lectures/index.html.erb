@@ -14,7 +14,8 @@
                       <% url_top = (topic.id)%>
                       <% @streams = topic.streams.order('timestamp DESC, capture_date DESC') %>
                       <% if user_signed_in? && current_user.role == "instructor"%>
-                              <ul class="nav navbar-nav pull-right">
+                          <div class="pull-right">
+                              <ul class="nav navbar-nav">
                                 <li>
                                   <table><tr>
                                     <td><%= link_to image_tag("#{ asset_path 'create_broadcast.png'}", width: "38px", :border => 0, :alt => '', :title => ''), new_topic_stream_path(topic), {:style=>"padding-right: 14px;"} %></td>
@@ -22,9 +23,13 @@
                                   </tr></table>
                                 </li>
                               </ul>
+                          </div>
+                          <%=  link_to "#{topic.number} - #{topic.title}".html_safe,
+                          "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
+                      <% else %>
+                          <%=  link_to "#{topic.number} - #{topic.title}<span class='badge pull-right' style='margin-top: 7px;'> #{@streams.count} </span>".html_safe,
+                                "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
                       <% end %>
-                      <%=  link_to "#{topic.number} - #{topic.title}".html_safe,
-                            "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
                 </div>
                 <div class="topic-group collapse" id='streams-for-<%= "#{url_top}" %>'>
                       <%  @streams.each do |stream| %>
