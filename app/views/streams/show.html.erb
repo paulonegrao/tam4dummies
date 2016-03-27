@@ -90,7 +90,6 @@
                         <% else %>
                             <button id="tam-patam" class="tam-button tam-patam"></button>
                         <% end %>
-                    </div>
 <!-- t4d section "dummit-new-section": setup form input dumm-its -->
                     <section id="dummit-new-section" class="dummit-new hidden">
                         <ul id="dummit-new-ul">
@@ -118,6 +117,7 @@
                         <div class="offset">.</div>
                     </section>
                 <% end %>
+              </div>
             </div>
         </div>
     </div>
@@ -166,7 +166,7 @@
                     if (tam_obj.hasClass('on-air')) {
 // t4dcode: if "event_live_id" == 0 it needs to be updated with "data-live" from on-off-air
                         if ($('#event_live_id').attr('value') == 0) {
-                          $(this).attr('value', tam_obj.attr('data-live'));
+                          $('#event_live_id').attr('value', tam_obj.attr('data-live'));
                         };
 // t4dcode: checks if it is at the live "topics/x/streams/y" page them changes "tam-liveoff" accordingly
                         if (window.location.href.includes(tam_obj.attr('onclick')) && tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {

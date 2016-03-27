@@ -1,5 +1,9 @@
 class TimelinesController < ApplicationController
-  before_action :authenticate_user
+  before_action :authenticate_user, except: [:ssl_configured?]
+
+  def ssl_configured?
+    false
+  end
 
   def tameline
     respond_to do |format|

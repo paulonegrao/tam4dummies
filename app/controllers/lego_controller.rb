@@ -1,4 +1,8 @@
 class LegoController < ApplicationController
+  def ssl_configured?
+    false
+  end
+
   def baloons
   end
   def components

@@ -10,12 +10,12 @@ class EventsController < ApplicationController
   #   @topic = Topic.find_by("id = ?", params[:trip][:topic_id])
   # end
 
-  def update_topics
-    @topics = Topic.where("lecture_id = ?", params[:lecture_id])
-    respond_to do |format|
-      format.js
-    end
-  end
+  # def update_topics
+  #   @topics = Topic.where("lecture_id = ?", params[:lecture_id])
+  #   respond_to do |format|
+  #     format.js
+  #   end
+  # end
 
   def update
     @event = Event.last
@@ -35,7 +35,7 @@ class EventsController < ApplicationController
     end
   end
 
-# t4d.s03 - find las (and unic) Event and passes it to show.js.erb (on events view)
+# t4d.s03 - find last (and unic) Event and passes it to show.js.erb (on events view)
   def show
     @event = Event.last
     respond_to do |format|

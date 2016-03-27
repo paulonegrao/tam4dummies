@@ -1,14 +1,20 @@
 class ApplicationController < ActionController::Base
 
   # Incluse SSL.
-  include SslWithConfiguredPort
+#  include SslWithConfiguredPort
   # Instead of *force_ssl* we use *force_ssl_with_configured_port* that will read
   # the SSL port from the config. We added a *if* so that this will only run
   # if the *use_ssl?* method below returns true.
-  force_ssl_with_configured_port if: :use_ssl?
+#  force_ssl_with_configured_port if: :use_ssl?
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  force_ssl if: :ssl_configured?
+    def ssl_configured?
+      # Rails.env.production?
+      false
+    end
+
   protect_from_forgery with: :exception
 
   def authenticate_user
@@ -26,10 +32,10 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
 
-  private
+#  private
     # This will return true if the config has *config.use_ssl = true*
-    def use_ssl?
-      Rails.application.config.try(:use_ssl).is_a?(TrueClass)
-    end
+#    def use_ssl?
+#      Rails.application.config.try(:use_ssl).is_a?(TrueClass)
+#    end
 
 end

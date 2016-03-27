@@ -40,7 +40,10 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   # SSL
-  config.use_ssl = true
+#  config.use_ssl = true
+#  config.ssl_port = 3001
+# ...
+  config.port = 3000
   config.ssl_port = 3001
 
 end

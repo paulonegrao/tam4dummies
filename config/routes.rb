@@ -5,14 +5,14 @@ Rails.application.routes.draw do
 
 
 
-  get "/getScreenId"  => "home#getScreenId"
+  #get "/getScreenId"  => "home#getScreenId"
 
   get "/timelines/tameline" => "timelines#tameline", as: :tameline
   get "/timelines/play_again_tam" => "timelines#play_again_tam", as: :play_again_tam
 
-  get '/tfdstuff'    => 'tfd#tfdstuff'
+  #get '/tfdstuff'    => 'tfd#tfdstuff'
   # get '/serve_media/:filename'  =>  'tfd#serve'
-  match '/tfd/:name'  =>  'tfd#serve', :as => :custom_image, via: [:get, :post]
+  #match '/tfd/:name'  =>  'tfd#serve', :as => :custom_image, via: [:get, :post]
 
   resources :lectures do
     resources :topics
@@ -35,16 +35,16 @@ Rails.application.routes.draw do
   post 'streams/start_yt_live', as: 'start_yt_live'
   post 'streams/capture_tam/:id', to: 'streams#capture_tam', as: 'capture_tam'
 
-  get '/auth/:provider/callback', to: 'yt_sessions#create'
-  delete '/logout', to: 'yt_sessions#destroy', as: :logout
+  #get '/auth/:provider/callback', to: 'yt_sessions#create'
+  #delete '/logout', to: 'yt_sessions#destroy', as: :logout
 
   resources :users, only: [:new, :create]
 
   resources :events, only: [:update]
 
-  get '/', to: redirect('/events/index')
-  get 'events/index'
-  get 'events/update_topics', as: 'update_topics'
+  #get '/', to: redirect('/events/index')
+  #get 'events/index'
+  #get 'events/update_topics', as: 'update_topics'
   get 'events/show'
 
   get 'lego/components', to: 'lego#components', as: 'components'
