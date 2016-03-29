@@ -12,7 +12,7 @@
   </div>
 </div>
 <div class="row">
-  <div id="legoblocks">
+  <div id="legoblocks" class="">
       <div id="legored" class="legos"></div>
       <div id="legoredtop" class="legos"></div>
       <div id="legopink" class="legos"></div>
@@ -129,22 +129,44 @@ $(document).on("page:change", function() {
     };
 
 ///////// housekeeper /////////////////////////////////////////////////////////
+// AJAX to verify if has siri_housekeeper file
+function legoFix() {
+    $.ajax({
+      type: "GET",
+      url:"<%= lego_fix_path %>",
+      processData: false,
+      contentType: 'application/json'
+    });
+    return;
+};
+
+function houseKeeper() {
+    var blockshk = [["red", -120, 600, -360], ["redtop", 25, 649, -360], ["pink", 60, 570, 360], ["pinktop", 60, 570, 360], ["dgreen", 213, 571, -360], ["yellow", 200, 610, 360], ["blue", 255, 652, -360], ["white", 182, 651, 360], ["brown", -124, 691, 361], ["lgreen", -102, 646, 361], ["black", -13, 568, 361], ["orange", -84, 567, 361],];
+    for(var i=0; i < blockshk.length; i++){
+        $("#lego" + blockshk[i][0]).css({
+              position: "absolute",
+              transition: "2000ms ease",
+              transform: "translate(" + blockshk[i][1] + "px, " + blockshk[i][2] + "px) rotate(" + blockshk[i][3] + "deg)"
+        });
+    };
+    setTimeout(function() {
+        $("#legoredtop").css("visibility", "visible");
+        $("#legopinktop").css("visibility", "visible");
+    }, 1200);
+    return;
+};
 
       setTimeout(function() {
-          var blockshk = [["red", -120, 600, -360], ["redtop", 25, 649, -360], ["pink", 60, 570, 360], ["pinktop", 60, 570, 360], ["dgreen", 213, 571, -360], ["yellow", 200, 610, 360], ["blue", 255, 652, -360], ["white", 182, 651, 360], ["brown", -124, 691, 361], ["lgreen", -102, 646, 361], ["black", -13, 568, 361], ["orange", -84, 567, 361],];
-          for(var i=0; i < blockshk.length; i++){
-              $("#lego" + blockshk[i][0]).css({
-                    position: "absolute",
-                    transition: "2000ms ease",
-                    transform: "translate(" + blockshk[i][1] + "px, " + blockshk[i][2] + "px) rotate(" + blockshk[i][3] + "deg)"
-              });
-          };
+          $("#legoblocks").addClass("dropped");
+          var siriHousekeeper = setInterval(function(){
+            legoFix();
+            if($("#legoblocks").hasClass("fixed")) {
+                clearInterval(siriHousekeeper);
+                houseKeeper();
+            }
+          }, 1000);
+
       }, 6000);
-
-      setTimeout(function() {
-          $("#legoredtop").css("visibility", "visible");
-          $("#legopinktop").css("visibility", "visible");
-      }, 7200);
 
 ///////// HOVERING THE COMPONENTS ///////////////////////////////////
 
