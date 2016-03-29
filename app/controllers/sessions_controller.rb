@@ -1,4 +1,7 @@
 class SessionsController < ApplicationController
+  def ssl_configured?
+    false
+  end
 
   def create
     user = User.find_by_email params[:email]

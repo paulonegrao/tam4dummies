@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+ Rails.logger.level = 5
   # Incluse SSL.
 #  include SslWithConfiguredPort
   # Instead of *force_ssl* we use *force_ssl_with_configured_port* that will read
@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def running_rpi?
+    request.original_url.include?("/home/pi/") ? true : false
+  end
+  helper_method :running_rpi?
 
 #  private
     # This will return true if the config has *config.use_ssl = true*

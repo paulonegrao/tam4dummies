@@ -2,16 +2,16 @@
   <div class="container">
       <ul class="nav navbar-nav">
         <!-- <li class="<#%= [root_path, lectures_path].include?(request.path) ? 'navlink open' : '' %>"><%= link_to "Home".html_safe, root_path %></li> -->
-        <li class="<%= request.path.include?("root") ? 'navlink open' : '' %>"><%= link_to "Home".html_safe, root_path %></li>
+        <li class="<%= request.path.include?("root") ? 'navlink open' : '' %>"><%= link_to "Home".html_safe, root_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}") %></li>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="<%= request.path.include?("lectures") ? 'navlink open' : '' %>"><%= link_to "Lectures".html_safe, lectures_path %></li>
+        <li class="<%= request.path.include?("lectures") ? 'navlink open' : '' %>"><%= link_to "Lectures".html_safe, lectures_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}") %></li>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="<%= request.path.include?("tameline") ? 'navlink open' : '' %>"><%= link_to "TAMeline".html_safe, tameline_path %></li>
+        <li class="<%= request.path.include?("tameline") ? 'navlink open' : '' %>"><%= link_to "TAMeline".html_safe, tameline_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}") %></li>
       </ul>
       <ul class="nav navbar-nav">
-        <li class="<%= request.path.include?("components") ? 'navlink open' : '' %>"><%= link_to "Components".html_safe, components_path, 'data-no-turbolink' => true %></li>
+        <li class="<%= request.path.include?("components") ? 'navlink open' : '' %>"><%= link_to "Components".html_safe, components_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}"), 'data-no-turbolink' => true %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
@@ -19,7 +19,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               Hello <%= current_user.first_name %> <%= current_user.last_name %>! <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Log Out", sessions_path, method: :delete %></li>
+              <li><%= link_to "Log Out", sessions_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}"), method: :delete %></li>
             </ul>
           </li>
           <!-- <ul class="nav navbar-nav">
@@ -28,8 +28,8 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Let's Rock!<span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Sign In", new_session_path %></li>
-              <li><%= link_to "Sign Up", new_user_path %></li>
+              <li><%= link_to "Sign In", new_session_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}") %></li>
+              <li><%= link_to "Sign Up", new_user_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}") %></li>
             </ul>
           </li>
         <% end %>
@@ -43,7 +43,7 @@
     <!-- </div> -->
     <div class="col-md-1">
     <!-- f4d.s02 -  -->
-        <%= link_to '', events_show_path, remote: true, id:'tam-event-keep-alive' %>
+        <%= link_to '', events_show_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}"), remote: true, id:'tam-event-keep-alive' %>
         <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" data-live-capture-date="" disabled></button>
     </div>
 </div>
