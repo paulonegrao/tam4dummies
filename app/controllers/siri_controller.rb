@@ -4,8 +4,13 @@ class SiriController < ApplicationController
   end
 
   def housekeeper
-    system('touch /home/pi/rails/tam4dummies/stream/siri_housekeeper')
-    format.js { render :siri_ok }
+    if running_rpi?
+        system('touch /home/pi/rails/tam4dummies/stream/siri_housekeeper')
+    else
+        system('touch /Users/paulonegrao/codecore/railsdir/tam_for_dummies_app/stream/siri_housekeeper')
+    end
+
+    render :siri_ok
   end
 
 end

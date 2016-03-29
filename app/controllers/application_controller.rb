@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def running_rpi?
-    request.original_url.include?("/home/pi/") ? true : false
+    Socket.gethostname.include?("raspberrypi") ? true : false
   end
   helper_method :running_rpi?
 

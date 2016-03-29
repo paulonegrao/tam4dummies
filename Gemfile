@@ -47,10 +47,10 @@ group :development do
   gem "awesome_print"
   gem "bootstrap-sass"
   gem 'thin'
-  gem 'talking_stick'
+  #gem 'talking_stick'
   gem 'localtunnel'
   gem "quiet_assets"
-  gem 'yt', '~> 0.13.7'
+  #gem 'yt', '~> 0.13.7'
   gem 'autoprefixer-rails'
   gem 'omniauth-google-oauth2'
 
