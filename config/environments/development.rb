@@ -46,4 +46,7 @@ Rails.application.configure do
   config.port = 3000
   config.ssl_port = 3001
 
+  # freeing console in development
+  config.web_console.whiny_requests = false
+
 end
