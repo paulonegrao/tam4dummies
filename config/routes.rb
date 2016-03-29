@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  #mount TalkingStick::Engine, at: '/talking_stick'
   root "home#index"
   get "/teste"  => "home#teste"
 
