@@ -4,9 +4,6 @@ class DummitsController < ApplicationController
   #before_action :find_dummit, only: [:show, :edit, :update, :destroy]
 
   # before_action :authorize, only: [:edit, :update, :destroy]
-#  def ssl_configured?
-#    false
-#  end
 
   def create
     @stream         = Stream.find(params[:stream_id])

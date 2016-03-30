@@ -35,7 +35,7 @@
                       <%  @streams.each do |stream| %>
                             <div class="stream-panel">
                               <span>
-                                  <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_path(topic, stream) %>
+                                  <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_url(topic, stream, :protocol => 'https', :port => 3001)%>
                               </span>
                             </div>
                       <% end %>

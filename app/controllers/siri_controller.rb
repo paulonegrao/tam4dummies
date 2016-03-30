@@ -1,7 +1,4 @@
 class SiriController < ApplicationController
-#  def ssl_configured?
-#    false
-#  end
 
   def housekeeper
     if running_rpi?

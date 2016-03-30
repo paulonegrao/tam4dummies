@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
- Rails.logger.level = 5
+ Rails.logger.level = 0
   # Incluse SSL.
 #  include SslWithConfiguredPort
   # Instead of *force_ssl* we use *force_ssl_with_configured_port* that will read
@@ -9,10 +9,14 @@ class ApplicationController < ActionController::Base
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-#    def ssl_configured?
-      # Rails.env.production?
-#      false
-#    end
+  force_ssl if: :ssl_configured?
+    def ssl_configured?(*arg)
+      if arg == true || arg == false
+        arg
+      else
+        false
+      end
+    end
 
   protect_from_forgery with: :exception
 

@@ -1,10 +1,10 @@
 class StreamsController < ApplicationController
-  force_ssl if: :ssl_configured?
-  def ssl_configured?
-    true
-  end
 
   protect_from_forgery except: :capture_tam
+
+  before_action only: [:show] do
+      ssl_configured?(true)
+  end
 
   before_action :authenticate_user, except: [:index, :capture_tam, :start_yt_live]
 

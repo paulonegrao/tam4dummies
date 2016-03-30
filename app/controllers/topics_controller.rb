@@ -5,10 +5,6 @@ class TopicsController < ApplicationController
 
 #  before_action :authorize, only: [:edit, :update, :destroy]
 
-#  def ssl_configured?
-#    false
-#  end
-
   def index
     redirect_to lectures_path
   end

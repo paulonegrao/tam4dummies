@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-#  def ssl_configured?
-#    false
-#  end
 
   def new
     @user = User.new
