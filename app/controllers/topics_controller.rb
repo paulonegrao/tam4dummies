@@ -3,11 +3,11 @@ class TopicsController < ApplicationController
 
   before_action :find_topic, only: [:show, :edit, :update, :destroy]
 
-  before_action :authorize, only: [:edit, :update, :destroy]
+#  before_action :authorize, only: [:edit, :update, :destroy]
 
-  def ssl_configured?
-    false
-  end
+#  def ssl_configured?
+#    false
+#  end
 
   def index
     redirect_to lectures_path

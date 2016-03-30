@@ -1,7 +1,7 @@
 class LegoController < ApplicationController
-  def ssl_configured?
-    false
-  end
+#  def ssl_configured?
+#    false
+#  end
 
   def baloons
   end

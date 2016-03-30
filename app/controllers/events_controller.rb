@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
   #before_action :keep_alive, only: [:update]
-  def ssl_configured?
-    false
-  end
-  
+#  def ssl_configured?
+#    false
+#  end
+
   def index
     @lectures = Lecture.all
     @topics = Topic.where("lecture_id = ?", Lecture.first.id)

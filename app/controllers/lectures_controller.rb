@@ -1,7 +1,7 @@
 class LecturesController < ApplicationController
-  def ssl_configured?
-    false
-  end
+#  def ssl_configured?
+#    false
+#  end
 
   def index
     @lectures = Lecture.all.order("chapter ASC")
