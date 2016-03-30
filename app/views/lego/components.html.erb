@@ -27,6 +27,16 @@
       <div id="legoorange" class="legos"></div>
   </div>
 </div>
+<style>
+.heart.active::before {
+  animation: heartbeats-before 5.85s linear 0s 1;
+}
+</style>
+<div id="heart" class="heart">
+  <audio id="heartbeat" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/123941/heartbeat.mp3" preload="auto">
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+</div>
 <script>
 ///////// blocks' body global vriables //////////////////////////////////////
 var c2_legopinktop = "<p>Raspberry Pi II - credit card–sized single-board computer</p><ul><li>CPU: 900 MHz quad-core ARM Cortex-A7</li><li>GPU: Broadcom VideoCore IV @ 250 MHz</li></ul>";
@@ -46,7 +56,6 @@ var c2_legodgreen = "<p>OpenMax API - Open Media Acceleration interface to perfo
 var c2_legoyellow = "<p>Gstreamer - a pipeline-based multimedia framework that links together a wide variety of media processing systems. Used to stream from the <img src=" + "<%= asset_path 'tam4dummies_s_up.png' %>" + "> Raspberry Pi to the YouTube RTM server</p>";
 
 var c2_legowhite = "<p>Timeline.js - an open-source tool that enables to build interactive timelines supporting JSON data format</p>";
-
 ///////////// dropping blocks //////////////////////////////////////////////
 $(document).on("page:change", function() {
 
@@ -79,7 +88,7 @@ $(document).on("page:change", function() {
 
     setTimeout(kickdown, 1400);
     function kickdown() {
-      var blocksdown = [["red", 100, 680, 350], ["pink", -200, 700, -345], ["dgreen", -220, 840, 360], ["yellow", 220, 810, -360], ["blue", 160, 670, 270], ["white", -250, 820, 90], ["brown", -10, 780, -300], ["black", -40, 750, 360], ["orange", 100, 790, -360],];
+      var blocksdown = [["red", 100, 650, 350], ["pink", -200, 630, -345], ["dgreen", -220, 770, 360], ["yellow", 260, 690, -360], ["blue", 260, 650, 270], ["white", -250, 750, 90], ["brown", -10, 710, -300], ["black", -40, 680, 360], ["orange", 100, 720, -360],];
       for(var i=0; i < blocksdown.length; i++){
         $("#lego" + blocksdown[i][0]).css({
           position: "absolute",
@@ -118,7 +127,7 @@ $(document).on("page:change", function() {
 
     setTimeout(kicklgdown, 5100);
     function kicklgdown() {
-        var lgblocksdown = [["lgreen", 190, 700, -375]];
+        var lgblocksdown = [["lgreen", 190, 660, -375]];
         for(var i=0; i < lgblocksdown.length; i++){
           $("#lego" + lgblocksdown[i][0]).css({
                 position: "absolute",

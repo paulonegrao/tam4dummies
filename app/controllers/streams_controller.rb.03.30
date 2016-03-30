@@ -48,16 +48,30 @@ class StreamsController < ApplicationController
 
     argscreate = "#{title} #{titlest} #{starttime} #{endtime} #{description}"
 
-    system("/home/pi/rails/tam4dummies/stream/create_broadcast.sh #{argscreate} &")
+    output = []
+    IO.popen("java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast #{argscreate}").each do |line|
+         p line.chomp
+         output << line.chomp
+    end
 
-    if @stream.save
-       @topic = Topic.find params[:topic_id]
-       redirect_to topic_stream_path(@topic, @stream), notice: "Stream created successfully"
+    outputw = output.join(",")
+    outputw = outputw.split('@@t4d_arg=')
+
+    if outputw.length > 2
+       @stream.broadcast_id = outputw[1]
+       @stream.stream_name  = outputw[2]
+       if @stream.save
+          @topic = Topic.find params[:topic_id]
+          redirect_to topic_stream_path(@topic, @stream), notice: "Stream created successfully"
+       else
+          flash[:alert] = @stream.errors.full_messages.join(", ")
+          render :new
+          #render "topics/#{@topics}/streams/new"
+       end
     else
-       flash[:alert] = @stream.errors.full_messages.join(", ")
+       flash[:alert] = "Youtube Broadcast Stream not created. Try again."
        render :new
     end
-    
   end
 
 
