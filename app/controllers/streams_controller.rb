@@ -48,7 +48,8 @@ class StreamsController < ApplicationController
 
     argscreate = "#{title} #{titlest} #{starttime} #{endtime} #{description}"
 
-    system("/home/pi/rails/tam4dummies/stream/create_broadcast.sh #{argscreate} &")
+# call create_bradcast.sh
+    system("/home/pi/rails/tam4dummies/stream/create_broadcast.sh #{@stream.id} #{argscreate} &")
 
     if @stream.save
        @topic = Topic.find params[:topic_id]
@@ -57,7 +58,7 @@ class StreamsController < ApplicationController
        flash[:alert] = @stream.errors.full_messages.join(", ")
        render :new
     end
-    
+
   end
 
 
