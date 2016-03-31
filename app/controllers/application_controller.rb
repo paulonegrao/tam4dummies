@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   force_ssl if: :ssl_configured?
     def ssl_configured?(*arg)
       if arg == true || arg == false
-        arg
+        return arg
       else
         false
       end

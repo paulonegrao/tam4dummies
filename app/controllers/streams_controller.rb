@@ -50,7 +50,7 @@ class StreamsController < ApplicationController
        # call create_broadcast.sh
        system("/home/pi/rails/tam4dummies/stream/create_broadcast_yt.sh #{@stream.id} #{title} #{titlest} #{starttime} #{endtime} #{description} &")
        @topic = Topic.find params[:topic_id]
-       redirect_to topic_stream_path(@topic, @stream), notice: "Stream created successfully"
+       redirect_to topic_stream_url(@topic, @stream, :protocol => 'https', :port => "#{running_rpi? ? 3001 : 3001}"), notice: "Stream created successfully"
     else
        flash[:alert] = @stream.errors.full_messages.join(", ")
        render :new
