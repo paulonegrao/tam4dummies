@@ -43,7 +43,11 @@
     <!-- </div> -->
     <div class="col-md-1">
     <!-- f4d.s02 -  -->
+    <% if request.protocol.include?("https")
+        <%= link_to '', events_show_url(:protocol => 'https', :port => "#{running_rpi? ? 3001 : 3001}"), remote: true, id:'tam-event-keep-alive' %>
+        <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" data-live-capture-date="" disabled></button>
+    <% else %>
         <%= link_to '', events_show_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}"), remote: true, id:'tam-event-keep-alive' %>
-        <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" data-live-capture-date="" data-live-broadcast-id=""  data-live-stream-name="" disabled></button>
+        <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" data-live-capture-date="" disabled></button>
     </div>
 </div>
