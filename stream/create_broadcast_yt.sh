@@ -28,8 +28,8 @@ echo "stream_name="$stream_name
 
 if [ -z "$broadcast_id" ] || [ -z "$stream_name" ]; then
    # error on CreateBroadcast; flags error in the broadcast_id directory
-   touch /home/pi/rails/tam4dummies/stream/create_broadcast/$1@@t4d@@error@@t4d@@error
+   touch /home/pi/rails/tam4dummies/stream/create_broadcast/$1@@t4d@@error@@t4d@@error@@t4d@@
 else
    # CreateBroadcast OK; insert args on fname
-   touch /home/pi/rails/tam4dummies/stream/create_broadcast/$1@@t4d@@$broadcast_id@@t4d@@$stream_name
+   touch /home/pi/rails/tam4dummies/stream/create_broadcast/$1@@t4d@@$broadcast_id@@t4d@@$stream_name@@t4d@@
 fi
