@@ -63,7 +63,7 @@ class EventsController < ApplicationController
     end
 
     respond_to do |format|
-      format.js
+        format.js { render :show }
     end
   end
 
