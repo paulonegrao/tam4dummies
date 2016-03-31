@@ -130,7 +130,7 @@
     </div>
         <div>
 <!-- t4d.s08 - AJAX to UPDATE Event with Stream data and refreshes the 'updated_at' field  -->
-          <%= form_for @event, as: :event, url: event_path(@event), method: :patch, remote: true do |f| %>
+          <%= form_for @event, as: :event, url: event_url(@event, :protocol => 'https', :port => "#{running_rpi? ? 3001 : 3001}"), method: :patch, remote: true do |f| %>
 <!-- remembeing... :live_id is #event_live_id -->
             <%= f.hidden_field :live_id, value: "0"%>
             <%= f.hidden_field :live_capture_date, value: ""%>
@@ -502,8 +502,10 @@ var loop_tam_alive = setInterval(function(){
                         iframe.isLoaded = true;
                         console.log('Screen Capturing frame is loaded.');
 
-                        document.getElementById('share-screen').disabled = false;
-                        // document.getElementById('room-name').disabled = false;
+                        if(!document.getElementById('share-screen').hasClass('dimmed') {
+                            document.getElementById('share-screen').disabled = false;
+                            // document.getElementById('room-name').disabled = false;
+                        };
                     };
                     iframe.src = 'https://www.webrtc-experiment.com/getSourceId/';
                     iframe.style.display = 'none';
@@ -527,8 +529,10 @@ var loop_tam_alive = setInterval(function(){
                     loadScreenFrame();
                 }
                 else {
-                    document.getElementById('share-screen').disabled = false;
-                    // document.getElementById('room-name').disabled = false;
+                  if(!document.getElementById('share-screen').hasClass('dimmed') {
+                      document.getElementById('share-screen').disabled = false;
+                      // document.getElementById('room-name').disabled = false;
+                  };
                 }
             </script>
 
