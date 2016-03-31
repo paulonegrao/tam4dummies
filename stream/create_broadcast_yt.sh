@@ -1,7 +1,14 @@
 #!/bin/bash
-
+echo "#################################"
+echo "#### create_broadcast_yt.sh #####"
+echo "#################################"
 echo "stream_id="$1
-echo "args_create="$2
+echo "title="$2
+echo "titlest="$3
+echo "starttime="$4
+echo "endtime="$5
+echo "description="$6
+echo "#################################"
 
 #sd=`date -d "10 minutes" +%F"T"%T"-08:00"`
 #ed=`date -d "2 hours" +%F"T"%T"-08:00"`
@@ -10,7 +17,7 @@ echo "args_create="$2
 # clean CreateBraodcast directory
 rm /home/pi/rails/tam4dummies/stream/create_broadcast/*
 
-OUTPUT=`java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast $2`
+OUTPUT=`java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast "$2" "$3" "$4" "$5" "$6"`
 
 broadcast_id=`echo $OUTPUT | awk 'BEGIN {FS="@@t4d_arg="} {print $2}'`
 stream_name=`echo $OUTPUT | awk 'BEGIN {FS="@@t4d_arg="} {print $3}'`

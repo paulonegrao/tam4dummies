@@ -46,12 +46,9 @@ class StreamsController < ApplicationController
     end
 # t4d.sxx - Create Broadcast at Youtube
 
-    argscreate = "#{title} #{titlest} #{starttime} #{endtime} #{description}"
-
-# call create_bradcast.sh
-    system("/home/pi/rails/tam4dummies/stream/create_broadcast.sh #{@stream.id} #{argscreate} &")
-
     if @stream.save
+       # call create_broadcast.sh
+       system("/home/pi/rails/tam4dummies/stream/create_broadcast_yt.sh #{@stream.id} #{title} #{titlest} #{starttime} #{endtime} #{description} &")
        @topic = Topic.find params[:topic_id]
        redirect_to topic_stream_path(@topic, @stream), notice: "Stream created successfully"
     else
