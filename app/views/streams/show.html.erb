@@ -10,35 +10,40 @@
         <div class="row">
 <!-- form Creat Stream -->
             <%= form_for "" do |f| %>
-                <div class="col-md-10" style="padding-right: 0;">
-                    <span  class="col-md-2 form_stream">
+                <div class="col-md-10" style="padding-left: 0; padding-right: 0;">
+                    <span  class="col-md-2 form_stream" style="padding-left: 0; padding-right: 5;">
                       <label class="label"><%= f.label "Lecture", class: "label" %></label>
-                      <%= f.text_field :lecture_id, readonly: true, value: "#{@lecture.chapter}. #{@lecture.subject}", class: "tfield" %>
+                      <%= f.text_field :lecture_id, readonly: true, value: "#{@lecture.chapter}. #{@lecture.subject}", class: "tfield col-md-2" %>
                     </span>
 
-                    <span class="col-md-2 form_stream">
+                    <span class="col-md-2 form_stream" style="padding-left: 0; padding-right: 5;">
                         <label class="label"><%= f.label "Topic", class: "label"  %></label>
-                        <%= f.text_field :topic_id, readonly: true, value: "#{@topic.number}. #{@topic.title}", class: "tfield" %>
+                        <%= f.text_field :topic_id, readonly: true, value: "#{@topic.number}. #{@topic.title}", class: "tfield col-md-2" %>
                     </span>
 
-                    <span  class="col-md-8 form_stream" style="padding-right: 0;">
+                    <span  class="col-md-6 form_stream" style="padding-left: 0; padding-right: 5;">
                         <label class="label"><%= f.label "Description", class: "label"  %></label>
-                        <%= f.text_field :description, readonly: true, value: "#{@stream.description}", class: "tfield col-md-8", style: 'margin-right: 0; width: 100%' %>
+                        <%= f.text_field :description, readonly: true, value: "#{@stream.description}", class: "tfield col-md-6" %>
+                    </span>
+
+                    <span  class="col-md-2 form_stream" style="padding-left: 0; padding-right: 0;">
+                      <label class="label"><%= f.label "Timestamp", class: "label"  %></label>
+                      <%= f.text_field :timestamp, readonly: true, value: "#{@stream.timestamp}", class: "tfield col-md-2", style: 'margin-right: 0', size: 15%>
                     </span>
                 </div>
                 <div class="col-md-2">
                     <div></div>
                     <span  class="form_stream">
-                        <label class="label"><%= f.label "Stream ID", class: "label"  %></label>
-                        <%= f.text_field :timestamp, readonly: true, value: "#{@stream.timestamp}", class: "tfield", disabled: true, size: 19%>
+                        <label class="label"><%= f.label "Stream ID", class: "label hidden"  %></label>
+                        <%= f.text_field :broadcast_id, readonly: true, value: "", class: "tfield hidden", id: "broadcast_id", size: 15%>
                     </span>
                 </div>
                 <div class="offset">.</div>
             <% end %>
         </div>
         <div class="row">
-            <div class="col-md-10">
-                <span id="grayboard" class="col-md-12" style="background: gray; margin-left: 15px; padding: 0 0 0 0;">
+            <div class="col-md-10" style="padding-left: 0; padding-right: 0;">
+                <span id="grayboard" class="col-md-12" style="background: gray; margin-left: 0; margin-right: 0; padding: 0 0 0 0;">
 <!--  VIDEO CONTAINER -->
                     <div id="videos-container"></div>
 <!-- DUMMIT GRID -->
@@ -68,11 +73,13 @@
                 <% if current_user.role == 'instructor' %>
                     <div class="container">
                         <% if !@stream.capture_date.present? %>
-                            <button id="share-screen" class="tam-button tam-capturing"></button>
-
-                            <div class="offset">.</div>
+                        <div style="margin-bottom: 10px;">
+                            <button id="share-screen" class="tam-button tam-capturing dimmed" disabled></button>
+                        </div>
                         <% end %>
-                        <button id="tam-patam" class="tam-button tam-patam"></button>
+                        <div>
+                            <button id="tam-patam" class="tam-button tam-patam"></button>
+                      </div>
                     </div>
                 <% else %>
                     <div class="container">

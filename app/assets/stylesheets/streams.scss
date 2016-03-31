@@ -35,6 +35,9 @@ h1#introduction {
   background-color: #222222;
   border-color: rgba(235, 235, 235, 0.05);
   margin-right: 20px;
+	padding-left: 8px;
+	padding-right: 8px;
+	width: 100%;
 }
 .tfieldesc {
   background-color: #222222;
@@ -55,10 +58,11 @@ h1#introduction {
 	border: none;
 }
 .tam-button {
-  width: 145px;
-  height: 60px;
+  width: 151px;
+  height: 63px;
 	background-color: transparent;
 	border: none;
+	padding: 0 0 0 0;
 }
 .tam-liveoff {
   background-image: url(asset_path('bt_tam_liveoff'));
@@ -108,6 +112,9 @@ h1#introduction {
 .offset {
 	color: transparent;
   line-height: 10px;
+}
+.dimmed {
+	opacity: 0.5;
 }
 // #tam-event-keep-alive-video {
 //   width: 0px;

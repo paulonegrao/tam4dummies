@@ -29,13 +29,13 @@ class EventsController < ApplicationController
         broadcast_id_fn = `ls /Users/paulonegrao/codecore/railsdir/tam_for_dummies_app/stream/create_broadcast/ | awk '{ print $NF }'`
     end
 
-    if has_broadcast != ""
+    if broadcast_id_fn != ""
         fn_array = broadcast_id_fn.split("@@t4d@@")
         stream_id = fn_array[0]
         @broadcast_id = fn_array[1]
-        @stream_name = fn_array[2]
+        stream_name = fn_array[2]
         stream = Stream.find stream_id
-        stream.update_attributes(:broadcast_id => @broadcast_id, :stream_name => @stream_name)
+        stream.update_attributes(:broadcast_id => @broadcast_id, :stream_name => stream_name)
         if running_rpi?
           `rm /home/pi/rails/tam4dummies/stream/create_broadcast/*`
         else

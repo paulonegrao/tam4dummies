@@ -21,8 +21,8 @@
                       <div class="col-md-2">
                           <div></div>
                           <span  class="form_stream">
-                            <label class="label"><%= f.label "Stream ID", class: "label hidden"  %></label>
-                            <%= f.text_field :timestamp, readonly: true, value: "#{@stream.timestamp}", class: "tfield hidden" %>
+                            <label class="label"><%= f.label "Stream ID", class: "label"  %></label>
+                            <%= f.text_field :timestamp, readonly: true, value: "#{@stream.timestamp}", class: "tfield" %>
                           </span>
                       </div>
                       <div class="offset">.</div>
