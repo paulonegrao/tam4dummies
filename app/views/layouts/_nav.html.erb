@@ -49,5 +49,6 @@
     <% else %>
         <%= link_to '', events_show_url(:protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}"), remote: true, id:'tam-event-keep-alive' %>
         <button id="on-off-air" class="tam-btonair off-air pull-right" data-live="0" data-live-capture-date="" disabled></button>
+    <% end %>
     </div>
 </div>
