@@ -436,7 +436,7 @@ var loop_tam_alive = setInterval(function(){
                             var tam_obj = $('#share-screen');
                             tam_obj.removeClass('tam-capturing');
                             tam_obj.addClass('tam-cut');
-                            tam_obj.attr('onclick', 'window.location.replace("<%= new_topic_stream_path(@topic) %>")');
+                            tam_obj.attr('onclick', 'window.location.replace("<%= new_topic_stream_url(@topic, :protocol => 'http', :port => "#{running_rpi? ? 80 : 3000}") %>")');
                         },
                         onerror: function() {
                             if (isChrome && location.protocol === 'http:') {
