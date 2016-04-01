@@ -19,7 +19,7 @@
       $('#on-off-air').attr('data-live-capture-date', '<%= "#{@event.live_capture_date}" %>');
 <% end %>
 <% if @broadcast_id %>
-  $("#broadcast_id").attr("value", <%= "#{@broadcast_id}" %>);
+  $("#broadcast_id").attr('value', '<%= @broadcast_id %>');
   $("#broadcast_id_container").fadeIn(1200, function(){
         $(this).removeClass("hidden");
   });
