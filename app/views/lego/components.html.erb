@@ -58,6 +58,7 @@ var c2_legoyellow = "<p>Gstreamer - a pipeline-based multimedia framework that l
 var c2_legowhite = "<p>Timeline.js - an open-source tool that enables to build interactive timelines supporting JSON data format</p>";
 
 var c2_legoblue = "<p>React Native - is a JavaScript framework for writing real, natively rendering mobile applications for iOS and Android</p>";
+
 ///////////// dropping blocks //////////////////////////////////////////////
 $(document).on("page:change", function() {
 
@@ -126,7 +127,6 @@ $(document).on("page:change", function() {
         };
     };
 
-
     setTimeout(kicklgdown, 5100);
     function kicklgdown() {
         var lgblocksdown = [["lgreen", 190, 660, -375]];
@@ -167,17 +167,26 @@ function houseKeeper() {
     return;
 };
 
-      setTimeout(function() {
-          $("#legoblocks").addClass("dropped");
-          var siriHousekeeper = setInterval(function(){
+setTimeout(function() {
+    $("#legoblocks").addClass("dropped");
+    $(document).on('page:before-unload', function() {
+          clearTimeout(globalTimeout);
+          globalTimeout = "over";
+    });
+    function loopHousekeeper() {
             legoFix();
             if($("#legoblocks").hasClass("fixed")) {
-                clearInterval(siriHousekeeper);
                 houseKeeper();
+            } else {
+                  if(globalTimeout != "over") {
+                     globalTimeout = setTimeout(loopHousekeeper, 1100);
+                  };
             }
-          }, 1100);
+    }
+    loopHousekeeper();
 
-      }, 6000);
+}, 6000);
+
 
 ///////// HOVERING THE COMPONENTS ///////////////////////////////////
 

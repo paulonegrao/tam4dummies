@@ -1,3 +1,5 @@
+var globalTimeout;
+
 $(document).on("page:change", function() {
   $(".dropdown").on("shown.bs.dropdown", function() {
     $(".navlink.open").removeClass("open");
@@ -6,10 +8,13 @@ $(document).on("page:change", function() {
   $(".dropdown").on("hidden.bs.dropdown", function() {
     $(".navlink").addClass("open");
   });
+
+  if($("#on-off-air").attr("data-live-role") == "instructor") {
 // td4.s01 - fires AJAX to refresh ON-AIR icon (@ _nav.html.erb)
-  setInterval(function(){
-    document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
+    setInterval(function(){
+      document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
     }, 3000);
+  };
 
 });
 // wait for DOM elements addition, if = '#video-tam' fires click loops

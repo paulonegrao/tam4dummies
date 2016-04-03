@@ -38,7 +38,7 @@ class EventsController < ApplicationController
 
 # t4d.s03 - find last (and unic) Event and passes it to show.js.erb (on events view)
   def show
-    @event = Event.find 1
+    @event = Event.last
 
     if running_rpi?
         broadcast_id_fn = `ls /home/pi/rails/tam4dummies/stream/create_broadcast/ | awk '{ print $NF }'`

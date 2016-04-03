@@ -13,6 +13,7 @@ class TimelinesController < ApplicationController
   end
 
   def play_again_tam
+
     respond_to do |format|
       format.html {
           @params_patam = params
