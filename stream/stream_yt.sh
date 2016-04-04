@@ -25,7 +25,7 @@ while [ 1 -gt 0 ]; do
        kill $(ps aux | grep "gst-launch-1.0 ximagesrc" | grep $1 | awk '{print $2}')
        # kills current "SetTransition LIVE" leftovers
        # pkill -f -o "youtube.cmdline.live.SetTransition -Dexec.args=live"
-       kill $(ps aux | grep "youtube.cmdline.live.SetTransition -Dexec.args=live" | grep $2 | awk '{print $2}')
+       kill $(ps aux | grep "youtube.cmdline.live.SetTransition live" | grep $2 | awk '{print $2}')
        # call ""SetTransition COMPLETE" to stop broadcast streaming on Youtube & get it done
        /home/pi/rails/tam4dummies/stream/transition_broadcast.sh "complete" $2 &
        echo "tam_keep_alive expired... exiting stream_yt.sh..."

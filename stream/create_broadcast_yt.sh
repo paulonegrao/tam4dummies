@@ -17,7 +17,7 @@ echo "#################################"
 # clean CreateBraodcast directory
 rm /home/pi/rails/tam4dummies/stream/create_broadcast/*
 
-OUTPUT=`java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast "$2" "$3" "$4" "$5" "$6"`
+OUTPUT=`java -cp /home/pi/rails/tam4dummies/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.CreateBroadcast "$2" "$3" "$4" "$5" "$6"`
 
 broadcast_id=`echo $OUTPUT | awk 'BEGIN {FS="@@t4d_arg="} {print $2}'`
 stream_name=`echo $OUTPUT | awk 'BEGIN {FS="@@t4d_arg="} {print $3}'`

@@ -6,6 +6,7 @@
       };
 
       $('#on-off-air').attr('onclick', "");
+      $('#on-off-air').prop('disabled', true);
       $('#on-off-air').attr('data-live', "");
       $('#on-off-air').attr('data-live-capture-date', "");
 <% else %>
@@ -15,6 +16,9 @@
       };
 
       $('#on-off-air').attr('onclick', '<%= "#{@event.live_yt_id}" %>');
+      <% if current_user.role == "dummy" || current_user.role == "robot" %>
+          $('#on-off-air').prop('disabled', false);
+      <% end %>
       $('#on-off-air').attr('data-live', '<%= "#{@event.live_id}" %>');
       $('#on-off-air').attr('data-live-capture-date', '<%= "#{@event.live_capture_date}" %>');
 <% end %>

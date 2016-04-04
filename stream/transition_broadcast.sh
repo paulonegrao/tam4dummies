@@ -5,4 +5,4 @@
 #
 # eval $EXECUTABLE
 
-`java -cp /home/pi/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.SetTransition $1 $2`
+`java -cp /home/pi/rails/tam4dummies/ytlive/api-samples/java/target/samples-0.0.1-SNAPSHOT.jar com.google.api.services.samples.youtube.cmdline.live.SetTransition $1 $2`
