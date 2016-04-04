@@ -1,4 +1,5 @@
 var globalTimeout;
+var eventInterval;
 
 $(document).on("page:change", function() {
   $(".dropdown").on("shown.bs.dropdown", function() {
@@ -11,9 +12,12 @@ $(document).on("page:change", function() {
 
   if($("#on-off-air").attr("data-live-role") == "instructor") {
 // td4.s01 - fires AJAX to refresh ON-AIR icon (@ _nav.html.erb)
-    setInterval(function(){
+    clearInterval(eventInterval);
+    eventInterval = setInterval( function() {
       document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
     }, 3000);
+  } else {
+    clearInterval(eventInterval);
   };
 
 });

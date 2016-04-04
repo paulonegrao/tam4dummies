@@ -5,7 +5,7 @@
     <% url_lec = (lecture.id)%>
     <% @topics = lecture.topics.order('number ASC') %>
     <div class="lecture-panel">
-          <%=  link_to "#{lecture.chapter}. #{lecture.subject}<span class='badge pull-right' style='margin-top: 7px;'> #{@topics.count} </span>".html_safe,
+          <%=  link_to "#{lecture.chapter}.  #{lecture.subject}<span class='badge pull-right' style='margin-top: 7px;'> #{@topics.count} </span>".html_safe,
           "#topics-for-#{url_lec}", class: "topic-link", data: { toggle: "collapse" } %>
     </div>
     <div class="topic-group collapse" id='topics-for-<%= "#{url_lec}" %>'>
@@ -27,7 +27,7 @@
                             <%=  link_to "#{topic.number} -   #{topic.title}".html_safe,
                             "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
                       <% else %>
-                            <%=  link_to "#{topic.number} - #{topic.title}<span class='badge pull-right' style='margin-top: 7px;'> #{@streams.count} </span>".html_safe,
+                            <%=  link_to "#{topic.number} -   #{topic.title}<span class='badge pull-right' style='margin-top: 7px;'> #{@streams.count} </span>".html_safe,
                                   "#streams-for-#{url_top}", class: "topic-link", data: { toggle: "collapse" } %>
                       <% end %>
                 </div>
@@ -35,7 +35,7 @@
                       <%  @streams.each do |stream| %>
                             <div class="stream-panel">
                               <span>
-                                  <%= link_to "#{stream.timestamp} - #{stream.description}".html_safe, topic_stream_url(topic, stream, :protocol => 'https', :port => 3001)%>
+                                  <%= link_to "#{stream.id} #{stream.broadcast_id} #{stream.timestamp[0, 19]} - #{stream.description}".html_safe, topic_stream_url(topic, stream, :protocol => 'https', :port => 3001)%>
                               </span>
                             </div>
                       <% end %>
