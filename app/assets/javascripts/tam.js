@@ -11,10 +11,16 @@ $(document).on("page:change", function() {
   });
 
 // td4.s01 - fires AJAX to refresh ON-AIR icon (@ _nav.html.erb)
-  clearInterval(eventInterval);
-  eventInterval = setInterval( function() {
+  // clearInterval(eventInterval);
+  // eventInterval = setInterval( function() {
+  //   document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
+  // }, 3000);
+
+  function loopKeepAlive() {
     document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
-  }, 3000);
+    setTimeout(loopKeepAlive, 3000);
+  };
+  loopKeepAlive();
 
 });
 // wait for DOM elements addition, if = '#video-tam' fires click loops
