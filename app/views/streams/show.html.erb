@@ -149,8 +149,13 @@
                           $('#event_live_id').attr('value', $('#on-off-air').attr('data-live'));
                         };
 // t4dcode: checks if it is already on the correct "topics/x/streams/y" page them clicks "tam-liveoff" to start receiving the stream. If not, loads the correct page ("topics/x/streams/y") from "on-off-air" onclick value
-debugger;
-                        if (window.location.href.includes(tam_obj.attr('onclick')) &&
+
+                        if (tam_obj.attr('onclick').includes("window.location.href=")) {
+                          var onclickW = tam_obj.attr('onclick').split("=")[1];
+                        } else {
+                          var onclickW =tam_obj.attr('onclick');
+                        };
+                        if (window.location.href.includes(onclickW) &&
                             tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
                             var tam_obj = $('#tam-roomToken');
                             if (tam_obj.hasClass('tam-liveoff')) {
@@ -158,7 +163,7 @@ debugger;
                                 tam_obj.click();
                             };
                         } else {
-                          window.location.href = tam_obj.attr('onclick');
+                          window.location.href = onclickW;
                         };
                     };
 
@@ -177,7 +182,12 @@ debugger;
                           $('#event_live_id').attr('value', tam_obj.attr('data-live'));
                         };
 // t4dcode: checks if it is at the live "topics/x/streams/y" page them changes "tam-liveoff" accordingly
-                        if (window.location.href.includes(tam_obj.attr('onclick')) && tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
+                        if (tam_obj.attr('onclick').includes("window.location.href=")) {
+                          var onclickW = tam_obj.attr('onclick').split("=")[1];
+                        } else {
+                          var onclickW =tam_obj.attr('onclick');
+                        };
+                        if (window.location.href.includes(onclickW) && tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
                               $('#tam-liveoff-div').attr('class', "");
                         } else {
                               $('#tam-liveoff-div').attr('class', "hidden");

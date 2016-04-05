@@ -15,7 +15,7 @@
             $('#on-off-air').addClass('on-air');
       };
 
-      $('#on-off-air').attr('onclick', '<%= "location.href=#{@event.live_yt_id}" %>');
+      $('#on-off-air').attr('onclick', '<%= "window.location.href=#{@event.live_yt_id}" %>');
       <% if current_user.role == "dummy" || current_user.role == "robot" %>
           $('#on-off-air').prop('disabled', false);
       <% end %>
@@ -24,11 +24,7 @@
 <% end %>
 <% if @broadcast_id %>
   $("#broadcast_id").attr('value', '<%= @broadcast_id %>');
-  $("#broadcast_id_container").fadeIn(1200, function(){
-        $(this).removeClass("hidden");
-  });
-  $("#share-screen").fadeIn(1200, function(){
-        $(this).prop('disabled', false);
-        $(this).removeClass("dimmed");
-  });
+  $("#broadcast_id_container").removeClass("hidden");
+  $("#share-screen").prop('disabled', false);
+  $("#share-screen").removeClass("dimmed");
 <% end %>
