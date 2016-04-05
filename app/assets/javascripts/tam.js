@@ -10,15 +10,11 @@ $(document).on("page:change", function() {
     $(".navlink").addClass("open");
   });
 
-  if($("#on-off-air").attr("data-live-role") == "instructor") {
 // td4.s01 - fires AJAX to refresh ON-AIR icon (@ _nav.html.erb)
-    clearInterval(eventInterval);
-    eventInterval = setInterval( function() {
-      document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
-    }, 3000);
-  } else {
-    clearInterval(eventInterval);
-  };
+  clearInterval(eventInterval);
+  eventInterval = setInterval( function() {
+    document.getElementById('tam-event-keep-alive').click(); //fake a click on the link
+  }, 3000);
 
 });
 // wait for DOM elements addition, if = '#video-tam' fires click loops

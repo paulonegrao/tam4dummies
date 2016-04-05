@@ -11,7 +11,7 @@
     <div class="col-md-1"></div>
   </div>
 </div>
-<div class="row">
+<div id="legodiv" class="row">
   <div id="legoblocks" class="">
       <div id="legored" class="legos"></div>
       <div id="legoredtop" class="legos"></div>
@@ -172,6 +172,12 @@ setTimeout(function() {
     $(document).on('page:before-unload', function() {
           clearTimeout(globalTimeout);
           globalTimeout = "over";
+    });
+    $("#legodiv").on("click", "#legoblocks", function() {
+      $("#legoblocks").removeClass("dropped");
+      $("#legoblocks").addClass("fixed");
+      houseKeeper();
+      return;
     });
     function loopHousekeeper() {
             legoFix();

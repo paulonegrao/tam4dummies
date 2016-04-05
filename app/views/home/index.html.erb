@@ -2,7 +2,42 @@
       <img src="<%= asset_path 't4d-m1.png' %>"/>
     </div>
     <div class="row">
-      <div class='down-div' style="width:auto; padding-top:0px;">
-          <img width="60%" src="<%= asset_path 'tam_home' %>" />
+      <div class='down-div' style="width:autopx; height: 300px; padding-top:0px; background-color: ; text-align: center">
+          <!-- <img width="60%" src="<%= asset_path 'tam_home2' %>" /> -->
+          <img id="catchup" style="padding-top: 60px; padding-right: 100px; display: block; margin: 0 auto;" src="<%= asset_path 'catchup' %>" />
+          <img id="tam_right" style="position: absolute; left: 900px; top: 350px;" src="<%= asset_path 'tam_right2' %>" />
+          <img id="tam_left" class="hidden" style="position: absolute; left: 300px; top: 350px;" src="<%= asset_path 'tam_left' %>" />
+          <img id="iltdd" style="padding-top: 30px; display: block; margin: 0 auto; opacity: 0;" src="<%= asset_path 'iltdd' %>" />
       </div>
     </div>
+    <script>
+    ///////////// tam show //////////////////////////////////////////////
+    $(document).on("page:change", function() {
+
+      $(".row").on("click", ".down-div", function() {
+          $("#tam_right").css({
+                  position: "absolute",
+                  transition: "700ms ease",
+                  transform: "translate(-600px, 0px)"
+          });
+
+          $("#catchup").fadeOut(700, function(){
+                $(this).addClass("hidden");
+          });
+
+          setTimeout(function () {
+            $("#tam_right").addClass("hidden");
+            $("#tam_left").removeClass("hidden");
+          }, 700);
+
+          setTimeout(function () {
+            $("#iltdd").css({
+                opacity: 1,
+                transition: "1400ms ease",
+            });
+          }, 700);
+      });
+
+
+    });
+    </script>

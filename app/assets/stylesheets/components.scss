@@ -39,8 +39,15 @@
 	top: 30px;
 	background-image: url(asset_path('raspberrypihw.png'));
 }
+
 #headerc1.legoredtop {
-	background-image: url(asset_path('railslogo.png'));
+	background-image: url(asset_path('ruby.png'));
+}
+#headerc3.legoredtop {
+	width: 350px;
+	height: 156px;
+	top: 30px;
+	background-image: url(asset_path('rails.png'));
 }
 #headerc1.legoorange {
 	background-image: url(asset_path('webrtc.png'));
