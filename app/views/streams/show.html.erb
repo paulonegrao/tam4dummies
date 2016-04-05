@@ -134,7 +134,7 @@
 <!-- remembeing... :live_id is #event_live_id -->
             <%= f.hidden_field :live_id, value: "0"%>
             <%= f.hidden_field :live_capture_date, value: ""%>
-            <%= f.hidden_field :live_yt_id, value: "#{running_rpi? ? 'https://tam4dummies.com:3001' : ''}#{request.path}"%>
+            <%= f.hidden_field :live_yt_id, value: "https://#{request.host}:3001#{request.path}"%>
             <%= f.submit "", id: 'tam-event-keep-alive-video', class: "transparent" %>
           <% end %>
         </div>
