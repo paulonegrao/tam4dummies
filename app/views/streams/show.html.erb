@@ -151,7 +151,7 @@
 // t4dcode: checks if it is already on the correct "topics/x/streams/y" page them clicks "tam-liveoff" to start receiving the stream. If not, loads the correct page ("topics/x/streams/y") from "on-off-air" onclick value
 
                         if (tam_obj.attr('onclick').includes("window.location.href=")) {
-                          var onclickW = tam_obj.attr('onclick').split("=")[1];
+                          var onclickW = tam_obj.attr('onclick').split("'")[1];
                         } else {
                           var onclickW =tam_obj.attr('onclick');
                         };
@@ -183,7 +183,7 @@
                         };
 // t4dcode: checks if it is at the live "topics/x/streams/y" page them changes "tam-liveoff" accordingly
                         if (tam_obj.attr('onclick').includes("window.location.href=")) {
-                          var onclickW = tam_obj.attr('onclick').split("=")[1];
+                          var onclickW = tam_obj.attr('onclick').split("'")[1];
                         } else {
                           var onclickW =tam_obj.attr('onclick');
                         };
