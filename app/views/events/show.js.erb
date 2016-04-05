@@ -22,9 +22,9 @@
       $('#on-off-air').attr('data-live', '<%= "#{@event.live_id}" %>');
       $('#on-off-air').attr('data-live-capture-date', '<%= "#{@event.live_capture_date}" %>');
 <% end %>
-<% if @broadcast_id %>
-  $("#broadcast_id").attr('value', '<%= @broadcast_id %>');
-  $("#broadcast_id_container").removeClass("hidden");
-  $("#share-screen").prop('disabled', false);
-  $("#share-screen").removeClass("dimmed");
-<% end %>
+if ($("#broadcast_id").attr('value') == "" && '<%= session[:broadcast_id] %>' != "") {
+    $("#broadcast_id").attr('value', '<%= session[:broadcast_id] %>');
+    $("#broadcast_id_container").removeClass("hidden");
+    $("#share-screen").prop('disabled', false);
+    $("#share-screen").removeClass("dimmed");
+};
