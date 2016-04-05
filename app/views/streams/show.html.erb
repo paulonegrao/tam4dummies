@@ -134,7 +134,7 @@
 <!-- remembeing... :live_id is #event_live_id -->
             <%= f.hidden_field :live_id, value: "0"%>
             <%= f.hidden_field :live_capture_date, value: ""%>
-            <%= f.hidden_field :live_yt_id, value: "#{request.path}"%>
+            <%= f.hidden_field :live_yt_id, value: "#{running_pi? ? 'https://tam4dummies.com:3001' : ''}#{request.path}"%>
             <%= f.submit "", id: 'tam-event-keep-alive-video', class: "transparent" %>
           <% end %>
         </div>
@@ -149,6 +149,7 @@
                           $('#event_live_id').attr('value', $('#on-off-air').attr('data-live'));
                         };
 // t4dcode: checks if it is already on the correct "topics/x/streams/y" page them clicks "tam-liveoff" to start receiving the stream. If not, loads the correct page ("topics/x/streams/y") from "on-off-air" onclick value
+debugger;
                         if (window.location.href.includes(tam_obj.attr('onclick')) &&
                             tam_obj.attr('data-live') ==  $('#event_live_id').attr('value')) {
                             var tam_obj = $('#tam-roomToken');
