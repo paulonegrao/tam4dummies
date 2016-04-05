@@ -141,7 +141,7 @@
         <% if current_user.role == 'robot' %>
             <script>
 //////////////// ROBOT ///////////////////////////////////////////////////
-                    setInterval(function(){
+                $("#tam-event-keep-alive").on("click", function() {
                     var tam_obj = $('#on-off-air');
                     if (tam_obj.hasClass('on-air')) {
 // t4dcode: if "event_live_id" == 0 it needs to be updated with "data-live" from on-off-air
@@ -166,15 +166,14 @@
                           window.location.href = onclickW;
                         };
                     };
-
-                }, 3000);
+                });
 
             </script>
         <% end %>
         <% if current_user.role == 'dummy' %>
             <script>
 //////////////// DUMMY ///////////////////////////////////////////////////
-                $("#tam-event-keep-alive").click(function() {
+                $("#tam-event-keep-alive").on("click", function() {
                     var tam_obj = $('#on-off-air');
                     if (tam_obj.hasClass('on-air')) {
 // t4dcode: if "event_live_id" == 0 it needs to be updated with "data-live" from on-off-air
@@ -193,7 +192,7 @@
                               $('#tam-liveoff-div').attr('class', "hidden");
                         };
                     };
-                };
+                });
 
             </script>
         <% end %>
