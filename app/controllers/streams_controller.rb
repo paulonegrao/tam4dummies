@@ -31,7 +31,11 @@ class StreamsController < ApplicationController
 
     # create Broadcast on Youtube Live Streaming
     title = "'#{@lecture.chapter}.#{@topic.number} - #{@topic.title}'"
-    titlest = "tam4dummies_stream_#{Stream.maximum(:id)+1}"
+    if Stream.maximum(:id)
+        titlest = "tam4dummies_stream_#{Stream.maximum(:id)+1}"
+    else
+        titlest = "tam4dummies_stream_1"
+    end
 
     time_now  = Time.now + 60
     starttime = time_now.iso8601
