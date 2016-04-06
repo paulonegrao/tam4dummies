@@ -1,17 +1,40 @@
 {
     "title": {
         "media": {
-          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>",
+          "url": "<%= asset_path 'patamlogo.png' %>",
           "caption": "a ShutUp & Code! production",
-          "credit": "<a href='https://tams4dummies.com:3001'>tam4dummies.com</a>",
-          "thumbnail": "<%= asset_path 'patambig.png' %>"
+          "credit": "<a href='http://tams4dummies.com'>tam4dummies.com</a>",
+          "thumbnail": "<%= asset_path 'patamlogo.png' %>"
+        },
+        "text": {
+          "headline": "Y<font size='6'><b><span style='text-transform: lowercase;'>our&nbsp;</span></b></font>W<font size='6'><b><span style='text-transform: lowercase;'>ay</span></b></font>",
+          "text": "<p>This is your streamed version of a single Lecture. If you have scticked DUMM-IT notes to the live session, they will be available here as shortcuts to respective timestamp inside the stream.<br/> Fell free to rewind, stop, forward and, as many times you want... Play Again TAM.</p>"
+        }
+    },
+    "events": [
+      {
+        "media": {
+          "url": "https://www.youtube.com/watch?v=<%= @broadcast_id %>",
+          "caption": "",
+          "credit": "<a href='https://www.youtube.com/tv#/watch?v=<%= @broadcast_id %>'>watch in fullscreen</a>"
+        },
+        "start_date": {
+          "year": "<%= @capture_date.year %>",
+          "month": "<%= @capture_date.month %>",
+          "day": "<%= @capture_date.day %>",
+          "hour": "<%= @capture_date.hour %>",
+          "minute": "<%= @capture_date.minute %>",
+          "second": "<%= @capture_date.second %>"
         },
         "text": {
           "headline": "<%= @headline %>",
           "text": "<p><%= @description %></p>"
         }
-    },
-    "events": [
+  <% if @dummits.length > 0 %>
+     },
+  <% else %>
+     }
+  <% end %>
 <% @dummits.each_with_index do |dummit, index| %>
     <% titlew = dummit.title.split(":") %>
     <% hour   = titlew[0] %>
@@ -29,7 +52,7 @@
           "second": "<%= second %>"
         },
         "text": {
-          "headline": "dumm-it at <%= dummit.title %> from start",
+          "headline": "<%= @headline %>",
           "text": "<p><%= dummit.body.html_safe %></p>"
         }
   <% if index == @dummits.size - 1 %>

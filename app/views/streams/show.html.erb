@@ -77,9 +77,6 @@
                             <button id="share-screen" class="tam-button tam-capturing dimmed" disabled></button>
                         </div>
                         <% end %>
-                        <div>
-                            <button id="tam-patam" class="tam-button tam-patam"></button>
-                      </div>
                     </div>
                 <% else %>
                     <div class="container">
@@ -94,8 +91,6 @@
                             <div class="offset">.</div>
 
                             <button id="tam-dummit" class="tam-button tam-dummit"></button>
-                        <% else %>
-                            <button id="tam-patam" class="tam-button tam-patam"></button>
                         <% end %>
 <!-- t4d section "dummit-new-section": setup form input dumm-its -->
                     <section id="dummit-new-section" class="dummit-new hidden">
@@ -202,9 +197,9 @@
 //////////////////////////////////////////////////////////////////////////
             $("#tam-patam").on("click", function() {
               <% if running_rpi? %>
-                  window.location.href = '<%= "#{play_again_tam_url(:protocol => 'http', :port => 80)}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
+                  window.location.href = '<%= "#{play_again_tam_url(:protocol => 'http', :port => 80)}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&capture_date=#{@stream.capture_date}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
               <% else %>
-                  window.location.href = '<%= "#{play_again_tam_url(:protocol => 'http', :port => 3000)}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
+                  window.location.href = '<%= "#{play_again_tam_url(:protocol => 'http', :port => 3000)}?stream_id=#{@stream.id}&broadcast_id=#{@stream.broadcast_id}&description=#{@stream.description}&capture_date=#{@stream.capture_date}&lecture_chapter=#{@lecture.chapter}&lecture_subject=#{@lecture.subject}&topic_number=#{@topic.number}&topic_title=#{@topic.title}".html_safe%>';
               <% end %>
             });
         </script>

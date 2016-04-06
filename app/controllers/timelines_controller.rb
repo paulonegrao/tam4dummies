@@ -20,8 +20,11 @@ class TimelinesController < ApplicationController
           render :play_again_tam
       }
       format.json {
+
           @broadcast_id = params[:broadcast_id]
           @description = params[:description]
+          @capture_date = params[:capture_date]
+          @capture_date = DateTime.parse(@capture_date).in_time_zone("Pacific Time (US & Canada)")
 
           @headline = "#{params[:lecture_chapter]}.#{params[:topic_number]} #{params[:lecture_subject]} / #{params[:topic_title]}"
 
