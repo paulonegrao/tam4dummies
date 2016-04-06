@@ -52,13 +52,15 @@ class StreamsController < ApplicationController
 
     if @stream.save
        # call create_broadcast.sh
-       session[:broadcast_id] = ""
+       
+       cookies[:broadcast_id] = ""
+
        if running_rpi?
           system("/home/pi/rails/tam4dummies/stream/create_broadcast_yt.sh #{@stream.id} #{title} #{titlest} #{starttime} #{endtime} #{description} &")
        else
          system("/Users/paulonegrao/codecore/railsdir/tam_for_dummies_app/stream/create_broadcast_yt_lh.sh #{@stream.id} #{title} #{titlest} #{starttime} #{endtime} #{description} &")
        end
- 
+
        @topic = Topic.find params[:topic_id]
        redirect_to topic_stream_url(@topic, @stream, :protocol => 'https', :port => "#{running_rpi? ? 3001 : 3001}"), notice: "Stream created successfully"
     else
