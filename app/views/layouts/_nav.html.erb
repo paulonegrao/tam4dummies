@@ -23,7 +23,7 @@
             </ul>
           </li>
           <li>
-            <img id="avatar" class="img-circle" src='<%= asset_path "#{current_user.last_name}_avatar" %>' />
+            <img id="avatar" onclick="balloon();" class="img-circle" src='<%= asset_path "#{current_user.last_name}_avatar" %>' />
           </li>
           <!-- <ul class="nav navbar-nav">
           </ul> -->
@@ -55,3 +55,8 @@
     <% end %>
     </div>
 </div>
+<script>
+function balloon() {
+  window.location.href = "http://localhost:3000/lego/balloon1";
+}
+</script>
