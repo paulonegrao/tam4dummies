@@ -51,6 +51,7 @@ Rails.application.routes.draw do
   get 'lego/components', to: 'lego#components', as: 'components'
   get 'lego/lego', to: 'lego#lego', as: 'lego'
   get 'lego/lego_fix', to: 'lego#lego_fix', as: 'lego_fix'
+  get 'lego/balloon1', to: 'lego#balloon1', as: 'lego_baloon1'
 
   resources :sessions, only: [:new, :create, :destroy] do
     delete :destroy, on: :collection

@@ -1,6 +1,6 @@
 class LegoController < ApplicationController
 
-  def baloons
+  def balloon1
   end
 
   def components
@@ -23,7 +23,7 @@ class LegoController < ApplicationController
       else
           has_housekeeper = system('rm /Users/paulonegrao/codecore/railsdir/tam_for_dummies_app/stream/siri_housekeeper')
       end
-      
+
       respond_to do |format|
         if has_housekeeper
           format.js { render :lego_fix_fixed }
