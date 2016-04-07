@@ -22,8 +22,9 @@ class TimelinesController < ApplicationController
       format.json {
 
       #    @broadcast_id = params[:broadcast_id]
-          @broadcast_id = params['o6Yhghx0Hbo']
-          @description = params[:description]
+          @broadcast_id = "o6Yhghx0Hbo"
+    #      @description = params[:description]
+          @description = "Demo"
           @capture_date = params[:capture_date]
           @capture_date = DateTime.parse(@capture_date).in_time_zone("Pacific Time (US & Canada)")
 
