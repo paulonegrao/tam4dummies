@@ -16,7 +16,7 @@ The solution includes features like:
 * background jobs (Java)
 * Linux and Bash programming (Raspberry PI)
 
-The project was built inside a Raspberry Pi II hardware, and has as main components:
+The project was built inside a Raspberry Pi II hardware, and has as its main components:
 ![alt tag](https://github.com/paulonegrao/tam4dummies/blob/master/app/assets/images/t4d%20Building%20Blocks.png)
 
 Project's presentation at CodeCore on April.07.2016 (click to watch it):
